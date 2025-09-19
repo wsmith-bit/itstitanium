@@ -3,7 +3,7 @@ name: Apply patch from comment
 on:
   issue_comment:
     types: [created]
-  workflow_dispatch: {}  # manual runs for testing
+  workflow_dispatch: {}  # allow manual runs for testing
 
 permissions:
   contents: write
@@ -12,11 +12,13 @@ permissions:
 
 jobs:
   apply:
-    # Run if manually dispatched OR the comment starts with /apply
+    # Run if manually dispatched OR the comment body contains /apply anywhere
     if: |
       github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '/apply'))
+      (github.event_name == 'issue_comment' &&
+       contains(github.event.comment.body, '/apply'))
     runs-on: ubuntu-latest
+
     steps:
       - name: Show event context
         run: |
@@ -25,7 +27,7 @@ jobs:
           echo "repo=${{ github.repository }}"
           echo "ref=${{ github.ref }}"
 
-          - name: Show comment body (if any)
+      - name: Show comment body (if any)
         if: github.event_name == 'issue_comment'
         env:
           BODY: ${{ github.event.comment.body }}
@@ -33,7 +35,6 @@ jobs:
           echo '---- COMMENT BODY START ----'
           echo "$BODY" | sed -e 's/^/| /'
           echo '---- COMMENT BODY END ----'
-
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -75,7 +76,6 @@ jobs:
           BRANCH="ai/update-${{ github.run_id }}"
           git checkout -b "$BRANCH"
           git add -A
-          # commit only if there are staged changes; otherwise make an empty commit
           if git diff --cached --quiet; then
             git commit --allow-empty -m "AI patch (empty commit) ${{ github.run_id }}"
           else
