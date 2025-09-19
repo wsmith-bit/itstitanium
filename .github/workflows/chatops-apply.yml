@@ -3,7 +3,7 @@ name: Apply patch from comment
 on:
   issue_comment:
     types: [created]
-  workflow_dispatch: {}   # allow manual runs for testing
+  workflow_dispatch: {}  # manual runs for testing
 
 permissions:
   contents: write
@@ -12,12 +12,11 @@ permissions:
 
 jobs:
   apply:
-    runs-on: ubuntu-latest
-    # Run on manual trigger OR when a comment starts with /apply
+    # Run if manually dispatched OR the comment starts with /apply
     if: |
       github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'issue_comment' &&
-       startsWith(github.event.comment.body, '/apply'))
+      (github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '/apply'))
+    runs-on: ubuntu-latest
     steps:
       - name: Show event context
         run: |
@@ -25,6 +24,7 @@ jobs:
           echo "actor=${{ github.actor }}"
           echo "repo=${{ github.repository }}"
           echo "ref=${{ github.ref }}"
+
       - name: Show comment body (if any)
         if: github.event_name == 'issue_comment'
         env:
@@ -32,24 +32,22 @@ jobs:
         run: |
           printf "---- COMMENT BODY START ----\n%s\n---- COMMENT BODY END ----\n" "$BODY"
 
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-                - name: Configure git identity
+
+      - name: Configure git identity
         run: |
           git config user.name  "itstitanium-bot"
           git config user.email "bot@users.noreply.github.com"
 
-
       - name: Extract diff block to file
         id: extract
+        if: github.event_name == 'issue_comment'
         env:
           BODY: ${{ github.event.comment.body }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "::notice::Manual run – skipping extract step"
-            exit 0
-          fi
           python - << 'PY'
           import os, re, sys, pathlib
           body = os.environ.get('BODY','')
@@ -61,33 +59,38 @@ jobs:
           print("Wrote /tmp/ai.patch")
           PY
 
-      - name: Apply patch
+      - name: Apply patch (comment-trigger only)
         if: github.event_name == 'issue_comment'
         run: |
           set -e
-          git config user.name "itstitanium-bot"
-          git config user.email "bot@users.noreply.github.com"
           git apply --whitespace=fix /tmp/ai.patch
           git status --porcelain
 
-          - name: Commit & push branch
+      - name: Commit & push branch
         run: |
           set -e
           BRANCH="ai/update-${{ github.run_id }}"
           git checkout -b "$BRANCH"
           git add -A
-          git diff --cached --quiet || git commit -m "AI patch from comment or manual run ${{ github.run_id }}"
-          # If nothing to commit, make an empty commit so a PR still opens
-          git rev-parse HEAD >/dev/null 2>&1 || git commit --allow-empty -m "AI patch (empty commit) ${{ github.run_id }}"
+          # commit only if there are staged changes; otherwise make an empty commit
+          if git diff --cached --quiet; then
+            git commit --allow-empty -m "AI patch (empty commit) ${{ github.run_id }}"
+          else
+            git commit -m "AI patch from comment or manual run ${{ github.run_id }}"
+          fi
           git push -u origin "$BRANCH"
 
-
-      - name: Open PR
-        uses: peter-evans/create-pull-request@v6
+      - name: Open PR via API
+        uses: actions/github-script@v7
         with:
-          title: "AI patch ${{ github.run_id }}"
-          body: |
-            Source: ${{ github.server_url }}/${{ github.repository }}
-            Event: ${{ github.event_name }}
-          base: main
-          branch: ai/update-${{ github.run_id }}
+          script: |
+            const branch = `ai/update-${process.env.GITHUB_RUN_ID}`;
+            const {owner, repo} = context.repo;
+            const res = await github.rest.pulls.create({
+              owner, repo,
+              title: `AI patch ${process.env.GITHUB_RUN_ID}`,
+              head: branch,
+              base: 'main',
+              body: `Source: ${context.serverUrl}/${owner}/${repo}\nEvent: ${context.eventName}`
+            });
+            core.info(`PR #${res.data.number}: ${res.data.html_url}`);
