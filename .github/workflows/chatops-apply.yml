@@ -20,7 +20,8 @@ jobs:
           python - << 'PY'
           import os, re, sys, pathlib
           body = os.environ['BODY']
-          m = re.search(r'```diff\s*(.*?)```', body, re.S|re.M)
+         m = re.search(r'```diff\s*(.*?)```', body, re.S|re.M)
+
           if not m:
             print("::error::No ```diff``` block found. Start your comment with /apply and include a fenced ```diff block.")
             sys.exit(1)
@@ -29,6 +30,10 @@ jobs:
           PY
         env:
           BODY: ${{ github.event.comment.body }}
+          - uses: actions/checkout@v4
+  with:
+    fetch-depth: 0
+
 
       - name: Apply patch
         run: |
