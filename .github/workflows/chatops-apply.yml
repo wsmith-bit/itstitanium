@@ -1,58 +1,85 @@
-﻿name: Apply patch from comment
+name: Apply patch from comment
 
 on:
   issue_comment:
     types: [created]
+  workflow_dispatch: {}   # allow manual runs for testing
 
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 jobs:
   apply:
-    if: startsWith(github.event.comment.body, '/apply')
     runs-on: ubuntu-latest
+    # Run on manual trigger OR when a comment starts with /apply
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' &&
+       startsWith(github.event.comment.body, '/apply'))
     steps:
+      - name: Show event context
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "actor=${{ github.actor }}"
+          echo "repo=${{ github.repository }}"
+          echo "ref=${{ github.ref }}"
+      - name: Show comment body (if any)
+        if: github.event_name == 'issue_comment'
+        env:
+          BODY: ${{ github.event.comment.body }}
+        run: |
+          printf "---- COMMENT BODY START ----\n%s\n---- COMMENT BODY END ----\n" "$BODY"
+
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Extract diff block to file
+        id: extract
+        env:
+          BODY: ${{ github.event.comment.body }}
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "::notice::Manual run – skipping extract step"
+            exit 0
+          fi
           python - << 'PY'
           import os, re, sys, pathlib
-          body = os.environ['BODY']
-         m = re.search(r'```diff\s*(.*?)```', body, re.S|re.M)
-
+          body = os.environ.get('BODY','')
+          m = re.search(r'```diff\s*(.*?)```', body, re.S|re.M)
           if not m:
-            print("::error::No ```diff``` block found. Start your comment with /apply and include a fenced ```diff block.")
-            sys.exit(1)
+              print("::error::No ```diff``` block found. Start your comment with /apply and include a fenced ```diff``` block.")
+              sys.exit(1)
           pathlib.Path('/tmp/ai.patch').write_text(m.group(1), encoding='utf-8')
           print("Wrote /tmp/ai.patch")
           PY
-        env:
-          BODY: ${{ github.event.comment.body }}
-          - uses: actions/checkout@v4
-  with:
-    fetch-depth: 0
-
 
       - name: Apply patch
+        if: github.event_name == 'issue_comment'
         run: |
+          set -e
           git config user.name "itstitanium-bot"
           git config user.email "bot@users.noreply.github.com"
           git apply --whitespace=fix /tmp/ai.patch
+          git status --porcelain
 
-      - name: Commit & push
+      - name: Commit & push branch
         run: |
+          set -e
           BRANCH="ai/update-${{ github.run_id }}"
           git checkout -b "$BRANCH"
           git add -A
-          git commit -m "AI patch from comment ${{ github.event.comment.html_url }}"
+          git commit -m "AI patch from comment or manual run ${{ github.run_id }}"
           git push -u origin "$BRANCH"
 
       - name: Open PR
         uses: peter-evans/create-pull-request@v6
         with:
           title: "AI patch ${{ github.run_id }}"
-          body: "Applied patch from: ${{ github.event.comment.html_url }}"
+          body: |
+            Source: ${{ github.server_url }}/${{ github.repository }}
+            Event: ${{ github.event_name }}
           base: main
-          head: ai/update-${{ github.run_id }}
+          branch: ai/update-${{ github.run_id }}
