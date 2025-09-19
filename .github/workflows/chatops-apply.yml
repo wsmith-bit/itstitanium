@@ -25,12 +25,15 @@ jobs:
           echo "repo=${{ github.repository }}"
           echo "ref=${{ github.ref }}"
 
-      - name: Show comment body (if any)
+          - name: Show comment body (if any)
         if: github.event_name == 'issue_comment'
         env:
           BODY: ${{ github.event.comment.body }}
         run: |
-          printf "---- COMMENT BODY START ----\n%s\n---- COMMENT BODY END ----\n" "$BODY"
+          echo '---- COMMENT BODY START ----'
+          echo "$BODY" | sed -e 's/^/| /'
+          echo '---- COMMENT BODY END ----'
+
 
       - name: Checkout
         uses: actions/checkout@v4
