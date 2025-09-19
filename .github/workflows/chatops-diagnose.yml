@@ -65,14 +65,15 @@ jobs:
           fi
           git push -u origin "$BR"
 
-      - name: Open PR
+          - name: Open PR
         if: github.event.inputs.dry_run != 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           title: "diag: ChatOps permissions OK (${{ github.run_id }})"
           body: "Automated diagnostics run."
           base: main
-          head: diag/test-${{ github.run_id }}
+          branch: diag/test-${{ github.run_id }}
+
 
       - name: Comment back on issue (if comment-triggered)
         if: github.event_name == 'issue_comment'
