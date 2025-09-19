@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   apply:
-    # Run if manually dispatched OR the comment body contains /apply anywhere
+    # Run if manual OR the comment body contains /apply anywhere
     if: |
       github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'issue_comment' &&
@@ -26,6 +26,12 @@ jobs:
           echo "actor=${{ github.actor }}"
           echo "repo=${{ github.repository }}"
           echo "ref=${{ github.ref }}"
+
+      - name: Dump event payload (JSON)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            console.log(JSON.stringify(context.payload, null, 2))
 
       - name: Show comment body (if any)
         if: github.event_name == 'issue_comment'
@@ -46,29 +52,76 @@ jobs:
           git config user.name  "itstitanium-bot"
           git config user.email "bot@users.noreply.github.com"
 
-      - name: Extract diff block to file
+      - name: Extract fenced blocks
         id: extract
         if: github.event_name == 'issue_comment'
         env:
           BODY: ${{ github.event.comment.body }}
         run: |
           python - << 'PY'
-          import os, re, sys, pathlib
+          import os, re, sys, json, pathlib
           body = os.environ.get('BODY','')
-          m = re.search(r'```diff\s*(.*?)```', body, re.S|re.M)
-          if not m:
-              print("::error::No ```diff``` block found. Start your comment with /apply and include a fenced ```diff``` block.")
+
+          # Capture diff block
+          m_diff = re.search(r'```diff\s*(.*?)```', body, re.S|re.M)
+          if m_diff:
+              patch = m_diff.group(1)
+              pathlib.Path('/tmp/ai.patch').write_text(patch, encoding='utf-8')
+              print("WROTE /tmp/ai.patch")
+
+          # Capture replace block
+          m_rep = re.search(r'```replace\s*(.*?)```', body, re.S|re.M)
+          if m_rep:
+              block = m_rep.group(1).strip()
+              cfg = {}
+              for line in block.splitlines():
+                  if ':' not in line: 
+                      continue
+                  k,v = line.split(':',1)
+                  cfg[k.strip().lower()] = v.strip()
+              need = {'file','find','replace'}
+              if need.issubset(cfg):
+                  pathlib.Path('/tmp/replace.json').write_text(json.dumps(cfg), encoding='utf-8')
+                  print("WROTE /tmp/replace.json")
+              else:
+                  print("::warning::replace block missing required keys (file, find, replace).")
+
+          if not m_diff and not m_rep:
+              print("::error::No fenced ```diff``` or ```replace``` block found.")
               sys.exit(1)
-          pathlib.Path('/tmp/ai.patch').write_text(m.group(1), encoding='utf-8')
-          print("Wrote /tmp/ai.patch")
           PY
 
-      - name: Apply patch (comment-trigger only)
-        if: github.event_name == 'issue_comment'
+      - name: Apply git diff patch (if provided)
+        if: github.event_name == 'issue_comment' && hashFiles('/tmp/ai.patch') != ''
         run: |
-          set -e
+          set -xe
+          git apply --check /tmp/ai.patch || { echo "::error::git apply --check failed"; exit 1; }
           git apply --whitespace=fix /tmp/ai.patch
           git status --porcelain
+
+      - name: Apply replace block (fallback)
+        if: github.event_name == 'issue_comment' && hashFiles('/tmp/ai.patch') == '' && hashFiles('/tmp/replace.json') != ''
+        run: |
+          set -e
+          python - << 'PY'
+          import json, os, sys
+          from pathlib import Path
+          cfg = json.loads(Path('/tmp/replace.json').read_text(encoding='utf-8'))
+          path = Path(cfg['file'])
+          if not path.exists():
+              print(f"::error::File not found: {path}")
+              sys.exit(1)
+          text = path.read_text(encoding='utf-8')
+          find = cfg['find']
+          repl = cfg['replace']
+          if find not in text:
+              print("::error::Find string not present in file.")
+              sys.exit(1)
+          new = text.replace(find, repl, 1)
+          path.write_text(new, encoding='utf-8')
+          print(f"Replaced once in {path}")
+          PY
+          git add -A
 
       - name: Commit & push branch
         run: |
