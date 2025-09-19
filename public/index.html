@@ -109,13 +109,28 @@
 }
 html,body{background:var(--bg);color:var(--ink);scroll-behavior:smooth}
 .header{position:sticky;top:0;background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.0)), var(--bg);backdrop-filter:saturate(140%) blur(8px);z-index:999;border-bottom:1px solid var(--glass-stroke)}
-.header .nav{display:flex;align-items:center;gap:16px;padding:14px 0}
+.header .nav{display:flex;align-items:center;gap:16px;padding:14px 0;flex-wrap:wrap}
+.header nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
 .brand img{width:28px;height:28px}
-.nav a{padding:8px 10px;border-radius:12px}
+.nav a{padding:8px 10px;border-radius:12px;white-space:nowrap}
 .nav a:hover{background:var(--glass)}
-.search input[type=search]{padding:.55rem .8rem;border:1px solid var(--glass-stroke);border-radius:14px;background:var(--bg-2);color:var(--ink);outline:0}
+.search{margin-left:auto;flex:1 1 220px;min-width:0}
+.search input[type=search]{padding:.55rem .8rem;border:1px solid var(--glass-stroke);border-radius:14px;background:var(--bg-2);color:var(--ink);outline:0;width:100%}
 .reading-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0;z-index:1000}
+
+@media(max-width:960px){
+  .header .nav{align-items:flex-start}
+  .header nav{order:2;width:100%;justify-content:flex-start}
+  .search{order:3;margin-left:0;width:100%}
+}
+@media(max-width:640px){
+  .header nav{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+  .header nav a{flex:1 1 calc(50% - 6px);text-align:center}
+}
+@media(max-width:480px){
+  .header nav a{flex-basis:100%}
+}
 
 .hero{
   --ring: radial-gradient(600px 300px at 20% -10%, rgba(94,234,212,.15), transparent 60%),
@@ -137,13 +152,16 @@ html,body{background:var(--bg);color:var(--ink);scroll-behavior:smooth}
 .card-grid{display:grid;gap:18px}
 .grid-3{grid-template-columns:1fr}
 @media(min-width:760px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+.hero-card{padding:24px}
+.hero-grid{align-items:center;grid-template-columns:1fr}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.1fr .9fr}}
 
 .btn{display:inline-flex;align-items:center;gap:10px;border-radius:14px;padding:.7rem 1rem;text-decoration:none}
 .btn-primary{background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#041016;font-weight:700}
 .btn-primary:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px}
 
 figure{margin:0}
-figure img{border-radius:20px;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+figure img{border-radius:20px;box-shadow:0 12px 30px rgba(0,0,0,.18);max-width:100%;height:auto;display:block}
 figcaption{color:var(--ink-2);font-size:.95rem;margin-top:8px}
 
 .toc{position:sticky;top:64px}
@@ -151,6 +169,7 @@ figcaption{color:var(--ink-2);font-size:.95rem;margin-top:8px}
 .toc ul{list-style:none;margin:0;padding:0}
 .toc a{display:block;padding:6px 8px;border-radius:10px;color:var(--ink-2)}
 .toc a:hover{background:var(--glass);color:var(--ink)}
+@media(max-width:960px){.toc{position:static;margin-top:24px}}
 
 .quick-answer p{margin:0}
 .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:.9em;background:var(--bg-2);padding:.1em .4em;border-radius:6px;border:1px solid var(--glass-stroke)}
@@ -203,8 +222,8 @@ table.compare{width:100%;border-collapse:separate;border-spacing:0;min-width:640
 
 <section class="hero">
   <div class="wrap">
-    <div class="card" style="padding:24px">
-      <div class="card-grid" style="align-items:center;grid-template-columns:1.1fr .9fr">
+    <div class="card hero-card">
+      <div class="card-grid hero-grid">
         <div>
           <h1>Titanium cookware, clarified.</h1>
           <p class="lede">A focused, test-forward resource for titanium & titanium-reinforced nonstick. Compare materials without jargon. Buy once. Care right. Cook happy.</p>
