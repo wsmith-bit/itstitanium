@@ -1,0 +1,5 @@
+﻿# build artifacts / helpers — do not publish
+public/assets/img/incoming/_thumbs/
+public/assets/img/incoming/_tiles/
+public/assets/img/incoming/_contact-sheet.jpg
+tools/snippet.html
