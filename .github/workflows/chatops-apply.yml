@@ -70,14 +70,17 @@ jobs:
           git apply --whitespace=fix /tmp/ai.patch
           git status --porcelain
 
-      - name: Commit & push branch
+          - name: Commit & push branch
         run: |
           set -e
           BRANCH="ai/update-${{ github.run_id }}"
           git checkout -b "$BRANCH"
           git add -A
-          git commit -m "AI patch from comment or manual run ${{ github.run_id }}"
+          git diff --cached --quiet || git commit -m "AI patch from comment or manual run ${{ github.run_id }}"
+          # If nothing to commit, make an empty commit so a PR still opens
+          git rev-parse HEAD >/dev/null 2>&1 || git commit --allow-empty -m "AI patch (empty commit) ${{ github.run_id }}"
           git push -u origin "$BRANCH"
+
 
       - name: Open PR
         uses: peter-evans/create-pull-request@v6
