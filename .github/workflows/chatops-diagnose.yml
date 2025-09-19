@@ -1,0 +1,90 @@
+name: ChatOps Diagnose
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Skip push/PR (true/false)"
+        required: false
+        default: "false"
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  diag:
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issue_comment' &&
+       startsWith(github.event.comment.body, '/diag') &&
+       github.actor == 'wsmith-bit')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show event context
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "actor=${{ github.actor }}"
+          echo "repo=${{ github.repository }}"
+          echo "ref=${{ github.ref }}"
+          echo "dry_run=${{ github.event.inputs.dry_run }}"
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Echo comment body (if any)
+        if: github.event_name == 'issue_comment'
+        env:
+          BODY: ${{ github.event.comment.body }}
+        run: |
+          printf "---- COMMENT BODY START ----\n%s\n---- COMMENT BODY END ----\n" "$BODY"
+
+      - name: Create breadcrumb file
+        run: |
+          TS=$(date -u +%Y%m%d-%H%M%S)
+          echo "diag run at $TS by $GITHUB_ACTOR" > CHATOPS_DIAG_$TS.txt
+
+      - name: Commit to new branch (prove write perms)
+        env:
+          DRY: ${{ github.event.inputs.dry_run }}
+        run: |
+          set -e
+          BR="diag/test-${{ github.run_id }}"
+          git config user.name  "itstitanium-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git checkout -b "$BR"
+          git add CHATOPS_DIAG_*.txt
+          git commit -m "diag: breadcrumb by $GITHUB_ACTOR (run $GITHUB_RUN_ID)"
+          if [ "$DRY" = "true" ]; then
+            echo "DRY RUN: skipping push/PR"
+            exit 0
+          fi
+          git push -u origin "$BR"
+
+      - name: Open PR
+        if: github.event.inputs.dry_run != 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "diag: ChatOps permissions OK (${{ github.run_id }})"
+          body: "Automated diagnostics run."
+          base: main
+          head: diag/test-${{ github.run_id }}
+
+      - name: Comment back on issue (if comment-triggered)
+        if: github.event_name == 'issue_comment'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.payload.issue?.number || context.payload.pull_request?.number;
+            if (issue_number) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number,
+                body: `🧪 ChatOps Diagnose run for **${context.actor}** — branch diag/test-${context.runId} opened if perms allow.`
+              });
+            }
