@@ -1,4 +1,9 @@
-﻿User-agent: *
+
+robots.txt for itstitanium
+User-agent: *
 Allow: /
 
 Sitemap: https://itstitanium.com/sitemap.xml
+
+Helpful crawl hints
+Disallow: /?ref=
