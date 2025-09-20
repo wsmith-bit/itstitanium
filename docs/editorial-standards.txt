@@ -1,0 +1,7 @@
+Editorial Standards — itstitaniun.com
+- Verify specs with primary sources (manufacturer pages, manuals). Avoid unverified prices; use ranges if uncertain.
+- Cite sources in the copy when claims might affect safety, warranty, or performance.
+- Avoid hype language; prefer measurable, testable statements.
+- Update cadence: re-check key pages quarterly or when major models revise.
+- Accessibility: headings in order, alt text for all images, captioned figures and data tables.
+- Affiliate independence: recommendations are not for sale. Disclose clearly above the fold.

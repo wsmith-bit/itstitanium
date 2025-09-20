@@ -1,0 +1,50 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://itstitaniun.com/#org",
+      "name": "It\u2019s Titaniun",
+      "url": "https://itstitaniun.com/",
+      "logo": "https://itstitaniun.com/assets/img/logo.png",
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://itstitaniun.com/#website",
+      "url": "https://itstitaniun.com/",
+      "name": "It\u2019s Titaniun",
+      "publisher": {
+        "@id": "https://itstitaniun.com/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://itstitaniun.com/search.html?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itstitaniun.com/#webpage",
+      "url": "https://itstitaniun.com/",
+      "isPartOf": {
+        "@id": "https://itstitaniun.com/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://itstitaniun.com/#breadcrumbs"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itstitaniun.com/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itstitaniun.com/"
+        }
+      ]
+    }
+  ]
+}
