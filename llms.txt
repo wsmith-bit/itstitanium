@@ -1,0 +1,7 @@
+# Canonical AI-crawl hints for itstitaniun.com
+Source: https://itstitaniun.com/
+Knowledge-Graph: https://itstitaniun.com/kg.jsonld
+Content-API: https://itstitaniun.com/sitemap.xml
+Freshness-Policy: update:weekly; critical:homepage,pillars
+License: https://itstitaniun.com/disclosure.html
+Contact: mailto:hello@itstitaniun.com

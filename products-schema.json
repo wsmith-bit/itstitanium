@@ -1,0 +1,15 @@
+{
+  "fields": [
+    "brand",
+    "model",
+    "diameter_in",
+    "weight_lb",
+    "coating_type",
+    "oven_safe_f",
+    "induction_compatible",
+    "warranty_years",
+    "care_level",
+    "price_band"
+  ],
+  "notes": "Populate with verified data only; use ranges if uncertain. No fabricated specs or prices."
+}

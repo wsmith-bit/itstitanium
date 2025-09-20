@@ -1,0 +1,79 @@
+FILENAME: itstitaniun knowledge
+VERSION: 2025-09-18 (init)
+
+PURPOSE
+- Master knowledge and running log for itstitaniun.com Custom GPT.
+- The model must: 
+  1) Output complete HTML pages only (no commentary; no placeholders).
+  2) Follow itstitaniun_styling.txt exactly.
+  3) Self-check final HTML against new checklist.txt and silently revise until ≥ 90% compliance, then output.
+
+SITE STRATEGY (AT A GLANCE)
+- Site Type: Titanium cookware affiliate
+- Content Types: Homepage, Pillars, Targeted blog posts, Comparisons, Care/HowTo, FAQs
+- Primary Goals: AI-search visibility, organic SEO, high-trust buyer guidance, compliant affiliate conversion
+
+CANONICAL STRUCTURE
+- Home: value prop, featured picks, brand trust, quick links into pillars
+- Pillar Set (initial):
+  1) Titanium Cookware Buyer’s Guide (hub)
+  2) Titanium vs Ceramic vs Hard-Anodized (comparison)
+  3) Care & Cleaning (HowTo)
+  4) Brand Comparisons (multi-brand overview + internal links)
+  5) Best Titanium Pans 2025 (roundup)
+- Blog Targets (starter examples; expand as data arrives):
+  - best-titanium-frying-pan-for-induction-2025
+  - titanium-nonstick-toxicity-facts-2025
+  - oven-safe-temperatures-titanium-pans-explained
+  - how-to-season-titanium-reinforced-nonstick
+  - lightweight-camp-cooking-titanium-sets
+
+NON-NEGOTIABLE OUTPUT RULES
+- Full HTML5 doc only, with:
+  - <title> ~60 chars with intent
+  - meta description ~155 chars
+  - canonical + robots
+  - Open Graph + Twitter
+  - JSON-LD @graph: Organization, WebSite, WebPage, BreadcrumbList + page-type
+  - Hero with single CTA, FTC disclosure near top
+  - Internal links to pillars where relevant
+  - Images: width/height, alt, lazy except hero
+  - Tables and sections per styling guide
+- All affiliate anchors use rel="sponsored nofollow noopener"
+
+CHECKLIST INTEGRATION
+- After composing, programmatically re-evaluate against new checklist.txt.
+- If < 90% pass, revise silently and output the improved HTML only.
+
+FILE/ASSET CONVENTIONS
+- Paths:
+  - CSS: /styles/main.css (can inline small critical CSS)
+  - Images: /assets/img/
+- Slugs:
+  - Pillars: kebab with trailing slash
+  - Blog: kebab + year if evergreen (…-2025.html)
+- Image names:
+  - {slug}-{descriptor}-{width}.webp (with matching width/height attributes)
+
+SCHEMA PLAYBOOK
+- Organization (site-wide)
+- WebSite + potentialAction SearchAction
+- WebPage with primary breadcrumb item
+- Page-type selection:
+  - BlogPosting/Article for reviews/roundups
+  - Product + AggregateRating when comparing specific models (only if verifiable)
+  - FAQPage for standalone FAQs or sections with 3+ Q/A
+  - HowTo for care/cleaning, with steps, tools, materials
+
+LINKING STRATEGY
+- From blogs to pillars (1–3 internal links)
+- From pillars to brand pages and latest blogs
+- From top pages to “Best Titanium Pans 2025”
+
+DISCLOSURE TEMPLATE (INLINE, CUSTOMIZE COPY)
+- “We test and recommend cookware. If you buy via links on this page, we may earn a commission at no cost to you.”
+
+SESSION LOG (append new entries at end)
+- 2025-09-18: Initialized knowledge, styling, IA, schema defaults, affiliate rules, checklist gate ≥ 90%.
+
+END OF FILE
