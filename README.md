@@ -57,3 +57,25 @@ Please do not submit sensitive info in issues. Report security concerns privatel
 
 License
 MIT (or project’s chosen license). Add a LICENSE file at the repo root.
+
+## Internal Source of Truth
+- **docs/itstitaniun_styling.txt** – layout, typography, and component specs that every public page must follow.
+- **docs/editorial-standards.txt** – voice, sourcing, and review cadence requirements for copy updates.
+- **docs/new-checklist.txt** – the full AI/SEO alignment checklist used by automation and reports.
+- **docs/disclosure.txt** – authoritative FTC disclosure copy injected into each page.
+- **data/faq-bank.json** – canonical FAQ entries surfaced on the homepage and in structured data.
+- **data/products-schema.json** – schema guidance for product data integrations.
+- **data/brands.json** – normalized brand naming for copy and structured data.
+- **data/templates/kg-template.jsonld** – base JSON-LD graph used by the enforcement script.
+
+## Keeping pages aligned
+1. Run `npm run align` to sync disclosure + FAQs and enforce the checklist-driven head/body requirements.
+2. Serve `public/` locally (for example `npx http-server ./public -p 5173 -c-1`) and spot-check critical flows.
+3. Review `npm run report` for the State of Alignment summary before committing.
+4. CI (`.github/workflows/ci.yml`) re-runs the align scripts and then executes html-validate, lychee, Lighthouse CI (3 runs), pa11y, axe, JSON sanity, and domain guardrails—builds fail on drift.
+
+## How to update FAQs / disclosure
+1. Edit `data/faq-bank.json` or `docs/disclosure.txt` with the new approved content.
+2. Run `npm run align` to regenerate the homepage module and disclosure blocks across pages.
+3. Review `npm run report` to confirm the changes registered.
+4. Commit the updated source files together with any affected HTML output so CI stays green.

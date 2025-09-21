@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://itstitaniun.com/sitemap.xml
-
-# Hints for AI crawlers (non-standard but helpful)
-User-agent: ChatGPT-User
-Allow: /
