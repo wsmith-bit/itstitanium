@@ -102,6 +102,7 @@ function writeAlignLog(data) {
 
 function main() {
   const startTime = Date.now();
+
   const disclosureRaw = readFileSafe(DISCLOSURE_PATH).trim();
   const faqRaw = readFileSafe(FAQ_PATH).trim();
   let faqData = [];
@@ -183,6 +184,7 @@ function main() {
       console.log(`  • ${change.file}: ${change.message}`);
     }
   }
+
   console.log(
     `inject summary: processed ${progress.totalFiles} file(s) in ${formatDuration(durationMs)}, ` +
       `${progress.filesChanged} file(s) updated, ${progress.changeEntries} change note(s).`

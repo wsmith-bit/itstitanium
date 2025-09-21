@@ -124,12 +124,10 @@ function extractExistingDates(inner) {
       if (!result.dateModified && typeof node.dateModified === 'string') {
         result.dateModified = node.dateModified;
       }
-      if (result.datePublished && result.dateModified) {
-        break;
-      }
+      if (result.datePublished && result.dateModified) break;
     }
     return result;
-  } catch (error) {
+  } catch {
     return {};
   }
 }
@@ -262,9 +260,7 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     url: `${DOMAIN}/`,
     name: "It’s Titanium",
     inLanguage: 'en-US',
-    publisher: {
-      '@id': `${DOMAIN}/#org`
-    },
+    publisher: { '@id': `${DOMAIN}/#org` },
     potentialAction: website.potentialAction
   });
 
@@ -284,12 +280,8 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     description,
     datePublished: published,
     dateModified: modified,
-    isPartOf: {
-      '@id': `${DOMAIN}/#website`
-    },
-    breadcrumb: {
-      '@id': `${canonical}#breadcrumbs`
-    }
+    isPartOf: { '@id': `${DOMAIN}/#website` },
+    breadcrumb: { '@id': `${canonical}#breadcrumbs` }
   });
 
   if (heroUrl) {
@@ -312,29 +304,15 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     datePublished: published,
     dateModified: modified,
     inLanguage: 'en-US',
-    mainEntityOfPage: {
-      '@id': `${canonical}#webpage`
-    },
-    author: {
-      '@id': `${DOMAIN}/#org`,
-      '@type': 'Organization',
-      name: "It’s Titanium"
-    },
-    publisher: {
-      '@id': `${DOMAIN}/#org`
-    },
-    image: heroUrl ? {
-      '@id': `${canonical}#primaryimage`
-    } : undefined
+    mainEntityOfPage: { '@id': `${canonical}#webpage` },
+    author: { '@id': `${DOMAIN}/#org`, '@type': 'Organization', name: "It’s Titanium" },
+    publisher: { '@id': `${DOMAIN}/#org` },
+    image: heroUrl ? { '@id': `${canonical}#primaryimage` } : undefined
   });
 
   const speakableSelectors = [];
-  if (/class=["'][^"']*tldr[^"']*/i.test(html)) {
-    speakableSelectors.push('.tldr');
-  }
-  if (/<h1/i.test(html)) {
-    speakableSelectors.push('h1');
-  }
+  if (/class=["'][^"']*tldr[^"']*/i.test(html)) speakableSelectors.push('.tldr');
+  if (/<h1/i.test(html)) speakableSelectors.push('h1');
   if (speakableSelectors.length) {
     graph.push({
       '@type': 'SpeakableSpecification',
