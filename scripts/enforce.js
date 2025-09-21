@@ -328,21 +328,19 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     } : undefined
   });
 
- graph.push({
-    '@type': 'SpeakableSpecification',
-    '@id': `${canonical}#speakable`,
-    cssSelector: []
-  });
-
-  const speakable = graph[graph.length - 1];
+  const speakableSelectors = [];
   if (/class=["'][^"']*tldr[^"']*/i.test(html)) {
-    speakable.cssSelector.push('.tldr');
+    speakableSelectors.push('.tldr');
   }
   if (/<h1/i.test(html)) {
-    speakable.cssSelector.push('h1');
+    speakableSelectors.push('h1');
   }
-  if (!speakable.cssSelector.length) {
-    graph.pop();
+  if (speakableSelectors.length) {
+    graph.push({
+      '@type': 'SpeakableSpecification',
+      '@id': `${canonical}#speakable`,
+      cssSelector: speakableSelectors
+    });
   }
 
   if (rel === 'index.html' && faqData.length) {
@@ -446,7 +444,7 @@ function readAlignLog() {
 }
 
 function writeAlignLog(data) {
-  fs.writeFileSync(LOG_PATH, JSON.stringify(data, null, 2));
+  fs.writeFileSync(LOG_PATH, JSON.stringify(data, null, 2) + '\n');
 }
 
 function ensureRobotsContent(content) {

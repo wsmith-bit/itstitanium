@@ -97,7 +97,7 @@ function readAlignLog() {
 }
 
 function writeAlignLog(data) {
-  fs.writeFileSync(LOG_PATH, JSON.stringify(data, null, 2));
+  fs.writeFileSync(LOG_PATH, JSON.stringify(data, null, 2) + '\n');
 }
 
 function main() {

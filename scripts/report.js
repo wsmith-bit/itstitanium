@@ -75,22 +75,22 @@ function summarizeProgress(progress) {
   if (Number.isFinite(progress.totalFiles)) {
     parts.push(`processed ${progress.totalFiles} file(s)`);
   }
-  if (Number.isFinite(progress.filesChanged)) {
+  if (Number.isFinite(progress.filesChanged) && progress.filesChanged > 0) {
     parts.push(`updated ${progress.filesChanged} file(s)`);
   }
-  if (Number.isFinite(progress.changeEntries)) {
+  if (Number.isFinite(progress.changeEntries) && progress.changeEntries > 0) {
     parts.push(`${progress.changeEntries} change note(s)`);
   }
-  if (Number.isFinite(progress.disclosureUpdates)) {
+  if (Number.isFinite(progress.disclosureUpdates) && progress.disclosureUpdates > 0) {
     parts.push(`${progress.disclosureUpdates} disclosure update(s)`);
   }
-  if (Number.isFinite(progress.faqUpdates)) {
+  if (Number.isFinite(progress.faqUpdates) && progress.faqUpdates > 0) {
     parts.push(`${progress.faqUpdates} FAQ sync(s)`);
   }
-  if (Number.isFinite(progress.totalFixes)) {
+  if (Number.isFinite(progress.totalFixes) && progress.totalFixes > 0) {
     parts.push(`${progress.totalFixes} fix(es)`);
   }
-  if (Number.isFinite(progress.warnings)) {
+  if (Number.isFinite(progress.warnings) && progress.warnings > 0) {
     parts.push(`${progress.warnings} warning(s)`);
   }
   return parts.length ? parts.join(', ') : null;
