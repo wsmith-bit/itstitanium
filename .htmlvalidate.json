@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "html-validate:recommended",
+    "html-validate:document",
+    "html-validate:standard"
+  ],
+  "rules": {
+    "wcag/h32": "error"
+  }
+}

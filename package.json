@@ -1,0 +1,13 @@
+{
+  "name": "itstitanium",
+  "version": "1.0.0",
+  "description": "Static site alignment tools for itstitanium.com",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "enforce": "node scripts/enforce.js",
+    "inject": "node scripts/inject.js",
+    "align": "node scripts/inject.js && node scripts/enforce.js",
+    "report": "node scripts/report.js"
+  }
+}
