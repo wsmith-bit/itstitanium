@@ -123,6 +123,9 @@ jobs:
           PY
           git add -A
 
+      - name: Seed head assets across public HTML
+        run: node scripts/update-head-assets.js
+
       - name: Commit & push branch
         run: |
           set -e
