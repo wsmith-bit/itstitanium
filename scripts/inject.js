@@ -8,6 +8,12 @@ const DISCLOSURE_PATH = path.join(ROOT, 'docs/disclosure.txt');
 const FAQ_PATH = path.join(ROOT, 'data/faq-bank.json');
 const LOG_PATH = path.join(__dirname, '.align-log.json');
 
+function formatDuration(ms) {
+  if (!Number.isFinite(ms)) return 'n/a';
+  if (ms < 1000) return `${ms}ms`;
+  return `${(ms / 1000).toFixed(2)}s`;
+}
+
 function readFileSafe(filePath) {
   try {
     return fs.readFileSync(filePath, 'utf8');
@@ -91,10 +97,12 @@ function readAlignLog() {
 }
 
 function writeAlignLog(data) {
-  fs.writeFileSync(LOG_PATH, JSON.stringify(data, null, 2));
+  fs.writeFileSync(LOG_PATH, JSON.stringify(data, null, 2) + '\n');
 }
 
 function main() {
+  const startTime = Date.now();
+
   const disclosureRaw = readFileSafe(DISCLOSURE_PATH).trim();
   const faqRaw = readFileSafe(FAQ_PATH).trim();
   let faqData = [];
@@ -112,6 +120,14 @@ function main() {
   const faqHtml = buildFaqHtml(faqData);
   const files = getHtmlFiles(PUBLIC_DIR);
   const changes = [];
+  const touchedFiles = new Set();
+  const progress = {
+    totalFiles: files.length,
+    disclosureUpdates: 0,
+    faqUpdates: 0,
+    filesChanged: 0,
+    changeEntries: 0
+  };
 
   for (const file of files) {
     const original = readFileSafe(file);
@@ -138,17 +154,25 @@ function main() {
       fs.writeFileSync(file, updated);
       if (disclosureChanged) {
         changes.push({ file: relPath, message: 'Updated disclosure block' });
+        progress.disclosureUpdates += 1;
       }
       if (faqChanged) {
         changes.push({ file: relPath, message: 'Synced FAQ module' });
+        progress.faqUpdates += 1;
       }
+      touchedFiles.add(relPath);
     }
   }
 
   const log = readAlignLog();
+  progress.filesChanged = touchedFiles.size;
+  progress.changeEntries = changes.length;
+  const durationMs = Date.now() - startTime;
   log.inject = {
     timestamp: new Date().toISOString(),
-    changes,
+    durationMs,
+    progress,
+    changes
   };
   writeAlignLog(log);
 
@@ -160,6 +184,11 @@ function main() {
       console.log(`  • ${change.file}: ${change.message}`);
     }
   }
+
+  console.log(
+    `inject summary: processed ${progress.totalFiles} file(s) in ${formatDuration(durationMs)}, ` +
+      `${progress.filesChanged} file(s) updated, ${progress.changeEntries} change note(s).`
+  );
 }
 
 main();

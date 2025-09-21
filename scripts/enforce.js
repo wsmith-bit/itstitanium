@@ -10,6 +10,12 @@ const LOG_PATH = path.join(__dirname, '.align-log.json');
 
 const DOMAIN = 'https://itstitanium.com';
 
+function formatDuration(ms) {
+  if (!Number.isFinite(ms)) return 'n/a';
+  if (ms < 1000) return `${ms}ms`;
+  return `${(ms / 1000).toFixed(2)}s`;
+}
+
 function readFileSafe(filePath) {
   try {
     return fs.readFileSync(filePath, 'utf8');
@@ -97,6 +103,33 @@ function ensureJsonLd(inner, json) {
   const scriptTag = `  <script type="application/ld+json">\n${json}\n  </script>`;
   nextInner = `${nextInner}\n${scriptTag}\n`;
   return { inner: nextInner, changed: true };
+}
+
+function extractExistingDates(inner) {
+  const scriptMatch = inner.match(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i);
+  if (!scriptMatch) return {};
+  try {
+    const raw = scriptMatch[1].trim();
+    const parsed = JSON.parse(raw);
+    const nodes = Array.isArray(parsed)
+      ? parsed
+      : Array.isArray(parsed['@graph'])
+        ? parsed['@graph']
+        : [parsed];
+    const result = {};
+    for (const node of nodes) {
+      if (!result.datePublished && typeof node.datePublished === 'string') {
+        result.datePublished = node.datePublished;
+      }
+      if (!result.dateModified && typeof node.dateModified === 'string') {
+        result.dateModified = node.dateModified;
+      }
+      if (result.datePublished && result.dateModified) break;
+    }
+    return result;
+  } catch {
+    return {};
+  }
 }
 
 function stripTags(value) {
@@ -197,7 +230,7 @@ function extractCareSteps(html) {
   return liMatches.map((li) => stripTags(li));
 }
 
-function buildJsonLd(html, filePath, canonical, title, description, dateModified, faqData) {
+function buildJsonLd(html, filePath, canonical, title, description, dateModified, faqData, existingDates = {}) {
   const rel = path.relative(PUBLIC_DIR, filePath).replace(/\\/g, '/');
   const template = JSON.parse(readFileSafe(TEMPLATE_PATH));
   const graph = [];
@@ -209,6 +242,11 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
   const heroDetails = findHeroDetails(html);
   const heroSrc = heroDetails && heroDetails.src ? heroDetails.src : findHeroImage(html);
   const heroUrl = heroSrc ? (heroSrc.startsWith('http') ? heroSrc : `${DOMAIN}${heroSrc.startsWith('/') ? '' : '/'}${heroSrc}`) : undefined;
+
+  const preserved = existingDates || {};
+  const fallbackDate = new Date().toISOString().split('T')[0];
+  const published = preserved.datePublished || preserved.dateModified || dateModified || fallbackDate;
+  const modified = dateModified || preserved.dateModified || published;
 
   graph.push({
     ...org,
@@ -222,9 +260,7 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     url: `${DOMAIN}/`,
     name: "It’s Titanium",
     inLanguage: 'en-US',
-    publisher: {
-      '@id': `${DOMAIN}/#org`
-    },
+    publisher: { '@id': `${DOMAIN}/#org` },
     potentialAction: website.potentialAction
   });
 
@@ -235,7 +271,6 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     itemListElement: breadcrumbs
   });
 
-  const datePublished = dateModified || new Date().toISOString().split('T')[0];
   graph.push({
     ...webPage,
     '@id': `${canonical}#webpage`,
@@ -243,14 +278,10 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     name: title,
     inLanguage: 'en-US',
     description,
-    datePublished,
-    dateModified: dateModified || datePublished,
-    isPartOf: {
-      '@id': `${DOMAIN}/#website`
-    },
-    breadcrumb: {
-      '@id': `${canonical}#breadcrumbs`
-    }
+    datePublished: published,
+    dateModified: modified,
+    isPartOf: { '@id': `${DOMAIN}/#website` },
+    breadcrumb: { '@id': `${canonical}#breadcrumbs` }
   });
 
   if (heroUrl) {
@@ -270,40 +301,24 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     '@id': `${canonical}#blog`,
     headline: title,
     description,
-    datePublished,
-    dateModified: dateModified || datePublished,
+    datePublished: published,
+    dateModified: modified,
     inLanguage: 'en-US',
-    mainEntityOfPage: {
-      '@id': `${canonical}#webpage`
-    },
-    author: {
-      '@id': `${DOMAIN}/#org`,
-      '@type': 'Organization',
-      name: "It’s Titanium"
-    },
-    publisher: {
-      '@id': `${DOMAIN}/#org`
-    },
-    image: heroUrl ? {
-      '@id': `${canonical}#primaryimage`
-    } : undefined
+    mainEntityOfPage: { '@id': `${canonical}#webpage` },
+    author: { '@id': `${DOMAIN}/#org`, '@type': 'Organization', name: "It’s Titanium" },
+    publisher: { '@id': `${DOMAIN}/#org` },
+    image: heroUrl ? { '@id': `${canonical}#primaryimage` } : undefined
   });
 
- graph.push({
-    '@type': 'SpeakableSpecification',
-    '@id': `${canonical}#speakable`,
-    cssSelector: []
-  });
-
-  const speakable = graph[graph.length - 1];
-  if (/class=["'][^"']*tldr[^"']*/i.test(html)) {
-    speakable.cssSelector.push('.tldr');
-  }
-  if (/<h1/i.test(html)) {
-    speakable.cssSelector.push('h1');
-  }
-  if (!speakable.cssSelector.length) {
-    graph.pop();
+  const speakableSelectors = [];
+  if (/class=["'][^"']*tldr[^"']*/i.test(html)) speakableSelectors.push('.tldr');
+  if (/<h1/i.test(html)) speakableSelectors.push('h1');
+  if (speakableSelectors.length) {
+    graph.push({
+      '@type': 'SpeakableSpecification',
+      '@id': `${canonical}#speakable`,
+      cssSelector: speakableSelectors
+    });
   }
 
   if (rel === 'index.html' && faqData.length) {
@@ -407,7 +422,7 @@ function readAlignLog() {
 }
 
 function writeAlignLog(data) {
-  fs.writeFileSync(LOG_PATH, JSON.stringify(data, null, 2));
+  fs.writeFileSync(LOG_PATH, JSON.stringify(data, null, 2) + '\n');
 }
 
 function ensureRobotsContent(content) {
@@ -418,6 +433,7 @@ function ensureRobotsContent(content) {
 }
 
 function main() {
+  const startTime = Date.now();
   const files = getHtmlFiles(PUBLIC_DIR);
   let faqData = [];
   const faqRaw = readFileSafe(FAQ_PATH);
@@ -432,6 +448,8 @@ function main() {
   }
   const changes = [];
   const warnings = [];
+  const filesChanged = new Set();
+  let totalFixes = 0;
 
   for (const file of files) {
     const relPath = path.relative(ROOT, file);
@@ -455,6 +473,7 @@ function main() {
     }
 
     let headInner = headInfo.inner;
+    const existingDates = extractExistingDates(headInner);
 
     const canonical = computeCanonical(file);
 
@@ -542,9 +561,19 @@ function main() {
 
     const timeMatch = html.match(/<time[^>]+datetime=["']([^"']+)["'][^>]*>/i);
     const dateModified = timeMatch ? timeMatch[1] : null;
-    const jsonLd = buildJsonLd(html, file, canonical, title || 'It’s Titanium', description || 'Titanium cookware guidance', dateModified, faqData);
+    const jsonLd = buildJsonLd(
+      html,
+      file,
+      canonical,
+      title || 'It’s Titanium',
+      description || 'Titanium cookware guidance',
+      dateModified,
+      faqData,
+      existingDates
+    );
     result = ensureJsonLd(headInner, jsonLd);
     headInner = result.inner;
+    if (result.changed) summary.fixes.push('Refreshed JSON-LD graph');
 
     const newHtml = replaceHead(html, headInfo, headInner);
     if (newHtml !== html) {
@@ -570,6 +599,8 @@ function main() {
     if (changed) {
       fs.writeFileSync(file, html);
       changes.push(...summary.fixes.map((msg) => `${relPath}: ${msg}`));
+      totalFixes += summary.fixes.length;
+      filesChanged.add(relPath);
     }
 
     if (summary.warnings.length) {
@@ -578,8 +609,17 @@ function main() {
   }
 
   const log = readAlignLog();
+  const durationMs = Date.now() - startTime;
+  const progress = {
+    totalFiles: files.length,
+    filesChanged: filesChanged.size,
+    totalFixes,
+    warnings: warnings.length
+  };
   log.enforce = {
     timestamp: new Date().toISOString(),
+    durationMs,
+    progress,
     changes,
     warnings
   };
@@ -593,6 +633,11 @@ function main() {
   } else {
     console.log('enforce: no changes needed.');
   }
+
+  console.log(
+    `enforce summary: processed ${progress.totalFiles} file(s) in ${formatDuration(durationMs)}, ` +
+      `${progress.filesChanged} file(s) updated, ${progress.totalFixes} fix(es), ${progress.warnings} warning(s).`
+  );
 
   if (warnings.length) {
     console.warn('Warnings:');

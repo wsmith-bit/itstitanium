@@ -1,10 +1,25 @@
 {
   "inject": {
-    "timestamp": "2025-09-20T01:17:02.455Z",
+    "timestamp": "2025-09-21T17:44:13.242Z",
+    "durationMs": 6,
+    "progress": {
+      "totalFiles": 3,
+      "disclosureUpdates": 0,
+      "faqUpdates": 0,
+      "filesChanged": 0,
+      "changeEntries": 0
+    },
     "changes": []
   },
   "enforce": {
-    "timestamp": "2025-09-20T01:17:02.557Z",
+    "timestamp": "2025-09-21T17:44:13.362Z",
+    "durationMs": 14,
+    "progress": {
+      "totalFiles": 3,
+      "filesChanged": 0,
+      "totalFixes": 0,
+      "warnings": 0
+    },
     "changes": [],
     "warnings": []
   }

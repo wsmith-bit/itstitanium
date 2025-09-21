@@ -63,6 +63,39 @@ function formatResult(passed, label, detail) {
   return `  ${icon} ${label}${!passed && detail ? ` — ${detail}` : ''}`;
 }
 
+function formatDuration(ms) {
+  if (!Number.isFinite(ms)) return null;
+  if (ms < 1000) return `${ms}ms`;
+  return `${(ms / 1000).toFixed(2)}s`;
+}
+
+function summarizeProgress(progress) {
+  if (!progress) return null;
+  const parts = [];
+  if (Number.isFinite(progress.totalFiles)) {
+    parts.push(`processed ${progress.totalFiles} file(s)`);
+  }
+  if (Number.isFinite(progress.filesChanged) && progress.filesChanged > 0) {
+    parts.push(`updated ${progress.filesChanged} file(s)`);
+  }
+  if (Number.isFinite(progress.changeEntries) && progress.changeEntries > 0) {
+    parts.push(`${progress.changeEntries} change note(s)`);
+  }
+  if (Number.isFinite(progress.disclosureUpdates) && progress.disclosureUpdates > 0) {
+    parts.push(`${progress.disclosureUpdates} disclosure update(s)`);
+  }
+  if (Number.isFinite(progress.faqUpdates) && progress.faqUpdates > 0) {
+    parts.push(`${progress.faqUpdates} FAQ sync(s)`);
+  }
+  if (Number.isFinite(progress.totalFixes) && progress.totalFixes > 0) {
+    parts.push(`${progress.totalFixes} fix(es)`);
+  }
+  if (Number.isFinite(progress.warnings) && progress.warnings > 0) {
+    parts.push(`${progress.warnings} warning(s)`);
+  }
+  return parts.length ? parts.join(', ') : null;
+}
+
 function main() {
   const checklist = readFileSafe(CHECKLIST_PATH);
   if (!checklist) {
@@ -131,6 +164,14 @@ function main() {
   console.log('\nRecent alignment actions');
   if (log.inject) {
     console.log(`inject.js @ ${log.inject.timestamp || 'unknown'}`);
+    const injectSummary = summarizeProgress(log.inject.progress);
+    const injectDuration = formatDuration(log.inject.durationMs);
+    if (injectSummary) {
+      console.log(`  summary: ${injectSummary}`);
+    }
+    if (injectDuration) {
+      console.log(`  duration: ${injectDuration}`);
+    }
     if (log.inject.changes && log.inject.changes.length) {
       for (const change of log.inject.changes) {
         console.log(`  • ${change.file}: ${change.message}`);
@@ -143,6 +184,14 @@ function main() {
   }
   if (log.enforce) {
     console.log(`enforce.js @ ${log.enforce.timestamp || 'unknown'}`);
+    const enforceSummary = summarizeProgress(log.enforce.progress);
+    const enforceDuration = formatDuration(log.enforce.durationMs);
+    if (enforceSummary) {
+      console.log(`  summary: ${enforceSummary}`);
+    }
+    if (enforceDuration) {
+      console.log(`  duration: ${enforceDuration}`);
+    }
     if (log.enforce.changes && log.enforce.changes.length) {
       for (const change of log.enforce.changes) {
         console.log(`  • ${change}`);
