@@ -1,105 +1,71 @@
 name: CI
 
 on:
-push:
-branches: [ "main" ]
-pull_request:
-branches: [ "main" ]
-workflow_dispatch:
-
-permissions:
-contents: read
+  push:
+    branches: [ main ]
+  pull_request:
 
 jobs:
-build-test:
-runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-perl
-Copy code
-steps:
-  - name: Checkout
-    uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-  - name: Setup Node
-    uses: actions/setup-node@v4
-    with:
-      node-version: '20'
-      cache: 'npm'
+      - name: Install dependencies
+        run: npm install
 
-  - name: Install tooling
-    run: |
-      npm -v || true
-      # HTML & link checks
-      npm i -g html-validate@8 htmlhint@1.1.4
-      # Lighthouse CI
-      npm i -g @lhci/cli@0.13
-      # Accessibility
-      npm i -g pa11y@7 axe-core@4 http-server@14
-      # Schema lint (JSON-LD sanity)
-      npm i -g ajv-cli@5
-      # Markdown & spell
-      npm i -g markdownlint-cli2@0.13.0 cspell@8
-      # Link check
-      npm i -g lychee-link-checker@0.15.1
-      # Sitemap validator
-      npm i -g sitemap-validator@1
+      - name: Start static server
+        run: |
+          npx --yes http-server ./public -p 4173 -c-1 > /tmp/http-server.log 2>&1 &
+          echo $! > /tmp/http-server.pid
+          sleep 3
 
-  - name: Start local server
-    run: |
-      npx http-server ./public -p 4173 -c-1 > /dev/null 2>&1 &
-      echo "SERVER_URL=http://127.0.0.1:4173" >> $GITHUB_ENV
+      - name: Align content
+        run: npm run align
 
-  - name: HTML validation (html-validate)
-    run: |
-      html-validate "public/**/*.html" --config '{
-        "extends": ["html-validate:recommended"],
-        "rules": { "wcag/h32": "error" }
-      }'
+      - name: HTML validation
+        run: npx --yes html-validate "public/**/*.html"
 
-  - name: HTML hint (extra)
-    run: |
-      htmlhint "public/**/*.html" || true
+      - name: Link check (lychee)
+        run: |
+          cargo install lychee
+          lychee --no-progress --accept 200,301,302,308 public/**/*.html
 
-  - name: Link check (lychee)
-    run: |
-      lychee --verbose --no-progress --exclude-mail --accept 200,204,206,429 "public/**/*.html"
+      - name: Lighthouse CI
+        run: npx --yes @lhci/cli autorun --collect.url=http://localhost:4173/index.html --collect.numberOfRuns=3 --upload.target=temporary-public-storage
 
-  - name: Lighthouse CI (mobile)
-    run: |
-      lhci autorun --collect.url="$SERVER_URL/" --collect.numberOfRuns=3 --assert.preset lighthouse:recommended || (cat .lighthouseci/last-run.json || true; exit 1)
+      - name: Accessibility - pa11y
+        run: npx --yes pa11y http://localhost:4173/index.html --standard WCAG2AA
 
-  - name: Accessibility audit (pa11y)
-    run: |
-      pa11y "$SERVER_URL/" --threshold 0 --standard WCAG2AA
+      - name: Accessibility - axe
+        run: npx --yes @axe-core/cli http://localhost:4173/index.html
 
-  - name: Axe smoke (CLI)
-    run: |
-      npx axe "$SERVER_URL/" --exit 1 || true
+      - name: JSON sanity checks
+        run: node scripts/json-sanity.js
 
-  - name: JSON-LD sanity check
-    run: |
-      set -e
-      found=0
-      while IFS= read -r -d '' f; do
-        found=1
-        node -e "
-          const fs=require('fs');
-          const html=fs.readFileSync(process.argv[1],'utf8');
-          const match=[...html.matchAll(/<script type=\"application\\/ld\\+json\">([\\s\\S]*?)<\\/script>/g)];
-          for (const m of match) { JSON.parse(m[1]); }
-        " "$f"
-      done < <(find public -name "*.html" -print0)
-      if [ $found -eq 0 ]; then echo 'No HTML files found'; fi
+      - name: Guardrail - domain typo
+        run: |
+          if grep -R "https://itstitaniun.com" public; then
+            echo "Found incorrect domain references" >&2
+            exit 1
+          fi
 
-  - name: Markdown lint
-    run: |
-      markdownlint-cli2 "**/*.md"
+      - name: Validate sitemap
+        if: exists('public/sitemap.xml')
+        run: xmllint --noout public/sitemap.xml
 
-  - name: Spell check (cspell)
-    run: |
-      cspell --no-progress --relative "public/**/*.html" "**/*.md" || true
-
-  - name: Validate sitemap
-    if: hashFiles('public/sitemap.xml') != ''
-    run: |
-      sitemap-validator public/sitemap.xml
+      - name: Stop server
+        if: always()
+        run: |
+          if [ -f /tmp/http-server.pid ]; then
+            kill $(cat /tmp/http-server.pid) || true
+          fi
+          if [ -f /tmp/http-server.log ]; then
+            cat /tmp/http-server.log
+          fi

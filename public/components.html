@@ -1,51 +1,227 @@
-<!-- components.html -->
-<!-- TL;DR card -->
-<section class="wrap">
-  <div class="card">
-    <h2>TL;DR</h2>
-    <ul>
-      <li>Who this is for: …</li>
-      <li>Top pick: …</li>
-      <li>Why: …</li>
-      <li>Care notes: …</li>
-    </ul>
-  </div>
-</section>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Component reference | It’s Titanium</title>
+  <meta name="description" content="Reference markup for cards, tables, disclosure blocks, and other reusable components on It’s Titanium.">
+  <link rel="stylesheet" href="/base.css">
+  <link rel="canonical" href="https://itstitanium.com/components.html">
+  <meta name="robots" content="noindex,follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="It’s Titanium">
+  <meta property="og:title" content="Component reference | It’s Titanium">
+  <meta property="og:description" content="Reference markup for cards, tables, disclosure blocks, and other reusable components on It’s Titanium.">
+  <meta property="og:url" content="https://itstitanium.com/components.html">
+  <meta property="og:image" content="https://itstitanium.com/assets/img/itstitaniun-hero-og-1200x630.webp">
+  <meta property="og:image:alt" content="Titanium cookware hero image">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Component reference | It’s Titanium">
+  <meta property="twitter:description" content="Reference markup for cards, tables, disclosure blocks, and other reusable components on It’s Titanium.">
+  <meta property="twitter:image" content="https://itstitanium.com/assets/img/itstitaniun-hero-og-1200x630.webp">
+  <meta property="twitter:image:alt" content="Titanium cookware hero image">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://itstitanium.com/#org",
+      "name": "It’s Titanium",
+      "url": "https://itstitanium.com/",
+      "logo": "https://itstitanium.com/assets/img/logo.png",
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://itstitanium.com/#website",
+      "url": "https://itstitanium.com/",
+      "name": "It’s Titanium",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://itstitanium.com/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://itstitanium.com/search.html?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itstitanium.com/components.html#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itstitanium.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Components",
+          "item": "https://itstitanium.com/components.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itstitanium.com/components.html#webpage",
+      "url": "https://itstitanium.com/components.html",
+      "isPartOf": {
+        "@id": "https://itstitanium.com/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://itstitanium.com/components.html#breadcrumbs"
+      },
+      "name": "Component reference | It’s Titanium",
+      "inLanguage": "en-US",
+      "description": "Reference markup for cards, tables, disclosure blocks, and other reusable components on It’s Titanium.",
+      "datePublished": "2025-09-20",
+      "dateModified": "2025-09-20"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://itstitanium.com/components.html#blog",
+      "headline": "Component reference | It’s Titanium",
+      "description": "Reference markup for cards, tables, disclosure blocks, and other reusable components on It’s Titanium.",
+      "datePublished": "2025-09-20",
+      "dateModified": "2025-09-20",
+      "inLanguage": "en-US",
+      "mainEntityOfPage": {
+        "@id": "https://itstitanium.com/components.html#webpage"
+      },
+      "author": {
+        "@id": "https://itstitanium.com/#org",
+        "@type": "Organization",
+        "name": "It’s Titanium"
+      },
+      "publisher": {
+        "@id": "https://itstitanium.com/#org"
+      }
+    },
+    {
+      "@type": "SpeakableSpecification",
+      "@id": "https://itstitanium.com/components.html#speakable",
+      "cssSelector": [
+        "h1"
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="logo" href="/">It’s Titanium</a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/best-titanium-pans-2025/">Best pans</a>
+        <a href="/titanium-cookware-guide/">Guides</a>
+      </nav>
+    </div>
+    <div class="progress" aria-hidden="true">
+      <i class="reading-progress"></i>
+    </div>
+  </header>
+  <main id="content">
+    <section class="disclosure" id="disclosure">
+      <p>We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews are independent and based on measurable factors like build, materials, usability, and care requirements.</p>
+    </section>
+    <article class="wrap">
+      <section class="card" style="margin-top:48px;">
+        <h1>Component reference</h1>
+        <p>Use these snippets when building or updating pages. They reflect the tokens defined in <code>docs/itstitaniun_styling.txt</code>.</p>
+      </section>
 
-<!-- TOC + progress -->
-<div class="reading-progress"></div>
-<aside class="wrap">
-  <nav class="card toc"><h3>On this page</h3><ul></ul></nav>
-</aside>
+      <section class="wrap" aria-label="TL;DR example" id="component-tldr">
+        <div class="card">
+          <h2>TL;DR</h2>
+          <ul>
+            <li>Who this is for: busy home cooks who want lighter pans.</li>
+            <li>Top pick: Titanium-reinforced 10 inch skillet.</li>
+            <li>Why: Balanced heat, durable coating, stays under 2.2 lb.</li>
+            <li>Care notes: Hand wash and store with protectors.</li>
+          </ul>
+        </div>
+      </section>
 
-<!-- Comparison table -->
-<section class="wrap">
-  <div class="card">
-    <table class="table compare">
-      <caption>Side-by-Side Specs</caption>
-      <thead>
-        <tr><th>Model</th><th>Diameter</th><th>Weight</th><th>Coating</th><th>Oven-Safe</th><th>Induction</th><th>Warranty</th><th>Care</th><th>Price Band</th></tr>
-      </thead>
-      <tbody><!-- rows injected by GPT --></tbody>
-    </table>
-  </div>
-</section>
+      <section class="wrap" aria-label="TOC example">
+        <aside class="card toc">
+          <h3>On this page</h3>
+          <ul>
+            <li><a href="#component-tldr">TL;DR block</a></li>
+            <li><a href="#component-table">Comparison table</a></li>
+            <li><a href="#component-faq">FAQ block</a></li>
+          </ul>
+        </aside>
+      </section>
 
-<!-- FAQ block -->
-<section class="wrap faq card">
-  <h2>FAQs</h2>
-  <details><summary>Is titanium cookware the same as titanium-reinforced nonstick?</summary>
-    <div>Not exactly. Pure titanium pans are uncommon outside backpacking gear. Many consumer “titanium” pans are aluminum with a titanium-reinforced nonstick coating for durability.</div>
-  </details>
-  <details><summary>Can I use metal utensils?</summary>
-    <div>Use silicone or wood to protect nonstick coatings. Some hard-anodized or ceramic surfaces tolerate more abuse, but gentle tools extend lifespan.</div>
-  </details>
-  <details><summary>Is it induction compatible?</summary>
-    <div>Only if the base includes magnetic steel. Check the model’s specs for induction compatibility.</div>
-  </details>
-</section>
+      <section class="wrap" id="component-table">
+        <div class="card">
+          <table class="table compare">
+            <caption>Side-by-side specs template</caption>
+            <thead>
+              <tr>
+                <th scope="col">Model</th>
+                <th scope="col">Diameter</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Coating</th>
+                <th scope="col">Oven-safe</th>
+                <th scope="col">Induction</th>
+                <th scope="col">Warranty</th>
+                <th scope="col">Care</th>
+                <th scope="col">Price band</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sample titanium skillet</td>
+                <td>10 in</td>
+                <td>2.1 lb</td>
+                <td>Titanium-reinforced PTFE</td>
+                <td>Up to 500°F</td>
+                <td>Yes</td>
+                <td>Limited lifetime</td>
+                <td>Hand wash</td>
+                <td>Mid</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-<!-- Disclosure -->
-<section class="wrap">
-  <p class="disclosure note">We test and recommend cookware. If you buy via links on this page, we may earn a commission at no cost to you.</p>
-</section>
+      <section class="wrap faq card" id="component-faq">
+        <h2>FAQ example</h2>
+        <details><summary>Is titanium cookware the same as titanium-reinforced nonstick?</summary>
+          <div>Not exactly. Pure titanium pans are uncommon outside backpacking gear. Many consumer “titanium” pans are aluminum with a titanium-reinforced nonstick coating.</div>
+        </details>
+        <details><summary>Can I use metal utensils?</summary>
+          <div>Use silicone or wood tools to protect coatings.</div>
+        </details>
+        <details><summary>Is it induction compatible?</summary>
+          <div>Only if the base includes magnetic steel.</div>
+        </details>
+      </section>
+
+      <section class="wrap">
+        <div class="disclosure" id="component-disclosure">
+          <p>Component disclosure block example. The live site injects the official copy automatically.</p>
+        </div>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p><strong>It’s Titanium</strong> component sandbox.</p>
+      <nav aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="/site.js" defer></script>
+</body>
+</html>

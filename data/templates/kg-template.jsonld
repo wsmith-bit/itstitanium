@@ -3,46 +3,47 @@
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://itstitaniun.com/#org",
-      "name": "It\u2019s Titaniun",
-      "url": "https://itstitaniun.com/",
-      "logo": "https://itstitaniun.com/assets/img/logo.png",
+      "@id": "https://itstitanium.com/#org",
+      "name": "It’s Titanium",
+      "url": "https://itstitanium.com/",
+      "logo": "https://itstitanium.com/assets/img/logo.png",
       "sameAs": []
     },
     {
       "@type": "WebSite",
-      "@id": "https://itstitaniun.com/#website",
-      "url": "https://itstitaniun.com/",
-      "name": "It\u2019s Titaniun",
+      "@id": "https://itstitanium.com/#website",
+      "url": "https://itstitanium.com/",
+      "name": "It’s Titanium",
+      "inLanguage": "en-US",
       "publisher": {
-        "@id": "https://itstitaniun.com/#org"
+        "@id": "https://itstitanium.com/#org"
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://itstitaniun.com/search.html?q={search_term_string}",
+        "target": "https://itstitanium.com/search.html?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     },
     {
       "@type": "WebPage",
-      "@id": "https://itstitaniun.com/#webpage",
-      "url": "https://itstitaniun.com/",
+      "@id": "https://itstitanium.com/#webpage",
+      "url": "https://itstitanium.com/",
       "isPartOf": {
-        "@id": "https://itstitaniun.com/#website"
+        "@id": "https://itstitanium.com/#website"
       },
       "breadcrumb": {
-        "@id": "https://itstitaniun.com/#breadcrumbs"
+        "@id": "https://itstitanium.com/#breadcrumbs"
       }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://itstitaniun.com/#breadcrumbs",
+      "@id": "https://itstitanium.com/#breadcrumbs",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://itstitaniun.com/"
+          "item": "https://itstitanium.com/"
         }
       ]
     }
