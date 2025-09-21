@@ -1,7 +1,7 @@
 {
   "inject": {
-    "timestamp": "2025-09-21T17:14:03.838Z",
-    "durationMs": 6,
+    "timestamp": "2025-09-21T17:36:56.971Z",
+    "durationMs": 5,
     "progress": {
       "totalFiles": 3,
       "disclosureUpdates": 0,
@@ -12,8 +12,8 @@
     "changes": []
   },
   "enforce": {
-    "timestamp": "2025-09-21T17:14:03.946Z",
-    "durationMs": 13,
+    "timestamp": "2025-09-21T17:36:57.086Z",
+    "durationMs": 15,
     "progress": {
       "totalFiles": 3,
       "filesChanged": 0,
