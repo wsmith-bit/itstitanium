@@ -1,0 +1,166 @@
+name: codex-apply
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    # Only run when a new comment includes /apply or /replace and it's on a PR
+    if: >
+      (github.event_name == 'issue_comment' &&
+       github.event.action == 'created' &&
+       github.event.issue.pull_request != null &&
+       (startsWith(trim(github.event.comment.body), '/apply') || startsWith(trim(github.event.comment.body), '/replace'))) ||
+      (github.event_name == 'pull_request_review_comment' &&
+       github.event.action == 'created' &&
+       (startsWith(trim(github.event.comment.body), '/apply') || startsWith(trim(github.event.comment.body), '/replace')))
+
+    steps:
+      - name: Resolve PR info
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo  = context.repo.repo;
+            const prNum = context.payload.issue?.number ?? context.payload.pull_request?.number;
+            if (!prNum) core.setFailed('No PR number found in event payload');
+            const { data: pr } = await github.pulls.get({ owner, repo, pull_number: prNum });
+            core.setOutput('owner', owner);
+            core.setOutput('repo', repo);
+            core.setOutput('number', prNum.toString());
+            core.setOutput('head_repo', pr.head.repo.full_name);
+            core.setOutput('head_ref',  pr.head.ref);
+
+      - name: Checkout PR HEAD (writable)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.pr.outputs.head_repo }}
+          ref:        ${{ steps.pr.outputs.head_ref }}
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Capture comment body
+        id: body
+        run: |
+          printf "%s" "${{ github.event.comment.body }}" > /tmp/comment.txt
+          echo "Saved comment body."
+
+      - name: Parse fenced block
+        id: parse
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const body = fs.readFileSync('/tmp/comment.txt', 'utf8');
+          const m = body.match(/```(diff|replace)\s*\n([\s\S]*?)```/m);
+          if (!m) {
+            console.error('No fenced ```diff``` or ```replace``` block found');
+            process.exit(2);
+          }
+          const kind = m[1];
+          const payload = m[2].trim();
+          fs.writeFileSync('/tmp/payload.txt', payload, 'utf8');
+          fs.writeFileSync('/tmp/kind.txt', kind, 'utf8');
+          NODE
+        shell: bash
+
+      - name: Show parsed kind
+        run: |
+          echo "KIND=$(cat /tmp/kind.txt)"
+          echo "---- PAYLOAD ----"
+          sed -n '1,80p' /tmp/payload.txt || true
+          echo "-----------------"
+
+      - name: Configure Git
+        run: |
+          git config user.name  "codex-bot"
+          git config user.email "codex-bot@users.noreply.github.com"
+
+      # Apply unified diff payload
+      - name: Apply diff
+        if: ${{ hashFiles('/tmp/kind.txt') != '' && contains(fromJSON('["diff"]'), steps.parse.outputs) != true && 'diff' == env.KIND }}
+        env:
+          KIND: diff
+        run: |
+          set -e
+          cp /tmp/payload.txt codex.patch
+          git apply --whitespace=fix codex.patch
+          git add -A
+          git commit -m "codex: apply diff from PR comment"
+          git push
+
+      # Apply simple "replace" payload:
+      # Expected format:
+      #   file: public/index.html
+      #   pattern: >Research<
+      #   replacement: >Blog<
+      - name: Apply replace
+        if: ${{ hashFiles('/tmp/kind.txt') != '' }}
+        run: |
+          KIND=$(cat /tmp/kind.txt)
+          if [ "$KIND" != "replace" ]; then
+            echo "Not a replace block, skipping this step."
+            exit 0
+          fi
+          node - <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const raw = fs.readFileSync('/tmp/payload.txt','utf8');
+          // Very small ini-like parser for three lines: file, pattern, replacement
+          const lines = raw.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+          const kv = {};
+          for (const line of lines) {
+            const m = line.match(/^([a-zA-Z]+)\s*:\s*(.+)$/);
+            if (!m) continue;
+            kv[m[1].toLowerCase()] = m[2];
+          }
+          if (!kv.file) { console.error('replace: missing "file"'); process.exit(2); }
+          if (kv.pattern == null) { console.error('replace: missing "pattern"'); process.exit(2); }
+          if (kv.replacement == null) { console.error('replace: missing "replacement"'); process.exit(2); }
+
+          // Strip a single leading/trailing >...< wrapper if present (convenience)
+          const unwrap = s => {
+            const mm = s.match(/^>([\s\S]*)<$/);
+            return mm ? mm[1] : s;
+          };
+          const pattern = unwrap(kv.pattern);
+          const replacement = unwrap(kv.replacement);
+
+          const file = kv.file;
+          if (!fs.existsSync(file)) { console.error('replace: file not found:', file); process.exit(2); }
+          const src = fs.readFileSync(file,'utf8');
+
+          const occurrences = src.split(pattern).length - 1;
+          if (occurrences <= 0) { console.error('replace: pattern not found'); process.exit(3); }
+
+          const out = src.split(pattern).join(replacement);
+          fs.writeFileSync(file, out, 'utf8');
+
+          console.log(`replace: ${occurrences} occurrence(s) changed in ${file}`);
+          NODE
+          git add -A
+          git commit -m "codex: apply replace from PR comment" || echo "No changes to commit"
+          git push
+
+      - name: Comment result on PR
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = '${{ steps.pr.outputs.owner }}';
+            const repo  = '${{ steps.pr.outputs.repo }}';
+            const number= Number('${{ steps.pr.outputs.number }}');
+            const url   = `https://github.com/${owner}/${repo}/pull/${number}/files`;
+            await github.issues.createComment({
+              owner, repo, issue_number: number,
+              body: `✅ codex-apply processed.\n\n- Ref: \`${{ steps.pr.outputs.head_ref }}\`\n- Files tab: ${url}`
+            })
