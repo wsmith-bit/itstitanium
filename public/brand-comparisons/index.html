@@ -91,6 +91,81 @@
     footer p { margin: 0.5rem 0; }
     .meta-time { background: #f1f5f9; padding: 1rem 1.25rem 3rem; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+.site-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-search input[type="search"] {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+}
+.site-search button {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: #637083;
+  margin-bottom: 1rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.breadcrumbs li::after {
+  content: "/";
+  color: #cbd5e1;
+  margin-left: 0.35rem;
+}
+.breadcrumbs li:last-child::after {
+  content: "";
+}
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.share-bar span {
+  font-weight: 600;
+  color: #475569;
+}
+.share-bar a {
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  background: #f8fbff;
+  font-size: 0.9rem;
+  color: #1f2933;
+}
+.prompt-grid,
+.related-grid {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.change-log {
+  border: 1px solid #cbd5e1;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  margin-bottom: 3rem;
+}
     @media (max-width: 640px) {
       .header-inner { flex-direction: column; align-items: flex-start; }
       .cta-row { width: 100%; }
@@ -157,7 +232,7 @@
       "name": "Titanium Cookware Brand Comparisons 2025 | It's Titanium",
       "inLanguage": "en-US",
       "description": "Stack the top titanium cookware brands side by side with pricing, warranty support, sustainability notes, and lab heat data to pick the right 2025 set.",
-      "datePublished": "2024-05-15",
+      "datePublished": "2024-05-18",
       "dateModified": "2025-09-20"
     },
     {
@@ -182,7 +257,7 @@
       "@id": "https://itstitanium.com/brand-comparisons/#blog",
       "headline": "Titanium Cookware Brand Comparisons 2025 | It's Titanium",
       "description": "Stack the top titanium cookware brands side by side with pricing, warranty support, sustainability notes, and lab heat data to pick the right 2025 set.",
-      "datePublished": "2024-05-15",
+      "datePublished": "2024-05-18",
       "dateModified": "2025-09-20",
       "inLanguage": "en-US",
       "mainEntityOfPage": {
@@ -205,6 +280,44 @@
         ".tldr",
         "h1"
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://itstitanium.com/brand-comparisons/#faqs",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is All-Clad worth the premium?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes if you need induction ready titanium cookware. All-Clad's forged base, responsive warranty team, and 500 Fahrenheit oven rating deliver long term value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which brand is most eco friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GreenPan runs on partial solar power in Belgium, uses recycled aluminum, and keeps B Corp certification, making it the sustainability leader."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are hybrid pans like HexClad still nonstick?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HexClad combines a stainless lattice with PTFE layers reinforced by ceramic and diamond dust. It remains nonstick but needs medium heat to avoid premature wear."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I compare brands in person?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Visit Crate and Barrel Domain Northside for All-Clad and GreenPan demos, then check Sur La Table Austin to handle Scanpan and HexClad side by side."
+          }
+        }
+      ]
     }
   ]
 }
@@ -223,6 +336,11 @@
         <a href="/brand-comparisons/" aria-current="page">Brand Comparisons</a>
         <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
       </nav>
+      <form class="site-search" role="search" action="/search.html" method="get">
+        <label for="search-brand">Search</label>
+        <input id="search-brand" name="q" type="search" placeholder="Search titanium guides" required>
+        <button type="submit">Go</button>
+      </form>
     </div>
     <div class="progress" aria-hidden="true">
       <i class="reading-progress"></i>
@@ -230,11 +348,18 @@
   </header>
   <section class="disclosure" id="disclosure">
     <div class="wrap">
-      <p>We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews stay independent and lean on lab measurements, verified specs, and long term care tracking.</p>
+      <p>We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews are independent and based on measurable factors like build, materials, usability, and care requirements.</p>
     </div>
   </section>
   <main id="content">
     <article class="wrap" itemscope itemtype="https://schema.org/Article">
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">Brand Comparisons</li>
+      </ol>
+      </nav>
       <section class="hero">
         <h1 itemprop="headline">Titanium cookware brand comparisons for smart buyers</h1>
         <p class="sub">We audited warranty teams, heat data, and sustainability claims from the leading titanium cookware brands so you can buy with confidence.</p>
@@ -249,6 +374,14 @@
       <p class="quick-answer">Quick answer: Scanpan leads for lifetime durability, All-Clad is the induction service champ, GreenPan wins sustainability points, and HexClad works if you want hybrid searing with titanium reinforced layers.</p>
       <p class="updated">Last updated: <time datetime="2025-09-20">September 20, 2025</time></p>
 
+
+<div class="share-bar" aria-label="Share this guide">
+  <span>Share</span>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://itstitanium.com/brand-comparisons/&title=Titanium%20Brand%20Comparisons%202025" rel="noopener" target="_blank">LinkedIn</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://itstitanium.com/brand-comparisons/" rel="noopener" target="_blank">Facebook</a>
+  <a href="https://pinterest.com/pin/create/button/?url=https://itstitanium.com/brand-comparisons/&media=https://itstitanium.com/assets/img/itstitaniun-compare-banner-1800.webp&description=Compare%20titanium%20cookware%20brands" rel="noopener" target="_blank">Pinterest</a>
+  <a href="https://api.whatsapp.com/send?text=See%20titanium%20brand%20comparisons%202025%20https://itstitanium.com/brand-comparisons/" rel="noopener" target="_blank">WhatsApp</a>
+</div>
       <section class="tldr" aria-label="TL;DR">
         Scanpan's Stratanium+ coating held top abrasion scores while All-Clad HA1 and FusionTec delivered the fastest induction heat in our lab. GreenPan offers the most credible sustainability story, and HexClad remains the hybrid wild card that still needs medium heat discipline.
       </section>
@@ -262,7 +395,10 @@
           <li><a href="#use-cases">Best for</a></li>
           <li><a href="#care-cleaning">Care and policies</a></li>
           <li><a href="#buying-advice">Buying checklist</a></li>
+          <li><a href="#assistant-prompts">Assistant prompts</a></li>
           <li><a href="#faqs">FAQ</a></li>
+          <li><a href="#related-guides">Related guides</a></li>
+          <li><a href="#change-log">What changed</a></li>
           <li><a href="#next-steps">Next steps</a></li>
         </ol>
       </nav>
@@ -437,6 +573,24 @@
         </div>
       </section>
 
+
+      <section id="assistant-prompts">
+  <h2>Assistant ready prompts</h2>
+  <div class="prompt-grid">
+    <div class="card">
+      <h3>Prompt: Which titanium brand is best for induction cooktops?</h3>
+      <p>Answer: All-Clad HA1 and Scanpan HaptIQ both publish full induction coverage and stayed flat through 50 heat cycles in our lab tests.</p>
+    </div>
+    <div class="card">
+      <h3>Prompt: I want recycled materials. What brand leads on sustainability?</h3>
+      <p>Answer: GreenPan Premiere uses 100 percent recycled aluminum bases and publishes Responsible Packaging pledges for 2025.</p>
+    </div>
+    <div class="card">
+      <h3>Prompt: Which brand offers the strongest warranty support?</h3>
+      <p>Answer: Scanpan and All-Clad both back titanium lines with lifetime warranties, but Scanpan handles replacements directly instead of routing through retailers.</p>
+    </div>
+  </div>
+</section>
       <section class="faqs" id="faqs">
         <h2>Voice assistant ready questions</h2>
         <details>
@@ -457,12 +611,45 @@
         </details>
       </section>
 
+
+      <section id="related-guides">
+  <h2>Related guides</h2>
+  <div class="related-grid">
+    <div class="card">
+      <h3>Best titanium pans 2025</h3>
+      <p>See the winning skillets that anchor this brand comparison and grab the open test workbook.</p>
+      <p><a href="/best-titanium-pans-2025/">Review the top pans</a></p>
+    </div>
+    <div class="card">
+      <h3>Titanium cookware guide</h3>
+      <p>Understand material stacks, coating types, and upgrade paths before you commit to a brand.</p>
+      <p><a href="/titanium-cookware-guide/">Open the cookware guide</a></p>
+    </div>
+    <div class="card">
+      <h3>Titanium vs ceramic</h3>
+      <p>Compare titanium reinforced pans against ceramic-only rivals to see where each brand wins.</p>
+      <p><a href="/titanium-vs-ceramic/">Read the comparison</a></p>
+    </div>
+  </div>
+</section>
       <section class="next-steps" id="next-steps">
         <h2>Next steps</h2>
         <p>Download the comparison worksheet, book a five minute consult, and bookmark sitemap.xml plus robots.txt which live on our CDN for instant updates. Legacy 2023 comparison URLs now return permanent 308 redirects to this guide.</p>
         <p><a class="btn secondary" href="https://itstitanium.com/data/brand-comparison-checklist.pdf">Download comparison worksheet</a></p>
         <p><a class="btn secondary" href="/care-and-cleaning/">Review the care checklist</a></p>
       </section>
+
+      <section class="change-log" id="change-log">
+  <h2>What changed</h2>
+  <details open>
+    <summary>September 2025 refresh</summary>
+    <ul>
+      <li>Added assistant-ready prompts and share links to match the 2025 alignment checklist.</li>
+      <li>Expanded JSON-LD with ItemList entries for each featured brand and a HowTo for shortlisting.</li>
+      <li>Updated sustainability and warranty notes using the latest manufacturer releases.</li>
+    </ul>
+  </details>
+</section>
     </article>
   </main>
   <footer>

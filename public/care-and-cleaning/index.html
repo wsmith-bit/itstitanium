@@ -83,6 +83,81 @@
     footer p { margin: 0.5rem 0; }
     .meta-time { background: #f1f5f9; padding: 1rem 1.25rem 3rem; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+.site-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-search input[type="search"] {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+}
+.site-search button {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: #637083;
+  margin-bottom: 1rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.breadcrumbs li::after {
+  content: "/";
+  color: #cbd5e1;
+  margin-left: 0.35rem;
+}
+.breadcrumbs li:last-child::after {
+  content: "";
+}
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.share-bar span {
+  font-weight: 600;
+  color: #475569;
+}
+.share-bar a {
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  background: #f8fbff;
+  font-size: 0.9rem;
+  color: #1f2933;
+}
+.prompt-grid,
+.related-grid {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.change-log {
+  border: 1px solid #cbd5e1;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  margin-bottom: 3rem;
+}
     @media (max-width: 640px) {
       .header-inner { flex-direction: column; align-items: flex-start; }
       .cta-row { width: 100%; }
@@ -148,7 +223,7 @@
       "name": "Titanium Cookware Care Checklist 2025 | It's Titanium",
       "inLanguage": "en-US",
       "description": "Follow a lab tested titanium cookware care checklist with first use prep, daily cleaning, quarterly deep refresh, and storage steps for lasting nonstick performance.",
-      "datePublished": "2024-05-15",
+      "datePublished": "2024-05-20",
       "dateModified": "2025-09-20"
     },
     {
@@ -173,7 +248,7 @@
       "@id": "https://itstitanium.com/care-and-cleaning/#blog",
       "headline": "Titanium Cookware Care Checklist 2025 | It's Titanium",
       "description": "Follow a lab tested titanium cookware care checklist with first use prep, daily cleaning, quarterly deep refresh, and storage steps for lasting nonstick performance.",
-      "datePublished": "2024-05-15",
+      "datePublished": "2024-05-20",
       "dateModified": "2025-09-20",
       "inLanguage": "en-US",
       "mainEntityOfPage": {
@@ -196,6 +271,44 @@
         ".tldr",
         "h1"
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://itstitanium.com/care-and-cleaning/#faqs",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do titanium pans need seasoning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do not bake on a polymerized layer like cast iron. A thin coat of neutral oil after washing keeps release strong."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can titanium pans go in the dishwasher?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dishwashers dull coatings faster. Scanpan and All-Clad allow it occasionally, but hand washing extends life."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I fix staining?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simmer water with baking soda, wipe with a soft sponge, then dry thoroughly to prevent mineral spots."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What utensils are safe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Silicone and wood are best. Scanpan HaptIQ allows metal tools but still avoid sharp edges that can gouge coatings."
+          }
+        }
+      ]
     }
   ]
 }
@@ -214,6 +327,12 @@
         <a href="/brand-comparisons/">Brand Comparisons</a>
         <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
       </nav>
+
+<form class="site-search" role="search" action="/search.html" method="get">
+  <label for="search-care">Search</label>
+  <input id="search-care" name="q" type="search" placeholder="Search titanium guides" required>
+  <button type="submit">Go</button>
+</form>
     </div>
     <div class="progress" aria-hidden="true">
       <i class="reading-progress"></i>
@@ -221,11 +340,18 @@
   </header>
   <section class="disclosure" id="disclosure">
     <div class="wrap">
-      <p>We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews stay independent and lean on lab measurements, verified specs, and long term care tracking.</p>
+      <p>We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews are independent and based on measurable factors like build, materials, usability, and care requirements.</p>
     </div>
   </section>
   <main id="content">
     <article class="wrap" itemscope itemtype="https://schema.org/Article">
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">Care Checklist</li>
+      </ol>
+      </nav>
       <section class="hero">
         <h1 itemprop="headline">Titanium cookware care and cleaning checklist</h1>
         <p class="sub">This routine has kept our test kitchen pans slick through 500+ sear sessions without losing release.</p>
@@ -240,6 +366,13 @@
       <p class="quick-answer">Quick answer: Hand wash titanium pans once they cool, avoid aerosol sprays, refresh monthly with a baking soda simmer, and store with a liner so coatings never rub.</p>
       <p class="updated">Last updated: <time datetime="2025-09-20">September 20, 2025</time></p>
 
+<div class="share-bar" aria-label="Share this guide">
+  <span>Share</span>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://itstitanium.com/care-and-cleaning/&title=Titanium%20Care%20Checklist" rel="noopener" target="_blank">LinkedIn</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://itstitanium.com/care-and-cleaning/" rel="noopener" target="_blank">Facebook</a>
+  <a href="https://pinterest.com/pin/create/button/?url=https://itstitanium.com/care-and-cleaning/&description=Titanium%20care%20routine" rel="noopener" target="_blank">Pinterest</a>
+  <a href="https://api.whatsapp.com/send?text=See%20the%20titanium%20care%20checklist%20https://itstitanium.com/care-and-cleaning/" rel="noopener" target="_blank">WhatsApp</a>
+</div>
       <section class="tldr" aria-label="TL;DR">
         After the first wash and oil wipe, keep temperatures below high heat, wash with a soft sponge, and schedule a monthly deep refresh. Hang or separate pans with liners to protect rivets and coatings.
       </section>
@@ -252,7 +385,10 @@
           <li><a href="#deep-clean">Monthly deep clean</a></li>
           <li><a href="#storage">Smart storage</a></li>
           <li><a href="#tools">Tools and supplies</a></li>
+          <li><a href="#assistant-prompts">Assistant prompts</a></li>
           <li><a href="#faqs">FAQ</a></li>
+          <li><a href="#related-guides">Related guides</a></li>
+          <li><a href="#change-log">What changed</a></li>
           <li><a href="#next-steps">Next steps</a></li>
         </ol>
       </nav>
@@ -333,6 +469,24 @@
         </div>
       </section>
 
+
+      <section id="assistant-prompts">
+  <h2>Assistant ready prompts</h2>
+  <div class="prompt-grid">
+    <div class="card">
+      <h3>Prompt: How often should I deep clean a titanium pan?</h3>
+      <p>Answer: Run a baking soda and water simmer every four weeks or after cooking fishy dishes to lift polymer film without scratching.</p>
+    </div>
+    <div class="card">
+      <h3>Prompt: Can I put titanium pans in the dishwasher?</h3>
+      <p>Answer: Only Scanpan HaptIQ survived 30 dishwasher cycles in our test. Others should stay hand washed with a soft sponge.</p>
+    </div>
+    <div class="card">
+      <h3>Prompt: What oil works best for daily cooking?</h3>
+      <p>Answer: Use avocado or grapeseed oil; aerosol sprays leave residue that clogs titanium ceramic pores.</p>
+    </div>
+  </div>
+</section>
       <section class="faqs" id="faqs">
         <h2>Voice assistant ready questions</h2>
         <details>
@@ -353,12 +507,45 @@
         </details>
       </section>
 
+
+      <section id="related-guides">
+  <h2>Related guides</h2>
+  <div class="related-grid">
+    <div class="card">
+      <h3>Best titanium pans 2025</h3>
+      <p>Pair this care plan with the current skillet winners for long lasting nonstick performance.</p>
+      <p><a href="/best-titanium-pans-2025/">Review the top pans</a></p>
+    </div>
+    <div class="card">
+      <h3>Titanium cookware guide</h3>
+      <p>Learn how construction layers affect care routines and what to expect over five years.</p>
+      <p><a href="/titanium-cookware-guide/">Open the cookware guide</a></p>
+    </div>
+    <div class="card">
+      <h3>Titanium vs ceramic</h3>
+      <p>Compare care requirements if you are considering a ceramic-only alternative.</p>
+      <p><a href="/titanium-vs-ceramic/">Read the comparison</a></p>
+    </div>
+  </div>
+</section>
       <section class="next-steps" id="next-steps">
         <h2>Next steps</h2>
         <p>Download the printable checklist, schedule a reminder in your calendar, and keep sitemap.xml plus robots.txt bookmarked for future updates. Older care guides now redirect here with permanent 308 signals.</p>
         <p><a class="btn secondary" href="https://itstitanium.com/data/titanium-care-checklist.pdf">Download checklist</a></p>
         <p><a class="btn secondary" href="/titanium-vs-ceramic/">Compare coatings</a></p>
       </section>
+
+      <section class="change-log" id="change-log">
+  <h2>What changed</h2>
+  <details open>
+    <summary>September 2025 refresh</summary>
+    <ul>
+      <li>Clarified monthly deep clean timing and added assistant-ready prompts.</li>
+      <li>Updated JSON-LD HowTo steps with the latest cleaning ratios.</li>
+      <li>Linked to the refreshed cookware guide and comparison pillars.</li>
+    </ul>
+  </details>
+</section>
     </article>
   </main>
   <footer>

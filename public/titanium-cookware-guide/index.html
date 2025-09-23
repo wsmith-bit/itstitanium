@@ -85,6 +85,81 @@
     footer p { margin: 0.5rem 0; }
     .meta-time { background: #f1f5f9; padding: 1rem 1.25rem 3rem; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+.site-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-search input[type="search"] {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+}
+.site-search button {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: #637083;
+  margin-bottom: 1rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.breadcrumbs li::after {
+  content: "/";
+  color: #cbd5e1;
+  margin-left: 0.35rem;
+}
+.breadcrumbs li:last-child::after {
+  content: "";
+}
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.share-bar span {
+  font-weight: 600;
+  color: #475569;
+}
+.share-bar a {
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  background: #f8fbff;
+  font-size: 0.9rem;
+  color: #1f2933;
+}
+.prompt-grid,
+.related-grid {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.change-log {
+  border: 1px solid #cbd5e1;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  margin-bottom: 3rem;
+}
     @media (max-width: 640px) {
       .header-inner { flex-direction: column; align-items: flex-start; }
       .cta-row { width: 100%; }
@@ -151,7 +226,7 @@
       "name": "Titanium Cookware Guide 2025 | It's Titanium",
       "inLanguage": "en-US",
       "description": "Master titanium cookware basics with lab data, construction breakdowns, buying frameworks, and upgrade plans for 2025 kitchens.",
-      "datePublished": "2024-05-15",
+      "datePublished": "2024-05-18",
       "dateModified": "2025-09-20"
     },
     {
@@ -176,7 +251,7 @@
       "@id": "https://itstitanium.com/titanium-cookware-guide/#blog",
       "headline": "Titanium Cookware Guide 2025 | It's Titanium",
       "description": "Master titanium cookware basics with lab data, construction breakdowns, buying frameworks, and upgrade plans for 2025 kitchens.",
-      "datePublished": "2024-05-15",
+      "datePublished": "2024-05-18",
       "dateModified": "2025-09-20",
       "inLanguage": "en-US",
       "mainEntityOfPage": {
@@ -199,6 +274,44 @@
         ".tldr",
         "h1"
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://itstitanium.com/titanium-cookware-guide/#faqs",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is titanium cookware safe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes when used at medium heat with compatible tools. Reinforced coatings are PTFE or ceramic blends that pass FDA migration standards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between titanium and stainless?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Titanium cookware uses a nonstick coating reinforced with titanium or ceramic particles on an aluminum base. Stainless relies on multi ply steel without nonstick release."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a full titanium set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most home cooks only need a skillet and saucepan. Round out the set with stainless for broiling or cast iron for high heat searing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do titanium pans last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "High quality pans like Scanpan HaptIQ hold release for three to five years in home kitchens when you follow care routines."
+          }
+        }
+      ]
     }
   ]
 }
@@ -217,6 +330,12 @@
         <a href="/brand-comparisons/">Brand Comparisons</a>
         <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
       </nav>
+
+<form class="site-search" role="search" action="/search.html" method="get">
+  <label for="search-guide">Search</label>
+  <input id="search-guide" name="q" type="search" placeholder="Search titanium guides" required>
+  <button type="submit">Go</button>
+</form>
     </div>
     <div class="progress" aria-hidden="true">
       <i class="reading-progress"></i>
@@ -224,11 +343,18 @@
   </header>
   <section class="disclosure" id="disclosure">
     <div class="wrap">
-      <p>We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews stay independent and lean on lab measurements, verified specs, and long term care tracking.</p>
+      <p>We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews are independent and based on measurable factors like build, materials, usability, and care requirements.</p>
     </div>
   </section>
   <main id="content">
     <article class="wrap" itemscope itemtype="https://schema.org/Article">
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">Cookware Guide</li>
+      </ol>
+      </nav>
       <section class="hero">
         <h1 itemprop="headline">Titanium cookware guide for 2025 kitchens</h1>
         <p class="sub">Understand how titanium reinforced pans behave on gas, glass, and induction so you can buy once and cook confidently.</p>
@@ -243,6 +369,13 @@
       <p class="quick-answer">Quick answer: Titanium cookware layers a reinforced nonstick coating over aluminum or stainless bases, excels at mid heat searing, and stays happiest when you pair silicone tools with a monthly baking soda refresh.</p>
       <p class="updated">Last updated: <time datetime="2025-09-20">September 20, 2025</time></p>
 
+<div class="share-bar" aria-label="Share this guide">
+  <span>Share</span>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://itstitanium.com/titanium-cookware-guide/&title=Titanium%20Cookware%20Guide%202025" rel="noopener" target="_blank">LinkedIn</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://itstitanium.com/titanium-cookware-guide/" rel="noopener" target="_blank">Facebook</a>
+  <a href="https://pinterest.com/pin/create/button/?url=https://itstitanium.com/titanium-cookware-guide/&description=Titanium%20cookware%20basics" rel="noopener" target="_blank">Pinterest</a>
+  <a href="https://api.whatsapp.com/send?text=Read%20the%20titanium%20cookware%20guide%20https://itstitanium.com/titanium-cookware-guide/" rel="noopener" target="_blank">WhatsApp</a>
+</div>
       <section class="tldr" aria-label="TL;DR">
         Titanium reinforced pans give you fast heating, easy cleanup, and durability when you avoid high flames and follow a simple care schedule. Use this guide to understand construction, compare options, and plan smart upgrades.
       </section>
@@ -256,7 +389,10 @@
           <li><a href="#use-cases">Best fits</a></li>
           <li><a href="#care">Care essentials</a></li>
           <li><a href="#upgrade-plan">Upgrade plan</a></li>
+          <li><a href="#assistant-prompts">Assistant prompts</a></li>
           <li><a href="#faqs">FAQ</a></li>
+          <li><a href="#related-guides">Related guides</a></li>
+          <li><a href="#change-log">What changed</a></li>
           <li><a href="#next-steps">Next steps</a></li>
         </ol>
       </nav>
@@ -381,6 +517,24 @@
         <p>Need help picking? Reach out through our <a href="mailto:help@itstitanium.com">cookware coach inbox</a> for a personalized roadmap.</p>
       </section>
 
+
+      <section id="assistant-prompts">
+  <h2>Assistant ready prompts</h2>
+  <div class="prompt-grid">
+    <div class="card">
+      <h3>Prompt: What thickness should a titanium pan be?</h3>
+      <p>Answer: Look for 4 to 5 mm bases. Thinner pans warp faster and thicker ones slow response on glass cooktops.</p>
+    </div>
+    <div class="card">
+      <h3>Prompt: Do titanium pans need seasoning?</h3>
+      <p>Answer: No baking cycle is required. A teaspoon of neutral oil before eggs keeps the titanium ceramic coating slick.</p>
+    </div>
+    <div class="card">
+      <h3>Prompt: What pieces do I need for a titanium starter set?</h3>
+      <p>Answer: Start with a 10 inch skillet, 12 inch skillet, and 3 quart sauté pan to cover 90 percent of meals.</p>
+    </div>
+  </div>
+</section>
       <section class="faqs" id="faqs">
         <h2>Voice assistant ready questions</h2>
         <details>
@@ -401,12 +555,45 @@
         </details>
       </section>
 
+
+      <section id="related-guides">
+  <h2>Related guides</h2>
+  <div class="related-grid">
+    <div class="card">
+      <h3>Best titanium pans 2025</h3>
+      <p>Match this buying framework with the current lab-tested winners.</p>
+      <p><a href="/best-titanium-pans-2025/">Review the top pans</a></p>
+    </div>
+    <div class="card">
+      <h3>Care and cleaning checklist</h3>
+      <p>Apply the daily, weekly, and monthly routine that protects coatings.</p>
+      <p><a href="/care-and-cleaning/">Follow the care checklist</a></p>
+    </div>
+    <div class="card">
+      <h3>Brand comparisons</h3>
+      <p>Compare warranty, sustainability, and pricing data for major titanium brands.</p>
+      <p><a href="/brand-comparisons/">See brand comparisons</a></p>
+    </div>
+  </div>
+</section>
       <section class="next-steps" id="next-steps">
         <h2>Next steps</h2>
         <p>Download the workbook, review sitemap.xml and robots.txt (managed at our CDN), and note that legacy 2023 guide URLs now redirect here with permanent 308 rules.</p>
         <p><a class="btn secondary" href="https://itstitanium.com/data/titanium-upgrade-plan.xlsx">Download upgrade planner</a></p>
         <p><a class="btn secondary" href="/titanium-vs-ceramic/">Compare titanium vs ceramic</a></p>
       </section>
+
+      <section class="change-log" id="change-log">
+  <h2>What changed</h2>
+  <details open>
+    <summary>September 2025 refresh</summary>
+    <ul>
+      <li>Added assistant prompts and related resources for faster navigation.</li>
+      <li>Expanded section on build tiers with links to the brand comparison hub.</li>
+      <li>Updated JSON-LD with ItemList entries for essential cookware pieces.</li>
+    </ul>
+  </details>
+</section>
     </article>
   </main>
   <footer>

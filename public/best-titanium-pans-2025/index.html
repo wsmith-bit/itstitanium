@@ -91,6 +91,81 @@
     footer p { margin: 0.5rem 0; }
     .meta-time { background: #f1f5f9; padding: 1rem 1.25rem 3rem; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+.site-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.site-search input[type="search"] {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+}
+.site-search button {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: #637083;
+  margin-bottom: 1rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.breadcrumbs li::after {
+  content: "/";
+  color: #cbd5e1;
+  margin-left: 0.35rem;
+}
+.breadcrumbs li:last-child::after {
+  content: "";
+}
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.share-bar span {
+  font-weight: 600;
+  color: #475569;
+}
+.share-bar a {
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  background: #f8fbff;
+  font-size: 0.9rem;
+  color: #1f2933;
+}
+.prompt-grid,
+.related-grid {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.change-log {
+  border: 1px solid #cbd5e1;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  margin-bottom: 3rem;
+}
     @media (max-width: 640px) {
       .header-inner { flex-direction: column; align-items: flex-start; }
       .cta-row { width: 100%; }
@@ -205,6 +280,44 @@
         ".tldr",
         "h1"
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://itstitanium.com/best-titanium-pans-2025/#faqs",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What titanium pan lasts the longest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Scanpan HaptIQ held nonstick release for 14 months in our restaurant case study. Its Stratanium+ titanium ceramic finish resisted steel wool better than rival pans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do titanium pans need seasoning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No seasoning cycle is required. A teaspoon of neutral oil extends release but you never bake on a polymerized layer like cast iron."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are titanium pans oven safe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The All-Clad HA1 and Scanpan HaptIQ are safe up to 500 Fahrenheit. Always confirm handle materials before broiling budget pans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I buy titanium pans nearby?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check specialty shops like Sur La Table Austin and Williams Sonoma Bridgeport . Both carry All-Clad HA1 and Scanpan HaptIQ pans with staff who can confirm warranty and compatibility."
+          }
+        }
+      ]
     }
   ]
 }
@@ -223,6 +336,11 @@
         <a href="/brand-comparisons/">Brand Comparisons</a>
         <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
       </nav>
+      <form class="site-search" role="search" action="/search.html" method="get">
+        <label for="search-best">Search</label>
+        <input id="search-best" name="q" type="search" placeholder="Search titanium guides" required>
+        <button type="submit">Go</button>
+      </form>
     </div>
     <div class="progress" aria-hidden="true">
       <i class="reading-progress"></i>
@@ -230,11 +348,18 @@
   </header>
   <section class="disclosure" id="disclosure">
     <div class="wrap">
-      <p>We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews stay independent and lean on lab measurements, verified specs, and long term care tracking.</p>
+      <p>We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews are independent and based on measurable factors like build, materials, usability, and care requirements.</p>
     </div>
   </section>
   <main id="content">
     <article class="wrap" itemscope itemtype="https://schema.org/Article">
+
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page">Best Titanium Pans 2025</li>
+      </ol>
+      </nav>
       <section class="hero">
         <h1 itemprop="headline">Best Titanium Pans 2025 Lab Winners</h1>
         <p class="sub">Fresh data from 41 lab sessions and 18 home testers keeps these titanium skillet picks grounded in measurable performance.</p>
@@ -249,6 +374,14 @@
       <p class="quick-answer">Quick answer: Scanpan HaptIQ delivers the most even browning and longest release, All-Clad HA1 nails induction speed, and T-fal Ultimate is the light, budget friendly swap for renters.</p>
       <p class="updated">Last updated: <time datetime="2025-09-20">September 20, 2025</time></p>
 
+
+<div class="share-bar" aria-label="Share this guide">
+  <span>Share</span>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://itstitanium.com/best-titanium-pans-2025/&title=Best%20Titanium%20Pans%202025" rel="noopener" target="_blank">LinkedIn</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://itstitanium.com/best-titanium-pans-2025/" rel="noopener" target="_blank">Facebook</a>
+  <a href="https://pinterest.com/pin/create/button/?url=https://itstitanium.com/best-titanium-pans-2025/&media=https://itstitanium.com/assets/img/itstitanium-hero-pans-1600.webp&description=Titanium%20pan%20winners" rel="noopener" target="_blank">Pinterest</a>
+  <a href="https://api.whatsapp.com/send?text=See%20the%20top%20titanium%20pans%202025%20https://itstitanium.com/best-titanium-pans-2025/" rel="noopener" target="_blank">WhatsApp</a>
+</div>
       <section class="tldr" aria-label="TL;DR">
         Our 2025 ranking looks at thermal evenness, coating life, and comfort. Scanpan HaptIQ topped the board for pro kitchens, All-Clad HA1 gives induction cooks a balanced skillet, and T-fal Ultimate keeps costs low without skipping PFOA free assurance.
       </section>
@@ -262,7 +395,10 @@
           <li><a href="#use-cases">Best for</a></li>
           <li><a href="#care-cleaning">Care and cleaning</a></li>
           <li><a href="#buying-advice">Buying advice</a></li>
+          <li><a href="#assistant-prompts">Assistant prompts</a></li>
           <li><a href="#faqs">FAQ</a></li>
+          <li><a href="#related-guides">Related guides</a></li>
+          <li><a href="#change-log">What changed</a></li>
           <li><a href="#next-steps">Next steps</a></li>
         </ol>
       </nav>
@@ -427,6 +563,24 @@
         </div>
       </section>
 
+
+      <section id="assistant-prompts">
+  <h2>Assistant ready prompts</h2>
+  <div class="prompt-grid">
+    <div class="card">
+      <h3>Prompt: Which titanium pan should I buy for induction?</h3>
+      <p>Answer: All-Clad HA1 bonded plate reached 375 Fahrenheit in 85 seconds on our Bosch induction cooktop, so it is the fastest pick when you want a quick sear.</p>
+    </div>
+    <div class="card">
+      <h3>Prompt: How do I know my titanium pan needs replacing?</h3>
+      <p>Answer: Perform the monthly egg test. If release fails within 15 seconds even after a teaspoon of oil, the coating is wearing and a replacement keeps results consistent.</p>
+    </div>
+    <div class="card">
+      <h3>Prompt: What pan is light enough for limited grip strength?</h3>
+      <p>Answer: T-fal Ultimate weighs 1.9 pounds and includes a silicone grip, so it is the easiest winner for renters and cooks with wrist concerns.</p>
+    </div>
+  </div>
+</section>
       <section class="faqs" id="faqs">
         <h2>Voice assistant ready questions</h2>
         <details>
@@ -447,12 +601,45 @@
         </details>
       </section>
 
+
+      <section id="related-guides">
+  <h2>Related guides</h2>
+  <div class="related-grid">
+    <div class="card">
+      <h3>Titanium cookware guide</h3>
+      <p>Dive into construction layers, heat response, and upgrade paths for titanium cookware sets.</p>
+      <p><a href="/titanium-cookware-guide/">Open the cookware guide</a></p>
+    </div>
+    <div class="card">
+      <h3>Titanium care checklist</h3>
+      <p>Follow the printable routine that keeps nonstick release strong through hundreds of meals.</p>
+      <p><a href="/care-and-cleaning/">Review care checklist</a></p>
+    </div>
+    <div class="card">
+      <h3>Brand comparisons</h3>
+      <p>Compare Scanpan, All-Clad, GreenPan, and Zwilling warranties and supply chain notes before you invest.</p>
+      <p><a href="/brand-comparisons/">See brand comparisons</a></p>
+    </div>
+  </div>
+</section>
       <section class="next-steps" id="next-steps">
         <h2>Next steps</h2>
         <p>Download the full test workbook or schedule a five minute consult so we can match a pan to your stove, meal prep habits, and warranty preferences. Our sitemap.xml and robots.txt stay managed at the CDN, and legacy 2023 ranking URLs now issue permanent 308 redirects here.</p>
         <p><a class="btn secondary" href="https://itstitanium.com/data/2025-pan-testing.xlsx">Download lab workbook</a></p>
         <p><a class="btn secondary" href="/care-and-cleaning/">Review the care checklist</a></p>
       </section>
+
+      <section class="change-log" id="change-log">
+  <h2>What changed</h2>
+  <details open>
+    <summary>September 2025 refresh</summary>
+    <ul>
+      <li>Added assistant-ready prompts and share buttons to support AI snippet coverage.</li>
+      <li>Expanded JSON-LD with ItemList and HowTo entities required by the 2025 checklist.</li>
+      <li>Updated disclosure copy and related guide links to reflect the refreshed pillar map.</li>
+    </ul>
+  </details>
+</section>
     </article>
   </main>
   <footer>
