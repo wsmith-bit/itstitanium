@@ -12,15 +12,31 @@
     "changes": []
   },
   "enforce": {
-    "timestamp": "2025-09-21T17:44:13.362Z",
-    "durationMs": 14,
+    "timestamp": "2025-09-22T21:16:18.004Z",
+    "durationMs": 32,
     "progress": {
-      "totalFiles": 3,
-      "filesChanged": 0,
-      "totalFixes": 0,
+      "totalFiles": 8,
+      "filesChanged": 5,
+      "totalFixes": 15,
       "warnings": 0
     },
-    "changes": [],
+    "changes": [
+      "public/best-titanium-pans-2025/index.html: Aligned Open Graph tags",
+      "public/best-titanium-pans-2025/index.html: Aligned Twitter card tags",
+      "public/best-titanium-pans-2025/index.html: Refreshed JSON-LD graph",
+      "public/brand-comparisons/index.html: Aligned Open Graph tags",
+      "public/brand-comparisons/index.html: Aligned Twitter card tags",
+      "public/brand-comparisons/index.html: Refreshed JSON-LD graph",
+      "public/care-and-cleaning/index.html: Aligned Open Graph tags",
+      "public/care-and-cleaning/index.html: Aligned Twitter card tags",
+      "public/care-and-cleaning/index.html: Refreshed JSON-LD graph",
+      "public/titanium-cookware-guide/index.html: Aligned Open Graph tags",
+      "public/titanium-cookware-guide/index.html: Aligned Twitter card tags",
+      "public/titanium-cookware-guide/index.html: Refreshed JSON-LD graph",
+      "public/titanium-vs-ceramic/index.html: Aligned Open Graph tags",
+      "public/titanium-vs-ceramic/index.html: Aligned Twitter card tags",
+      "public/titanium-vs-ceramic/index.html: Refreshed JSON-LD graph"
+    ],
     "warnings": []
   }
 }

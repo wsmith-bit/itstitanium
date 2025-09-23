@@ -224,10 +224,91 @@ function buildFaqEntities(faqData) {
 }
 
 function extractCareSteps(html) {
-  const match = html.match(/<ol[^>]*class=["'][^"']*care-steps[^"']*["'][^>]*>([\s\S]*?)<\/ol>/i);
+  const match = html.match(/<(ol|ul)[^>]*class=["'][^"']*care-steps[^"']*["'][^>]*>([\s\S]*?)<\/\1>/i);
   if (!match) return [];
-  const liMatches = match[1].match(/<li[^>]*>([\s\S]*?)<\/li>/gi) || [];
+  const liMatches = match[2].match(/<li[^>]*>([\s\S]*?)<\/li>/gi) || [];
   return liMatches.map((li) => stripTags(li));
+}
+
+function slugify(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'author';
+}
+
+function extractAuthor(html) {
+  const match = html.match(/<meta\s+name=["']author["'][^>]*content=["']([^"']+)["'][^>]*>/i);
+  if (!match) return null;
+  const raw = match[1].split(',')[0].trim();
+  if (!raw) return null;
+  const id = `${DOMAIN}/#person-${slugify(raw)}`;
+  return {
+    '@type': 'Person',
+    '@id': id,
+    name: raw,
+    affiliation: { '@id': `${DOMAIN}/#org` }
+  };
+}
+
+function extractFaqs(html) {
+  const match = html.match(/<section[^>]+id=["']faqs["'][^>]*>([\s\S]*?)<\/section>/i);
+  if (!match) return [];
+  const details = match[1].match(/<details[\s\S]*?<\/details>/gi) || [];
+  return details.map((block) => {
+    const summaryMatch = block.match(/<summary>([\s\S]*?)<\/summary>/i);
+    const answerMatch = block.match(/<div>([\s\S]*?)<\/div>/i);
+    const question = summaryMatch ? stripTags(summaryMatch[1]) : '';
+    const answer = answerMatch ? stripTags(answerMatch[1]) : '';
+    if (!question) return null;
+    return {
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: answer
+      }
+    };
+  }).filter(Boolean);
+}
+
+function normalizeUrl(url) {
+  if (!url) return undefined;
+  if (/^https?:/i.test(url)) return url;
+  return `${DOMAIN}${url.startsWith('/') ? '' : '/'}${url}`;
+}
+
+function extractItemLists(html, canonical) {
+  const results = [];
+  const sectionRegex = /<section[^>]*data-schema=["']itemlist["'][^>]*>([\s\S]*?)<\/section>/gi;
+  let match;
+  let index = 0;
+  while ((match = sectionRegex.exec(html)) !== null) {
+    const sectionContent = match[0];
+    const headingMatch = sectionContent.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
+    const listItems = sectionContent.match(/<li[\s\S]*?<\/li>/gi) || [];
+    if (!listItems.length) continue;
+    const items = listItems.map((item, liIndex) => {
+      const strongMatch = item.match(/<strong>([\s\S]*?)<\/strong>/i);
+      const anchorMatch = item.match(/<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/i);
+      let baseName = strongMatch ? stripTags(strongMatch[1]) : stripTags(anchorMatch ? anchorMatch[2] : item);
+      baseName = baseName.replace(/:+$/, '').trim();
+      const url = anchorMatch ? normalizeUrl(anchorMatch[1]) : undefined;
+      if (!baseName) return null;
+      return {
+        '@type': 'ListItem',
+        position: liIndex + 1,
+        name: baseName,
+        url
+      };
+    }).filter(Boolean);
+    if (!items.length) continue;
+    index += 1;
+    results.push({
+      '@type': 'ItemList',
+      '@id': `${canonical}#itemlist-${index}`,
+      name: headingMatch ? stripTags(headingMatch[1]) : 'Featured list',
+      itemListElement: items
+    });
+  }
+  return results;
 }
 
 function buildJsonLd(html, filePath, canonical, title, description, dateModified, faqData, existingDates = {}) {
@@ -296,6 +377,14 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     });
   }
 
+  const authorNode = extractAuthor(html);
+  if (authorNode) {
+    graph.push(authorNode);
+  }
+  const blogAuthor = authorNode
+    ? { '@id': authorNode['@id'] }
+    : { '@id': `${DOMAIN}/#org`, '@type': 'Organization', name: "It’s Titanium" };
+
   graph.push({
     '@type': 'BlogPosting',
     '@id': `${canonical}#blog`,
@@ -305,10 +394,15 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     dateModified: modified,
     inLanguage: 'en-US',
     mainEntityOfPage: { '@id': `${canonical}#webpage` },
-    author: { '@id': `${DOMAIN}/#org`, '@type': 'Organization', name: "It’s Titanium" },
+    author: blogAuthor,
     publisher: { '@id': `${DOMAIN}/#org` },
     image: heroUrl ? { '@id': `${canonical}#primaryimage` } : undefined
   });
+
+  const itemLists = extractItemLists(html, canonical);
+  if (itemLists.length) {
+    graph.push(...itemLists);
+  }
 
   const speakableSelectors = [];
   if (/class=["'][^"']*tldr[^"']*/i.test(html)) speakableSelectors.push('.tldr');
@@ -321,10 +415,17 @@ function buildJsonLd(html, filePath, canonical, title, description, dateModified
     });
   }
 
-  if (rel === 'index.html' && faqData.length) {
+  const pageFaqs = extractFaqs(html);
+  if (pageFaqs.length) {
     graph.push({
       '@type': 'FAQPage',
-      '@id': `${canonical}#faq`,
+      '@id': `${canonical}#faqs`,
+      mainEntity: pageFaqs
+    });
+  } else if (rel === 'index.html' && faqData.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${canonical}#faqs`,
       mainEntity: buildFaqEntities(faqData)
     });
   }
