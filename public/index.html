@@ -187,12 +187,40 @@
           <li><a href="#references">Referenced Sources</a></li>
         </ul>
       </section>
-      <style>
-        .toc-list { display: none; padding-left: 1em; }
-        .toc-list.open { display: block; }
-        .toc-toggle { background: none; border: none; font: inherit; color: #0077cc; cursor: pointer; padding: 0; }
-      </style>
-      <script>
+   <section class="toc card" aria-label="On this page">
+  <h3><button class="toc-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-expanded="false">On this page ▼</button></h3>
+  <ul class="toc-list">
+    <li><a href="#tldr">TL;DR Summary</a></li>
+    <li><a href="#quick-answer">Quick Answer: Titanium vs Ceramic</a></li>
+    <li><a href="#decision-factors">Key Decision Factors</a></li>
+    <li><a href="#comparison">Titanium Pan Comparison Table</a></li>
+    <li><a href="#use-cases">Use Cases That Favor Titanium</a></li>
+    <li><a href="#care">Care and Cleaning Routine</a></li>
+    <li><a href="#faqs">FAQs</a></li>
+    <li><a href="#related-links">Related Guides</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
+    <li><a href="#references">Referenced Sources</a></li>
+  </ul>
+</section>
+
+<style>
+  .toc-list { display: none; padding-left: 1em; }
+  .toc-list.open { display: block; }
+  .toc-toggle { background: none; border: none; font: inherit; color: #0077cc; cursor: pointer; padding: 0; }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.querySelector(".toc-toggle");
+    const list = document.querySelector(".toc-list");
+    toggleBtn.addEventListener("click", function() {
+      const expanded = this.getAttribute("aria-expanded") === "true";
+      this.setAttribute("aria-expanded", String(!expanded));
+      list.classList.toggle("open");
+    });
+  });
+</script>
+
         document.addEventListener("DOMContentLoaded", function() {
           const toggleBtn = document.querySelector(".toc-toggle");
           const list = document.querySelector(".toc-list");
