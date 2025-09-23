@@ -173,7 +173,7 @@
       </section>
 
     
-   <section class="toc card" aria-label="On this page">
+  <section class="toc card" aria-label="On this page">
   <h3><button class="toc-toggle" onclick="this.nextElementSibling.classList.toggle('')" aria-expanded="false">On this page ▼</button></h3>
   <ul class="toc-list">
     <li><a href="#tldr">TL;DR Summary</a></li>
@@ -194,6 +194,19 @@
   .toc-list.open { display: block; }
   .toc-toggle { background: none; border: none; font: inherit; color: #0077cc; cursor: pointer; padding: 0; }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.querySelector(".toc-toggle");
+    const list = document.querySelector(".toc-list");
+    toggleBtn.addEventListener("click", function() {
+      const expanded = this.getAttribute("aria-expanded") === "true";
+      this.setAttribute("aria-expanded", String(!expanded));
+      list.classList.toggle("open");
+    });
+  });
+</script>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
