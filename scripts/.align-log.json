@@ -12,21 +12,15 @@
     "changes": []
   },
   "enforce": {
-    "timestamp": "2025-09-23T16:22:36.730Z",
-    "durationMs": 51,
+    "timestamp": "2025-09-23T17:11:24.072Z",
+    "durationMs": 25,
     "progress": {
       "totalFiles": 8,
-      "filesChanged": 5,
-      "totalFixes": 5,
+      "filesChanged": 0,
+      "totalFixes": 0,
       "warnings": 0
     },
-    "changes": [
-      "public/best-titanium-pans-2025/index.html: Refreshed JSON-LD graph",
-      "public/brand-comparisons/index.html: Refreshed JSON-LD graph",
-      "public/care-and-cleaning/index.html: Refreshed JSON-LD graph",
-      "public/titanium-cookware-guide/index.html: Refreshed JSON-LD graph",
-      "public/titanium-vs-ceramic/index.html: Refreshed JSON-LD graph"
-    ],
+    "changes": [],
     "warnings": []
   }
 }
