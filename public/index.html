@@ -29,8 +29,7 @@
   <!-- Preload hero -->
   <link rel="preload" as="image" href="/assets/img/itstitanium-hero-pans-1600.webp" imagesrcset="/assets/img/itstitanium-hero-pans-800.webp 800w, /assets/img/itstitanium-hero-pans-1200.webp 1200w, /assets/img/itstitanium-hero-pans-1600.webp 1600w" imagesizes="(max-width: 1100px) 100vw, 1100px">
   <!-- CSS -->
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/base.css">
   <style>
     /* tiny critical CSS inline (rest in /styles/*.css) */
     :root{--ink:#0B1220;--plate:#fff;--foam:#F6F7F9;--steel:#637083;--sear:#D9480F;--leaf:#16A34A;--border:#E5E7EB}
@@ -49,6 +48,7 @@
     .btn-primary{background:var(--sear);color:#fff;box-shadow:0 6px 12px rgba(0,0,0,.08)}
     .hero{display:grid;gap:24px;align-items:center;padding:32px 0}
     .hero-media{border-radius:16px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,.12)}
+    figure svg{width:100%;height:auto}
     .card{background:var(--plate);border:1px solid var(--border);border-radius:16px;box-shadow:0 6px 12px rgba(0,0,0,.08);padding:18px}
     .card-grid{display:grid;gap:24px}
     .grid-3{grid-template-columns:1fr}
@@ -62,6 +62,11 @@
     .table tr:nth-child(even){background:var(--foam)}
     footer{border-top:1px solid var(--border);margin-top:56px}
     .chip{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:6px 10px;margin:2px;color:var(--steel)}
+    .meta-updated{color:var(--steel);margin:.75rem 0 0}
+    .home-article .article-body section{margin:32px 0;border:0;padding:0}
+    .home-article .article-body section:first-of-type{margin-top:0}
+    .home-article .article-body section.card{padding:24px}
+    .home-article .article-body section.page-meta{padding:20px}
   </style>
   <script type="application/ld+json">
   {
@@ -161,30 +166,37 @@
     </div>
   </header>
 
-  <section class="wrap" style="padding-top:24px">
-    <p class="disclosure" aria-live="polite">We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews are independent and based on measurable factors like build, materials, usability, and care requirements.</p>
-    <p style="color:var(--steel);margin:.5rem 0 0">Last updated <time datetime="2025-09-24">September 24, 2025</time></p>
-  </section>
+  <main id="maincontent">
+    <article class="wrap layout home-article" aria-label="Titanium cookware overview">
+      <aside class="toc" aria-label="Table of contents">
+        <details>
+          <summary>On this page</summary>
+          <nav aria-label="Page sections">
+            <ul></ul>
+          </nav>
+        </details>
+      </aside>
 
-  <main id="maincontent" class="wrap">
-    <section class="hero">
-      <div>
-        <h1>Titanium Cookware, Demystified</h1>
-        <p class="deck">What’s actually “titanium” in home cookware? Which pans are safe, durable, and worth it? This hub gives you straight answers, buyer-focused comparisons, and care tips—no fluff.</p>
-        <a class="btn btn-primary" href="/best-titanium-pans-2025/">See Best Titanium Pans 2025</a>
-      </div>
-      <figure class="hero-media">
-        <img src="/assets/img/itstitanium-hero-pans-1600.webp" width="1600" height="900" alt="Two pans simmering on a black induction cooktop with soft steam" decoding="async">
-        <figcaption class="sr-only">Top-down layout of titanium cookware styles.</figcaption>
-      </figure>
-    </section>
+      <div class="article-body">
+        <section class="hero">
+          <div>
+            <h1>Titanium Cookware, Demystified</h1>
+            <p class="deck">What’s actually “titanium” in home cookware? Which pans are safe, durable, and worth it? This hub gives you straight answers, buyer-focused comparisons, and care tips—no fluff.</p>
+            <a class="btn btn-primary" href="/best-titanium-pans-2025/">See Best Titanium Pans 2025</a>
+          </div>
+          <figure class="hero-media">
+            <img src="/assets/img/itstitanium-hero-pans-1600.webp" width="1600" height="900" alt="Two pans simmering on a black induction cooktop with soft steam" decoding="async">
+            <figcaption class="sr-only">Top-down layout of titanium cookware styles.</figcaption>
+          </figure>
+        </section>
 
-    <aside class="wrap" aria-label="On this page">
-      <nav class="card toc"><h3>On this page</h3><ul></ul></nav>
-    </aside>
+        <section class="page-meta" aria-label="Editorial policy">
+          <div class="disclosure" aria-live="polite" role="note">We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our reviews are independent and based on measurable factors like build, materials, usability, and care requirements.</div>
+          <p class="meta-updated">Last updated <time datetime="2025-09-24">September 24, 2025</time></p>
+        </section>
 
-    <!-- TL;DR -->
-    <section class="card" data-speak="tldr" aria-labelledby="tldr">
+        <!-- TL;DR -->
+        <section class="card" data-speak="tldr" aria-labelledby="tldr">
       <h2 id="tldr">TL;DR</h2>
       <p><strong>Who this helps:</strong> home cooks who want durable, low-maintenance pans with clean cooking surfaces.</p>
       <ul>
@@ -326,28 +338,30 @@
       <a class="btn" href="/brand-comparisons/">See brand comparisons</a>
     </section>
 
-    <!-- Comparison (conceptual, not product specs) -->
-    <section class="card" aria-labelledby="compare">
-      <h2 id="compare">Cookware materials at a glance</h2>
-      <table class="table" role="table">
-        <caption>Conceptual comparison for buyers (not a spec sheet)</caption>
-        <thead>
-          <tr>
-            <th scope="col">Material</th>
-            <th scope="col">Heat spread</th>
-            <th scope="col">Responsiveness</th>
-            <th scope="col">Care level</th>
-            <th scope="col">Induction</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Ti-reinforced nonstick</th><td>Good</td><td>High</td><td>Gentle</td><td>Varies (check base)</td></tr>
-          <tr><th scope="row">Stainless clad</th><td>Good</td><td>Medium</td><td>Moderate</td><td>Usually yes</td></tr>
-          <tr><th scope="row">Aluminum nonstick</th><td>Very good</td><td>High</td><td>Gentle</td><td>Often no</td></tr>
-          <tr><th scope="row">Cast iron</th><td>OK</td><td>Low</td><td>Seasoning</td><td>Yes</td></tr>
-        </tbody>
-      </table>
-    </section>
+        <!-- Comparison (conceptual, not product specs) -->
+        <section class="card" aria-labelledby="compare">
+          <h2 id="compare">Cookware materials at a glance</h2>
+          <div class="table-wrap">
+            <table class="table" role="table">
+              <caption>Conceptual comparison for buyers (not a spec sheet)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Material</th>
+                  <th scope="col">Heat spread</th>
+                  <th scope="col">Responsiveness</th>
+                  <th scope="col">Care level</th>
+                  <th scope="col">Induction</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Ti-reinforced nonstick</th><td>Good</td><td>High</td><td>Gentle</td><td>Varies (check base)</td></tr>
+                <tr><th scope="row">Stainless clad</th><td>Good</td><td>Medium</td><td>Moderate</td><td>Usually yes</td></tr>
+                <tr><th scope="row">Aluminum nonstick</th><td>Very good</td><td>High</td><td>Gentle</td><td>Often no</td></tr>
+                <tr><th scope="row">Cast iron</th><td>OK</td><td>Low</td><td>Seasoning</td><td>Yes</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
     <!-- Use cases -->
     <section class="card" aria-labelledby="use-cases">
@@ -407,15 +421,17 @@
       </div>
     </section>
 
-    <!-- Version note -->
-    <section class="card" aria-labelledby="changelog">
+        <!-- Version note -->
+        <section class="card" aria-labelledby="changelog">
       <h2 id="changelog">What changed in this update</h2>
       <ul>
         <li>Added visual explainers (SVG) for heat and durability concepts.</li>
         <li>Refined FAQs to align with common search questions.</li>
         <li>Updated internal links to 2025 picks and pillars.</li>
       </ul>
-    </section>
+        </section>
+      </div>
+    </article>
   </main>
 
   <footer>
