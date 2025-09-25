@@ -36,6 +36,22 @@
     });
   }
 
+  const tocDetails = document.querySelector('.toc details');
+  if (tocDetails) {
+    const desktop = window.matchMedia('(min-width: 960px)');
+    const syncDetails = () => {
+      if (desktop.matches) {
+        tocDetails.setAttribute('open', '');
+        tocDetails.dataset.locked = 'true';
+      } else if (tocDetails.dataset.locked) {
+        tocDetails.removeAttribute('open');
+        delete tocDetails.dataset.locked;
+      }
+    };
+    syncDetails();
+    desktop.addEventListener('change', syncDetails);
+  }
+
   const tocLinks = document.querySelectorAll('.toc a');
   if (tocLinks.length) {
     const activate = () => {
