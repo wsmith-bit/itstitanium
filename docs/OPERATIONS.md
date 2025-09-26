@@ -38,7 +38,7 @@ This is the single source of truth for ChatOps, playbooks, and decisions.
 - **scripts/json-sanity.js** — used in CI to ensure `data/*.json` and JSON-LD blocks remain valid JSON.
 
 ## Open Issues
-- [ ] Image mapping and hero asset renaming is still pending (carry-over from earlier backlog).
+- [ ] Image mapping and hero asset renaming is still pending (carry-over from earlier backlog). Titanium Cookware Guide is using placeholder hero variants at `/public/assets/img/hero/guide-hero-{600|900|1400}.{avif|webp|jpg}` and audio TL;DR sources at `/assets/audio/titanium-guide-tldr.(mp3|ogg)` until design ships finals.
 - [ ] Harden `/apply` validation for malformed diffs (add guard).
 - [ ] Document Cloudflare Pages deploy checks (still to capture).
 - [ ] Schedule quarterly review of `data/faq-bank.json` so stale answers do not persist.

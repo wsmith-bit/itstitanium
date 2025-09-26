@@ -29,6 +29,14 @@ It tracks setup, troubleshooting, and next steps for the ChatOps + site automati
 
 ---
 
+## 📈 Recent Progress — Titanium Cookware Guide pillar (2025-09-25 session)
+
+- Rebuilt the pillar page to match current styling and editorial standards, layering in FTC disclosure placement, TL;DR, Quick Answer, collapsible TOC inside `<details class="toc">`, reading progress bar hook, refreshed FAQs, use-case cards, a captioned spec table, related links, and a "What changed" ledger.
+- Upgraded the hero to a `<picture>` element with AVIF, WebP, and JPG fallbacks plus explicit width/height; temporary asset paths live under `/public/assets/img/hero/guide-hero-{600|900|1400}.{avif|webp|jpg}` until the new renders land.
+- Added AI- and assistant-friendly patterns: inline SVG "VS" badge, compact SVG comparison strip, consistent anchor IDs, and a TL;DR audio block (transcript included) that currently references `/assets/audio/titanium-guide-tldr.(mp3|ogg)` placeholders.
+- Wired a consolidated JSON-LD `@graph` covering Organization, WebSite with SearchAction, WebPage, BreadcrumbList, ImageObject, BlogPosting, FAQPage, HowTo, ItemList, SpeakableSpecification, and a conservative Product schema example for the Snow Peak Trek 700 Titanium mug.
+- Introduced LinkedIn, Pinterest, and WhatsApp share buttons (no tracking, `rel="noopener"`), bolstering checklist coverage alongside the audio summary and Product schema. Estimated compliance with `docs/new-checklist.txt` is now ≥ 90% for the pillar.
+
 ## 🛑 Known Issues
 
 1. **Invalid diff blocks**
@@ -45,7 +53,7 @@ It tracks setup, troubleshooting, and next steps for the ChatOps + site automati
    - Status: Parked for now (not blocking web automation).
 
 3. **Pending asset optimization**
-   - Need to revisit hero/inline image naming and compression strategy. Tracked in `docs/OPERATIONS.md` open issues.
+   - Need to finalize hero and inline asset mapping. Placeholder hero set to `/public/assets/img/hero/guide-hero-{600|900|1400}.{avif|webp|jpg}` and audio TL;DR paths `/assets/audio/titanium-guide-tldr.(mp3|ogg)` require confirmed files. Tracked in `docs/OPERATIONS.md` open issues.
 
 4. **ChatOps `/report` idea**
    - Placeholder command noted in `docs/OPERATIONS.md`; implementation still outstanding.
@@ -75,6 +83,9 @@ It tracks setup, troubleshooting, and next steps for the ChatOps + site automati
 
 4. **Quarterly content review**
    - Schedule reminders to refresh `data/faq-bank.json` and `docs/disclosure.txt` against the editorial calendar.
+
+5. **Swap in final media for the pillar**
+   - Replace placeholder hero assets and audio files once design delivers the approved renders and narration exports; rerun `npm run align` afterward to confirm no regressions.
 
 ---
 
