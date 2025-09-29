@@ -1,0 +1,57 @@
+name: Make TL;DR Audio
+
+on:
+  workflow_dispatch:   # run manually from the Actions tab
+
+permissions:
+  contents: write      # allow committing the generated audio back to the repo
+
+jobs:
+  build-audio:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install espeak-ng & ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y espeak-ng ffmpeg
+
+      - name: Ensure audio directory
+        run: |
+          mkdir -p public/assets/audio
+
+      - name: Write transcript text (edit here to change the narration)
+        run: |
+          cat > tldr.txt <<'TXT'
+Use medium heat, avoid aerosol oils, hand-wash after the pan cools, and use silicone or wood tools. Check your model’s oven and induction labels, then store with protectors.
+TXT
+
+      - name: Synthesize WAV with espeak-ng
+        run: |
+          espeak-ng -v en-us -s 165 -a 180 \
+            -w public/assets/audio/titanium-guide-tldr.wav \
+            -f tldr.txt
+
+      - name: Convert to MP3 & OGG with ffmpeg
+        run: |
+          ffmpeg -y -i public/assets/audio/titanium-guide-tldr.wav \
+            -codec:a libmp3lame -q:a 2 public/assets/audio/titanium-guide-tldr.mp3
+          ffmpeg -y -i public/assets/audio/titanium-guide-tldr.wav \
+            -codec:a libvorbis -qscale:a 5 public/assets/audio/titanium-guide-tldr.ogg
+          rm public/assets/audio/titanium-guide-tldr.wav
+          rm tldr.txt
+
+      - name: Commit audio files (only if changed)
+        run: |
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add public/assets/audio/titanium-guide-tldr.*
+            git commit -m "Add/Update TL;DR audio (MP3/OGG)"
+            git push
+          else
+            echo "No changes to commit."
+          fi
