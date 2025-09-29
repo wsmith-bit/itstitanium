@@ -1,10 +1,10 @@
-name: Make TL;DR Audio
+name: Make TLDR Audio
 
 on:
-  workflow_dispatch:   # run manually from the Actions tab
+  workflow_dispatch:
 
 permissions:
-  contents: write      # allow committing the generated audio back to the repo
+  contents: write
 
 jobs:
   build-audio:
@@ -13,45 +13,43 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Install espeak-ng & ffmpeg
+      - name: Install espeak and ffmpeg
         run: |
           sudo apt-get update
-          sudo apt-get install -y espeak-ng ffmpeg
+          sudo apt-get install -y espeak ffmpeg
 
       - name: Ensure audio directory
-        run: |
-          mkdir -p public/assets/audio
+        run: mkdir -p public/assets/audio
 
-      - name: Write transcript text (edit here to change the narration)
+      - name: Write transcript text
+        shell: bash
         run: |
-          cat > tldr.txt <<'TXT'
-Use medium heat, avoid aerosol oils, hand-wash after the pan cools, and use silicone or wood tools. Check your model’s oven and induction labels, then store with protectors.
-TXT
+          printf '%s\n' 'Use medium heat, avoid aerosol oils, hand-wash after the pan cools, and use silicone or wood tools. Check your model'\''s oven and induction labels, then store with protectors.' > tldr.txt
 
-      - name: Synthesize WAV with espeak-ng
+      - name: Synthesize WAV with espeak
         run: |
-          espeak-ng -v en-us -s 165 -a 180 \
-            -w public/assets/audio/titanium-guide-tldr.wav \
-            -f tldr.txt
+          espeak -v en-us -s 165 -a 180 -w public/assets/audio/titanium-guide-tldr.wav -f tldr.txt
 
-      - name: Convert to MP3 & OGG with ffmpeg
+      - name: Convert to MP3 and OGG
         run: |
-          ffmpeg -y -i public/assets/audio/titanium-guide-tldr.wav \
-            -codec:a libmp3lame -q:a 2 public/assets/audio/titanium-guide-tldr.mp3
-          ffmpeg -y -i public/assets/audio/titanium-guide-tldr.wav \
-            -codec:a libvorbis -qscale:a 5 public/assets/audio/titanium-guide-tldr.ogg
-          rm public/assets/audio/titanium-guide-tldr.wav
-          rm tldr.txt
+          ffmpeg -y -i public/assets/audio/titanium-guide-tldr.wav -codec:a libmp3lame -q:a 2 public/assets/audio/titanium-guide-tldr.mp3
+          ffmpeg -y -i public/assets/audio/titanium-guide-tldr.wav -codec:a libvorbis -qscale:a 5 public/assets/audio/titanium-guide-tldr.ogg
+          rm public/assets/audio/titanium-guide-tldr.wav tldr.txt
 
-      - name: Commit audio files (only if changed)
+      - name: Commit audio files
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
         run: |
-          if ! git diff --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add public/assets/audio/titanium-guide-tldr.*
-            git commit -m "Add/Update TL;DR audio (MP3/OGG)"
-            git push
-          else
+          git add public/assets/audio/titanium-guide-tldr.*
+          if git diff --cached --quiet; then
             echo "No changes to commit."
+          else
+            git commit -m "Add/Update TLDR audio (MP3/OGG)"
+            git push
           fi
