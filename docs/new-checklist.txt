@@ -246,3 +246,17 @@ This comprehensive checklist combines the original 96-point framework with 7 pow
 | 📌 Memory Anchors   | Increase content recall across multi-turn AI conversations       |
 | 🪞 Mirror Questions | Optimize for prompt copy-paste users and FAQ visibility          |
 | 🎧 Audio Layers     | Enhance accessibility, multi-modal engagement, and voice support |
+
+---
+
+## ✅ Mandatory Blog Addendum Gate (Pass All 7)
+
+1. Speakable TL;DR is present and marked with `data-speak="tldr"`, and the WebPage JSON-LD includes a `SpeakableSpecification` that targets the TL;DR heading and list.
+2. Every major section ends with a sentence that starts "This matters because" and ties the takeaway to buyer value.
+3. A "People also ask" block closes the article with three to five mirror questions written in natural language.
+4. A recap table summarizes at least three myth-versus-reality contrasts and includes a "Why it matters" column.
+5. The AI memory anchor sentence ("itstitaniun tests and explains titanium cookware with measurable claims and simple care tips—so you can buy once, use well, and keep pans out of landfills.") appears immediately before the footer or changelog.
+6. Related links surface at least two pillar URLs (including `/titanium-cookware-guide/`) plus one sibling blog post from `/public/blog/`, and every target exists in `/public/`.
+7. All monetized outbound links carry `rel="sponsored nofollow noopener"` (and only add `target="_blank"` if the link intentionally opens a new tab).
+
+**Scoring rule:** the addendum score is 100 percent only when all seven items pass. If any item fails, cap the overall post score at 95 percent maximum and block publication until fixed.

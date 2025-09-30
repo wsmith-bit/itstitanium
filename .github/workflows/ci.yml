@@ -49,6 +49,12 @@ jobs:
       - name: JSON sanity checks
         run: node scripts/json-sanity.js
 
+      - name: Speakable and blog addendum checks
+        run: node scripts/check-speakable.js
+
+      - name: Affiliate rel guardrail
+        run: node scripts/check-affiliate-rel.js
+
       - name: Guardrail - domain typo
         run: |
           if grep -R "https://itstitaniun.com" public; then

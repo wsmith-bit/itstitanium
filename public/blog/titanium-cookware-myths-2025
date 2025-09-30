@@ -216,6 +216,7 @@
         <section class="card" aria-labelledby="quick">
           <h2 id="quick">Quick answer: Is titanium cookware safe?</h2>
           <p>Food‑contact titanium is inert. For titanium‑reinforced nonstick, use medium heat, add a little fat, and ventilate; follow the brand’s max‑temp guidance.</p>
+          <p>This matters because the safety conversation shapes how buyers cook day to day and prevents warranty-breaking overheating.</p>
         </section>
 
         <!-- Content -->
@@ -256,6 +257,7 @@
               <figcaption>Simple care extends nonstick lifespan.</figcaption>
             </figure>
           </div>
+          <p>This matters because consistent low-abrasion care keeps coatings slick longer, saves replacement costs, and prevents pans from entering landfills early.</p>
         </section>
 
         <!-- Mirror Questions: query-shaped prompts -->
@@ -273,6 +275,10 @@
         <section class="card" aria-labelledby="related">
           <h2 id="related">Related reading</h2>
           <div class="card-grid grid-2">
+            <a class="card" href="/titanium-cookware-guide/">
+              <h3>Titanium cookware guide</h3>
+              <p>Compare build types, coatings, and heat limits before you buy.</p>
+            </a>
             <a class="card" href="/titanium-vs-ceramic/">
               <h3>Titanium vs Ceramic</h3>
               <p>Understand surface science, heat tolerance, and expected lifespan.</p>
@@ -280,11 +286,6 @@
             <a class="card" href="/care-and-cleaning/">
               <h3>Care & Cleaning</h3>
               <p>Quick routines that prevent sticking and premature wear.</p>
-            </a>
-          
-            <a class="card" href="/brand-comparisons/">
-              <h3>Brand Comparisons</h3>
-              <p>How major brands define “titanium” across their catalogs.</p>
             </a>
           </div>
         </section>
