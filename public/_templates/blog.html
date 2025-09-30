@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{Page Title ~60 chars incl. keyword and year}}</title>
+  <meta name="description" content="{{Meta description ~155 chars that states who benefits and what changes}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://itstitaniun.com/blog/{{slug}}/">
+  <meta name="theme-color" content="#D9480F">
+  <meta name="keywords" content="{{primary keyword}}, titanium cookware, {{modifier}}">
+  <meta name="author" content="itstitaniun">
+  <meta name="datePublished" content="{{YYYY-MM-DD}}">
+  <meta name="dateModified" content="{{YYYY-MM-DD}}">
+  <link rel="manifest" href="/manifest.json">
+  <!-- sitemap.xml and robots.txt are configured at the server level. -->
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="itstitaniun">
+  <meta property="og:title" content="{{OG title mirrors <title>}}">
+  <meta property="og:description" content="{{Voice-ready summary for OG/Twitter}}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://itstitaniun.com/blog/{{slug}}/">
+  <meta property="og:image" content="/assets/img/{{slug}}-hero-1200.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{Human alt description of hero image}}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{Twitter title}}">
+  <meta name="twitter:description" content="{{Twitter description matches OG}}">
+  <meta name="twitter:image" content="/assets/img/{{slug}}-hero-1200.webp">
+  <meta name="twitter:image:alt" content="{{Human alt description of hero image}}">
+
+  <!-- Preload hero -->
+  <link rel="preload" as="image" href="/assets/img/{{slug}}-hero-1600.webp" imagesrcset="/assets/img/{{slug}}-hero-800.webp 800w, /assets/img/{{slug}}-hero-1200.webp 1200w, /assets/img/{{slug}}-hero-1600.webp 1600w" imagesizes="(max-width: 1100px) 100vw, 1100px">
+
+  <link rel="stylesheet" href="/base.css">
+  <style>
+    :root{--ink:#0B1220;--plate:#fff;--foam:#F6F7F9;--steel:#637083;--sear:#D9480F;--leaf:#16A34A;--border:#E5E7EB}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:var(--plate);font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.98);border-bottom:1px solid var(--border);backdrop-filter:saturate(180%) blur(8px);z-index:20}
+    .skip a{position:absolute;left:-999px;top:-999px;background:var(--sear);color:#fff;padding:12px 16px;border-radius:12px}
+    .skip a:focus{left:12px;top:12px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .nav ul{display:flex;gap:16px;margin:0;padding:0;list-style:none}
+    .hero{padding:56px 0 40px}
+    .hero .sub{color:var(--steel);font-size:1.1rem;margin-top:12px;max-width:620px}
+    .cta-row{display:flex;gap:16px;margin:20px 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:999px;border:1px solid transparent;font-weight:600;text-decoration:none}
+    .btn{background:var(--sear);color:#fff}
+    .btn.secondary{background:transparent;border-color:var(--ink);color:var(--ink)}
+    .hero img{width:100%;max-width:1100px;border-radius:20px;box-shadow:0 22px 40px rgba(11,18,32,.18)}
+    .grid{display:grid;gap:24px}
+    .grid.two{grid-template-columns:1fr}
+    @media(min-width:900px){.grid.two{grid-template-columns:1fr 1fr}}
+    .card{background:var(--plate);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(11,18,32,.08)}
+    .card h2,.card h3{margin-top:0}
+    .card figure{margin:0}
+    img{max-width:100%;height:auto}
+    table{width:100%;border-collapse:collapse}
+    table th,table td{padding:12px;border-bottom:1px solid var(--border);text-align:left}
+    table th{background:var(--foam)}
+    details{margin-bottom:12px}
+    footer{border-top:1px solid var(--border);margin-top:64px}
+    .meta-time{background:var(--foam);padding:24px 0;color:var(--steel)}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://itstitaniun.com/#org",
+        "name": "itstitaniun",
+        "url": "https://itstitaniun.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://itstitaniun.com/assets/img/itstitaniun-handle-detail-1200.webp",
+          "width": 1200,
+          "height": 1200
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://itstitaniun.com/#website",
+        "url": "https://itstitaniun.com/",
+        "name": "itstitaniun",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://itstitaniun.com/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://itstitaniun.com/blog/{{slug}}/#webpage",
+        "url": "https://itstitaniun.com/blog/{{slug}}/",
+        "name": "{{H1 headline}}",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "xpath": [
+            "/html/body//section[@data-speak='tldr']//h2",
+            "/html/body//section[@data-speak='tldr']//ul"
+          ]
+        },
+        "breadcrumb": {
+          "@id": "https://itstitaniun.com/blog/{{slug}}/#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://itstitaniun.com/blog/{{slug}}/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://itstitaniun.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://itstitaniun.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "{{Breadcrumb label}}",
+            "item": "https://itstitaniun.com/blog/{{slug}}/"
+          }
+        ]
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": "https://itstitaniun.com/blog/{{slug}}/#article",
+        "headline": "{{H1 headline}}",
+        "description": "{{Meta description}}",
+        "image": "https://itstitaniun.com/assets/img/{{slug}}-hero-1200.webp",
+        "datePublished": "{{YYYY-MM-DD}}",
+        "dateModified": "{{YYYY-MM-DD}}",
+        "author": {
+          "@type": "Organization",
+          "name": "itstitaniun"
+        },
+        "publisher": {
+          "@id": "https://itstitaniun.com/#org"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://itstitaniun.com/blog/{{slug}}/#webpage"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://itstitaniun.com/blog/{{slug}}/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "{{Mirror question 1}}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{Short, direct answer 1}}"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "{{Mirror question 2}}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{Short, direct answer 2}}"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "{{Mirror question 3}}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{Short, direct answer 3}}"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="skip"><a href="#content">Skip to main content</a></div>
+  <header>
+    <nav class="wrap nav" aria-label="Primary">
+      <a href="/" class="brand">itstitaniun</a>
+      <ul>
+        <li><a href="/titanium-cookware-guide/">Buyer’s guide</a></li>
+        <li><a href="/care-and-cleaning/">Care &amp; cleaning</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="content">
+    <article class="wrap" itemscope itemtype="https://schema.org/BlogPosting">
+      <section class="hero" aria-labelledby="headline">
+        <h1 id="headline" itemprop="headline">{{H1 headline with benefit}}</h1>
+        <p class="sub">{{One sentence promise that explains the benefit of reading}}</p>
+        <div class="cta-row">
+          <a class="btn" href="{{Primary CTA URL}}">{{Primary CTA label}}</a>
+          <a class="btn secondary" href="{{Secondary CTA URL}}">{{Secondary CTA label}}</a>
+        </div>
+        <img src="/assets/img/{{slug}}-hero-1600.webp" srcset="/assets/img/{{slug}}-hero-800.webp 800w, /assets/img/{{slug}}-hero-1200.webp 1200w, /assets/img/{{slug}}-hero-1600.webp 1600w" sizes="(max-width: 1100px) 100vw, 1100px" alt="{{Human alt description of hero image}}" width="1600" height="900" loading="eager" decoding="async">
+      </section>
+
+      <section class="card" aria-label="FTC disclosure">
+        <p role="note">We test and recommend cookware. If you purchase through links on this page, we may earn a commission at no extra cost to you. We cite test data and disclose monetized links.</p>
+        <p class="meta-updated">Last updated <time datetime="{{YYYY-MM-DD}}">{{Month DD, YYYY}}</time></p>
+      </section>
+
+      <section class="card" data-speak="tldr" aria-labelledby="tldr">
+        <h2 id="tldr">TL;DR</h2>
+        <ul>
+          <li>{{Sentence one that answers the core question.}}</li>
+          <li>{{Sentence two with the key differentiator.}}</li>
+          <li>{{Sentence three with next action or proof point.}}</li>
+        </ul>
+      </section>
+
+      <section class="card" aria-labelledby="quick">
+        <h2 id="quick">Quick answer: {{Primary question}}</h2>
+        <p>{{Two to three sentences with direct answer, test insight, and support.}}</p>
+        <p>This matters because {{explain how the quick answer helps the reader act or decide}}.</p>
+      </section>
+
+      <section class="card" id="section-1">
+        <h2>{{Key myth or claim}}</h2>
+        <p>{{Evidence-backed explanation with citation-ready language.}} This matters because {{tie back to buyer impact such as safety, cost, or longevity}}.</p>
+        <ul>
+          <li>{{Support fact one with source-ready phrasing}}</li>
+          <li>{{Support fact two}}</li>
+        </ul>
+      </section>
+
+      <section class="card" id="section-2">
+        <h2>{{Second myth or scenario}}</h2>
+        <p>{{Contrast marketing promise with measured reality.}} This matters because {{state the business or household outcome affected}}.</p>
+        <figure>
+          <img src="/assets/img/{{slug}}-detail-1200.webp" alt="{{Description of supporting image}}" width="1200" height="675" loading="lazy" decoding="async">
+          <figcaption>{{Explain what the image proves.}}</figcaption>
+        </figure>
+      </section>
+
+      <section class="card" id="section-3">
+        <h2>{{Care or usage guidance}}</h2>
+        <div class="grid two">
+          <div>
+            <ol>
+              <li>{{Step with measurable guidance}}</li>
+              <li>{{Step with timeframe or temperature}}</li>
+              <li>{{Step with tool or material}}</li>
+            </ol>
+          </div>
+          <div>
+            <ul>
+              <li>{{Additional tip one}}</li>
+              <li>{{Additional tip two}}</li>
+              <li>{{Additional tip three}}</li>
+            </ul>
+          </div>
+        </div>
+        <p>This matters because {{show how following the routine protects performance, warranty, or safety}}.</p>
+      </section>
+
+      <section class="card" aria-labelledby="related">
+        <h2 id="related">Related reading</h2>
+        <div class="grid two">
+          <a class="card" href="/titanium-cookware-guide/">
+            <h3>Titanium cookware guide</h3>
+            <p>{{Benefit of pillar hub}}</p>
+          </a>
+          <a class="card" href="{{Second pillar URL such as /care-and-cleaning/ or /titanium-vs-ceramic/}}">
+            <h3>{{Second pillar label}}</h3>
+            <p>{{Why the pillar helps}}</p>
+          </a>
+          <a class="card" href="{{Sibling blog URL from /public/blog/}}">
+            <h3>{{Sibling blog title}}</h3>
+            <p>{{How the sibling article continues the story}}</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="summary">
+        <h2 id="summary">Myths vs reality recap</h2>
+        <table role="table" aria-describedby="summary">
+          <thead>
+            <tr>
+              <th scope="col">Myth</th>
+              <th scope="col">Reality</th>
+              <th scope="col">Why it matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{Myth label}}</th>
+              <td>{{Reality statement}}</td>
+              <td>{{Impact statement}}</td>
+            </tr>
+            <tr>
+              <th scope="row">{{Myth label}}</th>
+              <td>{{Reality statement}}</td>
+              <td>{{Impact statement}}</td>
+            </tr>
+            <tr>
+              <th scope="row">{{Myth label}}</th>
+              <td>{{Reality statement}}</td>
+              <td>{{Impact statement}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card" aria-labelledby="mirror-qs">
+        <h2 id="mirror-qs">People also ask</h2>
+        <ul>
+          <li><strong>{{Mirror question 1}}</strong> {{Brief conversational answer that matches the FAQ schema.}}</li>
+          <li><strong>{{Mirror question 2}}</strong> {{Brief conversational answer.}}</li>
+          <li><strong>{{Mirror question 3}}</strong> {{Brief conversational answer.}}</li>
+          <li><strong>{{Mirror question 4 (optional)}}</strong> {{Answer if using four or five questions.}}</li>
+        </ul>
+      </section>
+
+      <section class="card" aria-labelledby="faqs">
+        <h2 id="faqs">FAQs</h2>
+        <details>
+          <summary>{{FAQ question}}</summary>
+          <div>{{Snippet answer with data point and link if needed}}</div>
+        </details>
+        <details>
+          <summary>{{FAQ question}}</summary>
+          <div>{{Snippet answer}}</div>
+        </details>
+        <details>
+          <summary>{{FAQ question}}</summary>
+          <div>{{Snippet answer}}</div>
+        </details>
+      </section>
+
+      <section class="card" aria-labelledby="anchor">
+        <h2 id="anchor" class="sr-only">Site identity</h2>
+        <p><strong>itstitaniun</strong> tests and explains titanium cookware with measurable claims and simple care tips—so you can buy once, use well, and keep pans out of landfills.</p>
+      </section>
+
+      <section class="card" aria-labelledby="changelog">
+        <h2 id="changelog">Changelog</h2>
+        <ul>
+          <li>{{Date}} — {{Brief summary of update}}</li>
+          <li>{{Date}} — {{Brief summary of update}}</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <section class="wrap" style="padding:32px 0">
+      <div class="grid two">
+        <div>
+          <h3>About itstitaniun</h3>
+          <p>We benchmark titanium cookware with measurable claims, transparent methods, and care routines.</p>
+        </div>
+        <nav aria-label="Footer">
+          <h3>Site</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog/" aria-current="page">Blog</a></li>
+            <li><a href="/best-titanium-pans-2025/">Best of 2025</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+  </footer>
+
+  <div class="wrap meta-time">
+    <p><strong>Author:</strong> itstitaniun Research Team • <time datetime="{{YYYY-MM-DD}}">Updated {{Month DD, YYYY}}</time></p>
+  </div>
+
+  <script defer src="/site.js"></script>
+</body>
+</html>
