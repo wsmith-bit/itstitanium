@@ -312,14 +312,19 @@
         const urls=[...doc.querySelectorAll('urlset > url')].map(u=>{
           const loc=u.querySelector('loc')?.textContent?.trim()||'';
           const lastmod=u.querySelector('lastmod')?.textContent?.trim()||'';
-          return {loc,lastmod};
+          try{
+            const parsed=new URL(loc,window.location.origin);
+            const path=parsed.pathname||'/';
+            return {loc:path,lastmod};
+          }catch{return {loc:'',lastmod};}
         });
-        return urls.filter(u=>{ try{ const url=new URL(u.loc); return url.pathname.startsWith('/blog/') && url.pathname!=='/blog/'; }catch{ return false; }});
+        return urls.filter(u=> u.loc.startsWith('/blog/') && u.loc!=='/blog/');
       }
 
       async function getMetaFor(url){
         try{
-          const res=await fetch(url,{headers:{'accept':'text/html'}});
+          const target=url.startsWith('http')?new URL(url).pathname:url;
+          const res=await fetch(target,{headers:{'accept':'text/html'}});
           if(!res.ok) throw new Error('Bad response');
           const html=await res.text();
           const doc=new DOMParser().parseFromString(html,'text/html');
@@ -385,7 +390,16 @@
           const TOP=Math.min(18, entries.length); const head=entries.slice(0,TOP); const tail=entries.slice(TOP);
           const metas=await Promise.all(head.map(async e=>{ const m=await getMetaFor(e.loc); return {...e,...m}; }));
           MASTER=metas; renderInitial();
-          (async()=>{ for(const e of tail){ const m=await getMetaFor(e.loc); MASTER.push({...e,...m}); } })();
+          (async()=>{
+            for(const e of tail){
+              const m=await getMetaFor(e.loc);
+              MASTER.push({...e,...m});
+              if(VISIBLE>0){
+                const list=applyFilterAndSort();
+                loadMoreBtn.style.display = (VISIBLE < list.length) ? 'inline-block' : 'none';
+              }
+            }
+          })();
         }catch(err){ console.error(err); postsGrid.innerHTML=''; emptyState.hidden=false; postsGrid.setAttribute('aria-busy','false'); }
       }
 
