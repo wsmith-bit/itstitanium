@@ -219,6 +219,18 @@ main {
   background: var(--plate);
 }
 
+.btn-outline {
+  color: var(--sear);
+  border: 2px solid var(--sear);
+  background: var(--plate);
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  background: rgba(217, 72, 15, 0.08);
+  transform: translateY(-2px);
+}
+
 .hero-media {
   margin: 32px 0 0;
 }

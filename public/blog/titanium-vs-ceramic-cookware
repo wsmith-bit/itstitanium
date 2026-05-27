@@ -5,7 +5,7 @@
 <title>Titanium vs Ceramic Cookware: Which Should You Choose?</title>
 <meta name="description" content="A practical, research-backed comparison of titanium vs ceramic cookware with use-cases, care, and FAQs.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="canonical" href="https://itstitaniun.com/blog/titanium-vs-ceramic-cookware/">
+<link rel="canonical" href="https://itstitanium.com/blog/titanium-vs-ceramic-cookware/">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0f172a">
 <link rel="preload" as="image" href="/assets/img/hero-titanium-vs-ceramic-1200x630.webp">
@@ -29,15 +29,33 @@ a{color:#0ea5e9}
 </style>
 </head>
 <body>
-<div class='reading-progress' aria-hidden='true'></div>
-<header class='wrap' style='padding:18px 0'>
-  <nav class='breadcrumbs' aria-label='Breadcrumb'><a href='/'>Home</a> / <a href='/blog/'>Blog</a> / Titanium vs Ceramic Cookware</nav>
-  <h1>Titanium vs Ceramic Cookware: Which Should You Choose?</h1>
-  <p><time datetime='2025-10-02'>Last updated October 2, 2025</time></p>
-  <p class='disclosure note'>We test and recommend cookware. If you buy via links on this page, we may earn a commission at no cost to you. Links are marked and follow FTC guidance.</p>
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="logo" href="/">It's Titanium</a>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="/best-titanium-pans-2025/">Best pans</a>
+      <a href="/titanium-cookware-guide/">Buying guide</a>
+      <a href="/care-and-cleaning/">Care &amp; cleaning</a>
+      <a href="/brand-comparisons/">Brand comparisons</a>
+      <a href="/blog/" aria-current="page">Research</a>
+    </nav>
+    <form class="header-search" role="search" action="/search.html">
+      <label for="search-field" class="sr-only">Search titanium cookware resources</label>
+      <input id="search-field" name="q" type="search" placeholder="Search guides" aria-label="Search titanium cookware resources">
+    </form>
+  </div>
+  <div class="progress" aria-hidden="true">
+    <i class="reading-progress"></i>
+  </div>
 </header>
 
 <main id='content'>
+  <div class='wrap' style='padding-top:20px'>
+    <nav class='breadcrumbs' aria-label='Breadcrumb'><a href='/'>Home</a> / <a href='/blog/'>Blog</a> / Titanium vs Ceramic Cookware</nav>
+    <h1>Titanium vs Ceramic Cookware: Which Should You Choose?</h1>
+    <p><time datetime='2025-10-02'>Last updated October 2, 2025</time></p>
+    <p class='disclosure note'>We test and recommend cookware. If you buy via links on this page, we may earn a commission at no cost to you. Links are marked and follow FTC guidance.</p>
+  </div>
   <section class='wrap hero'>
     <figure>
       <img src='/assets/img/hero-titanium-vs-ceramic-1200x630.webp' width='1200' height='630' alt='Side-by-side titanium and ceramic frying pans on a stovetop' decoding='async' loading='eager'>
@@ -211,6 +229,15 @@ a{color:#0ea5e9}
         <li><a href='/blog/'>Blog index</a></li>
         <li><a href='/'>Homepage</a></li>
       </ul>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class='wrap'>
+    <div class='card' style='text-align:center;padding:clamp(24px,4vw,40px)'>
+      <h2 style='margin-bottom:8px'>Ready to pick the right pan?</h2>
+      <p style='margin-bottom:20px;color:var(--steel)'>We tested the top titanium options so you don't have to. See our vetted picks.</p>
+      <a class='btn btn-primary' href='/best-titanium-pans-2025/'>See the Best Titanium Pans 2025 →</a>
     </div>
   </section>
 </main>
