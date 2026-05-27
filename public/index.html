@@ -288,59 +288,142 @@
         <section class="card" aria-labelledby="visuals">
           <h2 id="visuals">How titanium compares (illustrative)</h2>
           <div class="card-grid grid-3">
+
+            <!-- WEIGHT COMPARISON CHART -->
             <figure class="card" aria-labelledby="chart-weight">
-              <figcaption id="chart-weight">Relative weight per pan size (lower is lighter)</figcaption>
-              <svg viewBox="0 0 320 180" role="img" aria-labelledby="chart-weight" width="320" height="180">
-                <g transform="translate(40,10)">
-                  <text x="0" y="12" font-size="12" fill="#637083">Lighter</text>
-                  <line x1="0" y1="24" x2="260" y2="24" stroke="#E5E7EB"/>
-                  <rect x="0" y="12" width="220" height="24" fill="#F6F7F9" stroke="#E5E7EB"/>
-                  <rect x="0" y="12" width="240" height="24" fill="#D9480F" opacity=".15"></rect>
-                  <text x="4" y="28" font-size="12">Titanium backpacking</text>
+              <figcaption id="chart-weight" style="font-weight: 700; margin-bottom: 16px; font-size: 1rem;">Relative weight per pan (10" skillet)</figcaption>
+              <svg viewBox="0 0 400 320" role="img" aria-labelledby="chart-weight" width="100%" height="320" style="max-width: 100%;">
+                <!-- Axes -->
+                <line x1="80" y1="20" x2="80" y2="240" stroke="#0b1220" stroke-width="2"/>
+                <line x1="80" y1="240" x2="380" y2="240" stroke="#0b1220" stroke-width="2"/>
 
-                  <line x1="0" y1="74" x2="260" y2="74" stroke="#E5E7EB"/>
-                  <rect x="0" y="62" width="180" height="24" fill="#F6F7F9" stroke="#E5E7EB"/>
-                  <rect x="0" y="62" width="200" height="24" fill="#D9480F" opacity=".15"></rect>
-                  <text x="4" y="78" font-size="12">Aluminum nonstick</text>
+                <!-- X-axis scale labels -->
+                <text x="80" y="265" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="600">0 lb</text>
+                <text x="160" y="265" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="600">1 lb</text>
+                <text x="240" y="265" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="600">2 lb</text>
+                <text x="320" y="265" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="600">3 lb</text>
 
-                  <line x1="0" y1="124" x2="260" y2="124" stroke="#E5E7EB"/>
-                  <rect x="0" y="112" width="120" height="24" fill="#F6F7F9" stroke="#E5E7EB"/>
-                  <rect x="0" y="112" width="140" height="24" fill="#D9480F" opacity=".15"></rect>
-                  <text x="4" y="128" font-size="12">Stainless clad</text>
-                </g>
+                <!-- Grid lines -->
+                <line x1="160" y1="20" x2="160" y2="240" stroke="#e5e7eb" stroke-width="1"/>
+                <line x1="240" y1="20" x2="240" y2="240" stroke="#e5e7eb" stroke-width="1"/>
+                <line x1="320" y1="20" x2="320" y2="240" stroke="#e5e7eb" stroke-width="1"/>
+
+                <!-- Data bars with values -->
+                <!-- Titanium backpacking: ~0.6 lbs -->
+                <rect x="80" y="50" width="80" height="35" fill="#d9480f"/>
+                <text x="75" y="72" font-size="12" fill="#0b1220" text-anchor="end" font-weight="600">Ti backpacking</text>
+                <text x="165" y="72" font-size="11" fill="#0b1220">0.6 lb</text>
+
+                <!-- Aluminum nonstick: ~1.8 lbs -->
+                <rect x="80" y="105" width="242" height="35" fill="#d9480f" opacity="0.75"/>
+                <text x="75" y="127" font-size="12" fill="#0b1220" text-anchor="end" font-weight="600">Aluminum NS</text>
+                <text x="327" y="127" font-size="11" fill="#0b1220">1.8 lb</text>
+
+                <!-- Stainless clad: ~2.2 lbs -->
+                <rect x="80" y="160" width="296" height="35" fill="#d9480f" opacity="0.6"/>
+                <text x="75" y="182" font-size="12" fill="#0b1220" text-anchor="end" font-weight="600">Stainless clad</text>
+                <text x="381" y="182" font-size="11" fill="#0b1220">2.2 lb</text>
+
+                <!-- Caption -->
+                <text x="80" y="305" font-size="10" fill="#637083" font-style="italic">Illustrative averages for 10" skillets, not product specs.</text>
               </svg>
-              <p class="note" style="margin-top:8px">Illustrative averages for UX context, not product specs.</p>
             </figure>
 
+            <!-- HEAT RESPONSIVENESS CHART -->
             <figure class="card" aria-labelledby="chart-heat">
-              <figcaption id="chart-heat">Heat responsiveness (higher is quicker to adjust)</figcaption>
-              <svg viewBox="0 0 320 180" width="320" height="180" role="img" aria-labelledby="chart-heat">
-                <g transform="translate(40,16)">
-                  <polyline points="0,110 60,80 120,70 180,60 240,58" fill="none" stroke="#D9480F" stroke-width="2"/>
-                  <text x="0" y="120" font-size="12" fill="#637083">Cast iron</text>
-                  <text x="90" y="85" font-size="12" fill="#637083">Stainless</text>
-                  <text x="150" y="75" font-size="12" fill="#637083">Aluminum</text>
-                  <text x="210" y="65" font-size="12" fill="#637083">Ti-reinforced</text>
-                </g>
+              <figcaption id="chart-heat" style="font-weight: 700; margin-bottom: 16px; font-size: 1rem;">Heat responsiveness (time to adjust)</figcaption>
+              <svg viewBox="0 0 400 320" role="img" aria-labelledby="chart-heat" width="100%" height="320" style="max-width: 100%;">
+                <!-- Axes -->
+                <line x1="70" y1="240" x2="70" y2="30" stroke="#0b1220" stroke-width="2"/>
+                <line x1="70" y1="240" x2="380" y2="240" stroke="#0b1220" stroke-width="2"/>
+
+                <!-- Y-axis label (Response speed) -->
+                <text x="20" y="135" font-size="11" fill="#637083" text-anchor="middle" transform="rotate(-90 20 135)">Response speed</text>
+
+                <!-- Y-axis scale -->
+                <text x="60" y="245" font-size="11" fill="#637083" text-anchor="end">Slow</text>
+                <text x="60" y="35" font-size="11" fill="#637083" text-anchor="end">Fast</text>
+
+                <!-- Grid lines -->
+                <line x1="70" y1="180" x2="380" y2="180" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3"/>
+                <line x1="70" y1="120" x2="380" y2="120" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3"/>
+                <line x1="70" y1="60" x2="380" y2="60" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3"/>
+
+                <!-- X-axis material labels -->
+                <text x="120" y="265" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="600">Cast iron</text>
+                <text x="190" y="265" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="600">Stainless</text>
+                <text x="270" y="265" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="600">Aluminum</text>
+                <text x="345" y="265" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="600">Ti-reinforced</text>
+
+                <!-- Data line -->
+                <polyline points="120,200 190,150 270,90 345,40" fill="none" stroke="#d9480f" stroke-width="3" stroke-linecap="round"/>
+
+                <!-- Data points (circles) -->
+                <circle cx="120" cy="200" r="6" fill="#d9480f"/>
+                <circle cx="190" cy="150" r="6" fill="#d9480f"/>
+                <circle cx="270" cy="90" r="6" fill="#d9480f"/>
+                <circle cx="345" cy="40" r="6" fill="#d9480f"/>
+
+                <!-- Value labels -->
+                <text x="120" y="220" font-size="10" fill="#637083" text-anchor="middle">Slowest</text>
+                <text x="345" y="20" font-size="10" fill="#637083" text-anchor="middle">Fastest</text>
+
+                <!-- Caption -->
+                <text x="70" y="305" font-size="10" fill="#637083" font-style="italic">Illustrative averages, not product specs.</text>
               </svg>
-              <p class="note">Higher line = faster heat change response (conceptual visualization).</p>
             </figure>
 
+            <!-- DURABILITY & CARE CHART -->
             <figure class="card" aria-labelledby="chart-durability">
-              <figcaption id="chart-durability">Coating durability signals (care-dependent)</figcaption>
-              <svg viewBox="0 0 320 180" width="320" height="180" role="img" aria-labelledby="chart-durability">
-                <g transform="translate(24,14)">
-                  <rect x="0" y="0" width="272" height="120" fill="#F6F7F9" stroke="#E5E7EB" rx="8"/>
-                  <circle cx="60" cy="80" r="26" fill="#D9480F" opacity=".25"/>
-                  <text x="40" y="118" font-size="12">PTFE+Ti</text>
-                  <circle cx="136" cy="60" r="30" fill="#D9480F" opacity=".25"/>
-                  <text x="118" y="118" font-size="12">Ceramic</text>
-                  <circle cx="212" cy="44" r="34" fill="#D9480F" opacity=".25"/>
-                  <text x="194" y="118" font-size="12">Hard-anodized</text>
-                </g>
+              <figcaption id="chart-durability" style="font-weight: 700; margin-bottom: 16px; font-size: 1rem;">Coating durability with proper care</figcaption>
+              <svg viewBox="0 0 400 320" role="img" aria-labelledby="chart-durability" width="100%" height="320" style="max-width: 100%;">
+                <!-- Axes -->
+                <line x1="70" y1="240" x2="70" y2="30" stroke="#0b1220" stroke-width="2"/>
+                <line x1="70" y1="240" x2="380" y2="240" stroke="#0b1220" stroke-width="2"/>
+
+                <!-- Y-axis label (Lifespan) -->
+                <text x="20" y="135" font-size="11" fill="#637083" text-anchor="middle" transform="rotate(-90 20 135)">Lifespan</text>
+
+                <!-- Y-axis scale -->
+                <text x="60" y="245" font-size="11" fill="#637083" text-anchor="end">1 yr</text>
+                <text x="60" y="165" font-size="11" fill="#637083" text-anchor="end">4 yr</text>
+                <text x="60" y="85" font-size="11" fill="#637083" text-anchor="end">7 yr</text>
+                <text x="60" y="35" font-size="11" fill="#637083" text-anchor="end">10+ yr</text>
+
+                <!-- X-axis label (Care difficulty) -->
+                <text x="225" y="275" font-size="11" fill="#637083" text-anchor="middle">Care difficulty</text>
+
+                <!-- X-axis scale -->
+                <text x="120" y="260" font-size="11" fill="#637083" text-anchor="middle">Low</text>
+                <text x="225" y="260" font-size="11" fill="#637083" text-anchor="middle">Medium</text>
+                <text x="330" y="260" font-size="11" fill="#637083" text-anchor="middle">High</text>
+
+                <!-- Grid -->
+                <line x1="70" y1="165" x2="380" y2="165" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3"/>
+                <line x1="70" y1="85" x2="380" y2="85" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3"/>
+                <line x1="225" y1="30" x2="225" y2="240" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3"/>
+
+                <!-- Data bubbles (size = relative durability potential) -->
+                <!-- PTFE+Ti: low care, 5yr lifespan -->
+                <circle cx="120" cy="130" r="30" fill="#d9480f" opacity="0.7"/>
+                <text x="120" y="128" font-size="13" fill="#0b1220" text-anchor="middle" font-weight="700">PTFE</text>
+                <text x="120" y="145" font-size="11" fill="#0b1220" text-anchor="middle">5 yr</text>
+
+                <!-- Ceramic: medium care, 3yr lifespan -->
+                <circle cx="225" cy="185" r="26" fill="#d9480f" opacity="0.6"/>
+                <text x="225" y="183" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="700">Ceramic</text>
+                <text x="225" y="200" font-size="11" fill="#0b1220" text-anchor="middle">3 yr</text>
+
+                <!-- Hard-anodized: high care, 8+yr lifespan -->
+                <circle cx="330" cy="65" r="35" fill="#d9480f" opacity="0.65"/>
+                <text x="330" y="62" font-size="12" fill="#0b1220" text-anchor="middle" font-weight="700">Hard-anodized</text>
+                <text x="330" y="80" font-size="11" fill="#0b1220" text-anchor="middle">8+ yr</text>
+
+                <!-- Legend -->
+                <text x="70" y="300" font-size="10" fill="#637083" font-style="italic">Bubble size represents relative durability potential. Values are illustrative, not product specs.</text>
               </svg>
-              <p class="note">Relative circles = potential longevity with correct care. Always follow the manual.</p>
             </figure>
+
           </div>
         </section>
 
