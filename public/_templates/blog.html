@@ -191,16 +191,30 @@
   </script>
 </head>
 <body>
-  <div class="skip"><a href="#content">Skip to main content</a></div>
-  <header>
-    <nav class="wrap nav" aria-label="Primary">
-      <a href="/" class="brand">itstitaniun</a>
-      <ul>
-        <li><a href="/titanium-cookware-guide/">Buyer’s guide</a></li>
-        <li><a href="/care-and-cleaning/">Care &amp; cleaning</a></li>
-        <li><a href="/blog/" aria-current="page">Blog</a></li>
-      </ul>
-    </nav>
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="logo" href="/">It’s Titanium</a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-toggle-label" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="/best-titanium-pans-2025/">Best pans</a>
+        <a href="/titanium-cookware-guide/">Buying guide</a>
+        <a href="/care-and-cleaning/">Care & cleaning</a>
+        <a href="/brand-comparisons/">Brand comparisons</a>
+        <a href="/blog/" aria-current="page">Research</a>
+      </nav>
+      <form class="header-search" role="search" action="/search.html">
+        <label for="search-field" class="sr-only">Search titanium cookware resources</label>
+        <input id="search-field" name="q" type="search" placeholder="Search guides" aria-label="Search titanium cookware resources">
+      </form>
+    </div>
+    <div class="progress" aria-hidden="true">
+      <i class="reading-progress"></i>
+    </div>
   </header>
 
   <main id="content">
