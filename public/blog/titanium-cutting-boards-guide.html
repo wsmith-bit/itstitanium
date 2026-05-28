@@ -2,66 +2,539 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Titanium Cutting Boards Guide: Benefits, Care & Comparison | itstitanium</title>
-  <meta name="description" content="A brand-styled, organized guide to titanium cutting boards—what they are, who they’re for, benefits & trade-offs, care & cleaning, and comparisons to wood, plastic, and bamboo.">
+  <title>Titanium Cutting Boards Guide: Benefits, Care & Comparison | It's Titanium</title>
+  <meta name="description" content="A practical guide to titanium cutting boards—what they are, benefits & trade-offs, care & cleaning, and comparisons to wood, plastic, and bamboo.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
-  <link rel="canonical" href="https://itstitanium.com/blog/titanium-cutting-boards-guide.html">
-  <meta name="theme-color" content="#0B1220">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://itstitanium.com/blog/titanium-cutting-boards-guide/">
+  <meta name="theme-color" content="#D9480F">
+  <meta name="author" content="It's Titanium">
+  <meta name="dateModified" content="2026-05-28">
+  <meta name="datePublished" content="2025-10-03">
 
   <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="itstitanium">
-  <meta property="og:url" content="https://itstitanium.com/blog/titanium-cutting-boards-guide.html">
+  <meta property="og:site_name" content="It's Titanium">
   <meta property="og:title" content="Titanium Cutting Boards Guide: Benefits, Care & Comparison">
   <meta property="og:description" content="Benefits & trade-offs, care & cleaning, and comparisons to wood, plastic, and bamboo.">
-  <meta property="og:image" content="https://itstitanium.com/public/itstitaniun-hero-og-1200x630.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://itstitanium.com/blog/titanium-cutting-boards-guide/">
+  <meta property="og:image" content="https://itstitanium.com/assets/img/itstitaniun-compare-banner-1200.webp">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Titanium Cutting Boards Guide: Benefits, Care & Comparison">
   <meta name="twitter:description" content="Benefits & trade-offs, care & cleaning, and comparisons to wood, plastic, and bamboo.">
-  <meta name="twitter:image" content="https://itstitanium.com/public/itstitaniun-hero-og-1200x630.webp">
+  <meta name="twitter:image" content="https://itstitanium.com/assets/img/itstitaniun-compare-banner-1200.webp">
 
-  <!-- Brand CSS & critical preview styles -->
-  <link rel="preload" as="style" href="/base.css">
+  <!-- CSS -->
   <link rel="stylesheet" href="/base.css">
   <style>
-    /* Minimal critical CSS layer (complements /base.css per docs/itstitaniun_styling.txt) */
-    :root{--Ink:#0B1220;--Plate:#fff;--Foam:#F6F7F9;--Steel:#637083;--Border:#E5E7EB;--Sear:#6B8CFF;--Leaf:#16A34A}
-    html,body{margin:0;padding:0;background:var(--Foam);color:var(--Ink)}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.55}
-    .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-    .reading-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--Sear),var(--Leaf));transform-origin:left;transform:scaleX(0);z-index:999}
-    .card{background:var(--Plate);border:1px solid var(--Border);border-radius:14px;box-shadow:0 1px 2px rgba(0,10,40,.03);padding:20px}
-    .grid{display:grid;gap:20px}
-    .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .grid-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    h1{font-size:clamp(28px,3.6vw,40px);line-height:1.2;margin:.3em 0}
-    h2{font-size:clamp(22px,2.6vw,28px);margin:1.2em 0 .5em}
-    h3{font-size:clamp(18px,2vw,22px);margin:1em 0 .4em}
-    .steel{color:var(--Steel)}
-    .btn{display:inline-block;background:var(--Sear);color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none}
-    .btn:hover{filter:brightness(1.05)}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:10px;border-bottom:1px solid #e9edf5;text-align:left}
-    caption{caption-side:top;text-align:left;font-weight:600;margin-bottom:8px}
-    details{padding:12px;border:1px solid var(--Border);border-radius:10px;margin:10px 0;background:#fff}
-    summary{cursor:pointer;font-weight:600}
-    .toc ul{margin:0;padding-left:18px}
-    .toc a{text-decoration:none}
-    .toc a:hover{text-decoration:underline}
-    .chart{display:block;width:100%;height:auto}
-    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .related-grid a{color:inherit;text-decoration:none}
-    .related-grid a:hover{text-decoration:underline}
-    figure{margin:0}
-    img{max-width:100%;height:auto}
+    /* ── Design tokens (shared with homepage) ── */
+    :root {
+      --ink: #0b1220;
+      --plate: #fff;
+      --foam: #f6f7f9;
+      --steel: #637083;
+      --sear: #d9480f;
+      --leaf: #16a34a;
+      --border: #e5e7eb;
+      --header-bg: #0b1220;
+      --radius-card: 12px;
+      --shadow-card: 0 2px 8px rgba(0,0,0,.07);
+      --shadow-card-hover: 0 6px 20px rgba(0,0,0,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--foam);
+      font: 17px/1.75 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    }
+
+    .wrap { max-width: 1100px; margin: auto; padding: 0 24px; }
+
+    /* ── Accessibility ── */
+    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { position: fixed; left: 12px; top: 12px; width: auto; height: auto; padding: 10px 14px; background: #000; color: #fff; border-radius: 10px; z-index: 10000; }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+    /* ── Reading progress ── */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--sear);
+      width: 0;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    /* ── Header (identical to homepage) ── */
+    body > header {
+      position: sticky;
+      top: 0;
+      background: var(--header-bg);
+      border-bottom: 3px solid var(--sear);
+      z-index: 50;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: space-between;
+      padding: 14px 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+      transition: color .15s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover, .nav-links a[aria-current] { color: #fff; }
+
+    .hamburger {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--header-bg);
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 8px 24px 16px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      padding: 12px 0;
+      font-size: .95rem;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .hamburger { display: none; }
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      transition: transform .15s, box-shadow .15s, background .15s, color .15s;
+      cursor: pointer;
+      line-height: 1.2;
+    }
+
+    .btn-primary {
+      background: var(--sear);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(217,72,15,.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(217,72,15,.45);
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--plate);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    /* ── Blog page layout ── */
+    .blog-outer {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+      padding: 40px 0 64px;
+    }
+
+    @media (min-width: 1024px) {
+      .blog-layout {
+        grid-template-columns: 720px 1fr;
+      }
+    }
+
+    /* ── Article body ── */
+    .article-body {
+      background: var(--plate);
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
+      padding: 40px 32px;
+      min-width: 0;
+    }
+
+    @media (min-width: 640px) {
+      .article-body { padding: 48px; }
+    }
+
+    /* Article typography */
+    .article-body h1 {
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      margin: 0 0 16px;
+      color: var(--ink);
+    }
+
+    .article-body h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 2.5rem 0 .75rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+
+    .article-body h2:first-of-type { margin-top: 1.5rem; }
+
+    .article-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 1.5rem 0 .5rem;
+      color: var(--ink);
+    }
+
+    .article-body p { margin: 0 0 1.2rem; }
+    .article-body p:last-child { margin-bottom: 0; }
+
+    .article-body ul, .article-body ol {
+      padding-left: 24px;
+      margin: 0 0 1.2rem;
+    }
+
+    .article-body li { margin-bottom: .5rem; }
+
+    .article-body a {
+      color: var(--sear);
+      text-decoration: none;
+    }
+
+    .article-body a:hover { text-decoration: underline; }
+
+    /* ── Disclosure ── */
+    .disclosure {
+      border-left: 4px solid var(--leaf);
+      background: #f0fdf4;
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: .875rem;
+      color: #166534;
+      line-height: 1.55;
+      margin-bottom: 32px;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      font-size: .8125rem;
+      color: var(--steel);
+      padding: 16px 0 0;
+    }
+
+    .breadcrumb a { color: var(--steel); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ── Article header ── */
+    .article-header { margin-bottom: 32px; }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      align-items: center;
+      margin-top: 14px;
+      font-size: .8125rem;
+      color: var(--steel);
+    }
+    .article-meta time { font-weight: 500; }
+    .article-deck {
+      font-size: 1.1rem;
+      color: var(--steel);
+      line-height: 1.6;
+      margin: 10px 0 0;
+    }
+
+    /* ── Summary table ── */
+    .table-wrap { overflow-x: auto; }
+    .table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: .9rem;
+    }
+    .table th, .table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    .table thead th {
+      font-weight: 700;
+      background: var(--foam);
+      font-size: .8125rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--ink);
+    }
+    .table tbody tr:last-child td,
+    .table tbody tr:last-child th { border-bottom: none; }
+    .table tbody tr:nth-child(even) td,
+    .table tbody tr:nth-child(even) th { background: var(--foam); }
+
+    /* ── FAQ ── */
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    details:last-child { border-bottom: none; }
+    details summary {
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      font-size: .975rem;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] summary { color: var(--sear); }
+    details div { padding: 10px 0 0; color: var(--steel); font-size: .95rem; line-height: 1.65; }
+
+    /* ── Bottom CTA card ── */
+    .cta-card {
+      border-top: 3px solid var(--sear);
+      background: var(--plate);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: clamp(28px, 5vw, 48px) clamp(24px, 5vw, 48px);
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .cta-card h2 {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+      font-size: 1.5rem;
+      letter-spacing: -.015em;
+    }
+
+    .cta-card p {
+      color: var(--steel);
+      margin-bottom: 24px;
+      font-size: 1rem;
+    }
+
+    /* ── Card grid ── */
+    .card-grid { display: grid; gap: 24px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 640px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 980px) { .grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
+
+    /* ── SVG charts ── */
+    .chart { width: 100%; height: auto; display: block; }
+
+    /* ── TOC sidebar ── */
+    .toc-sidebar {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .toc-sidebar {
+        display: block;
+        position: sticky;
+        top: 88px;
+        font-size: .875rem;
+        line-height: 1.5;
+      }
+    }
+
+    .toc-sidebar-inner {
+      background: var(--plate);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 20px 0;
+    }
+
+    .toc-sidebar h3 {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--steel);
+      margin: 0 0 12px;
+      padding: 0 20px;
+    }
+
+    .toc-sidebar nav a {
+      display: block;
+      padding: 6px 20px 6px 18px;
+      border-left: 2px solid transparent;
+      color: var(--steel);
+      text-decoration: none;
+      font-size: .8125rem;
+      line-height: 1.4;
+      transition: color .15s, border-color .15s;
+    }
+
+    .toc-sidebar nav a:hover { color: var(--ink); }
+
+    .toc-sidebar nav a.active {
+      border-left-color: var(--sear);
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ── Related cards ── */
+    .related-card {
+      background: var(--plate);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .related-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .related-card h3 {
+      font-weight: 800;
+      font-size: .975rem;
+      color: var(--ink);
+      margin: 0 0 6px;
+    }
+
+    .related-card p {
+      color: var(--steel);
+      font-size: .875rem;
+      margin: 0;
+      flex: 1;
+      line-height: 1.55;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--plate);
+    }
+
+    footer h3 { font-size: 1rem; font-weight: 700; margin: 0 0 12px; }
+    footer ul { list-style: none; padding: 0; margin: 0; }
+    footer li { margin-bottom: 8px; }
+    footer a { color: var(--steel); text-decoration: none; font-size: .9rem; }
+    footer a:hover { color: var(--ink); }
+
+    /* ── Mobile sticky CTA ── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--ink);
+      border-top: 2px solid var(--sear);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 40;
+    }
+
+    .sticky-cta p {
+      color: rgba(255,255,255,.85);
+      font-size: .85rem;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .sticky-cta .btn {
+      font-size: .85rem;
+      padding: 10px 18px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 768px) { .sticky-cta { display: none; } }
+    @media (max-width: 767px) { main { padding-bottom: 68px; } }
   </style>
 
-  <!-- Single JSON-LD @graph (aligned to data/templates/kg-template.jsonld) -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,445 +542,445 @@
       {
         "@type": "Organization",
         "@id": "https://itstitanium.com/#org",
-        "name": "itstitanium",
-        "url": "https://itstitanium.com/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://itstitanium.com/public/itstitaniun-compare-banner-1800.webp",
-          "width": 1800,
-          "height": 900
-        },
-        "sameAs": [
-          "https://www.linkedin.com/company/itstitanium"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://itstitanium.com/#website",
-        "url": "https://itstitanium.com/",
-        "name": "itstitanium",
-        "publisher": { "@id": "https://itstitanium.com/#org" },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://itstitanium.com/search/?q={query}",
-          "query-input": "required name=query"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://itstitanium.com/blog/titanium-cutting-boards-guide.html#breadcrumbs",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://itstitanium.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://itstitanium.com/titanium-cookware-guide/" },
-          { "@type": "ListItem", "position": 3, "name": "Titanium Cutting Boards" }
-        ]
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://itstitanium.com/blog/titanium-cutting-boards-guide.html#webpage",
-        "url": "https://itstitanium.com/blog/titanium-cutting-boards-guide.html",
-        "name": "Titanium Cutting Boards Guide: Benefits, Care & Comparison",
-        "isPartOf": { "@id": "https://itstitanium.com/#website" },
-        "breadcrumb": { "@id": "https://itstitanium.com/blog/titanium-cutting-boards-guide.html#breadcrumbs" },
-        "datePublished": "2025-10-03",
-        "dateModified": "2025-10-03",
-        "inLanguage": "en"
+        "name": "It's Titanium",
+        "url": "https://itstitanium.com/"
       },
       {
         "@type": "BlogPosting",
-        "@id": "https://itstitanium.com/blog/titanium-cutting-boards-guide.html#article",
+        "@id": "https://itstitanium.com/blog/titanium-cutting-boards-guide/#post",
         "headline": "Titanium Cutting Boards Guide: Benefits, Care & Comparison",
-        "description": "A practical guide to titanium cutting boards—benefits & trade-offs, care & cleaning, and how they compare to wood, plastic, and bamboo.",
-        "author": { "@type": "Organization", "name": "itstitanium" },
-        "publisher": { "@id": "https://itstitanium.com/#org" },
         "datePublished": "2025-10-03",
-        "dateModified": "2025-10-03",
-        "mainEntityOfPage": { "@id": "https://itstitanium.com/blog/titanium-cutting-boards-guide.html#webpage" }
-      },
-      {
-        "@type": "HowTo",
-        "@id": "https://itstitanium.com/blog/titanium-cutting-boards-guide.html#howto-care",
-        "name": "How to care for a titanium cutting board",
-        "step": [
-          { "@type": "HowToStep", "position": 1, "name": "Rinse", "text": "After prep, rinse debris with warm water." },
-          { "@type": "HowToStep", "position": 2, "name": "Wash", "text": "Use mild dish soap and a soft sponge. Avoid abrasive pads." },
-          { "@type": "HowToStep", "position": 3, "name": "Sanitize (optional)", "text": "Wipe with a 1:1 vinegar-water mix, then rinse." },
-          { "@type": "HowToStep", "position": 4, "name": "Dry", "text": "Towel-dry fully; store in a dry spot." }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://itstitanium.com/blog/titanium-cutting-boards-guide.html#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Are titanium cutting boards knife-friendly?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "They’re firmer than wood. Use light pressure and slicing motions; keep heavy cleaving for end-grain wood."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can titanium boards go in the dishwasher?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Hand-washing is gentler; if a model is labeled dishwasher-safe by the maker, follow their placement guidance and dry promptly."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do titanium boards absorb odors?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Titanium is non-porous, so odors are unlikely to linger with prompt washing."
-            }
-          }
-        ]
+        "dateModified": "2026-05-28",
+        "author": {"@type":"Organization","@id":"https://itstitanium.com/#org"},
+        "publisher": {"@type":"Organization","@id":"https://itstitanium.com/#org"},
+        "inLanguage": "en"
       }
     ]
   }
   </script>
-
-  <!-- Alignment references (checklist + knowledge) -->
-  <!--
-    Repo source of truth: https://github.com/wsmith-bit/itstitanium/tree/main
-    - /base.css, /components.html, /site.js
-    - /public/ (images & OG assets) — real filenames used below
-    - docs/itstitaniun_styling.txt, docs/editorial-standards.txt, docs/new-checklist.txt
-    - data/*.json (faq-bank, brands, products-schema), templates/kg-template.jsonld
-  -->
 </head>
 <body>
-  <!-- Reading progress (wired by /site.js; inline fallback below) -->
-  <div class="reading-progress" id="progress" aria-hidden="true"></div>
 
-  <header class="wrap" style="padding:18px 0;">
-    <nav aria-label="Breadcrumb" class="steel" style="font-size:.95rem">
-      <a href="/" class="steel">Home</a> /
-      <a href="/titanium-cookware-guide/" class="steel">Guides</a> /
-      <span aria-current="page">Titanium Cutting Boards</span>
+  <!-- Mobile sticky CTA -->
+  <div class="sticky-cta" role="complementary" aria-label="Quick link">
+    <p>Ready to find your pan?</p>
+    <a class="btn btn-primary" href="/best-titanium-pans-2025/">See Best Pans 2025</a>
+  </div>
+
+  <a href="#maincontent" class="skip-link">Skip to main content</a>
+  <div class="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav wrap" role="navigation" aria-label="Main">
+      <a class="brand" href="/">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" width="28" height="28">
+          <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5"/>
+          <path d="M6 14c4-3 8-3 12 0" stroke="#D9480F" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        It's Titanium
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="/titanium-cookware-guide/">Guide</a>
+        <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
+        <a href="/care-and-cleaning/">Care &amp; Cleaning</a>
+        <a href="/brand-comparisons/">Brands</a>
+        <a href="/best-titanium-pans-2025/">Best of 2025</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+      </nav>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="/titanium-cookware-guide/">Guide</a>
+      <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
+      <a href="/care-and-cleaning/">Care &amp; Cleaning</a>
+      <a href="/brand-comparisons/">Brands</a>
+      <a href="/best-titanium-pans-2025/">Best of 2025</a>
+      <a href="/blog/" aria-current="page">Blog</a>
     </nav>
   </header>
 
-  <!-- FTC disclosure (docs/disclosure.txt copy) -->
-  <section class="wrap" style="padding-top:0">
-    <p class="card steel" role="note">
-      We test and recommend cookware. If you purchase through links on this page, we may earn a commission at no cost to you. Our picks are based on hands-on evaluations against consistent criteria like build, materials, usability, and care requirements.
-    </p>
-    <p class="steel" style="margin:.5rem 0 0">Last updated <time datetime="2025-10-03">October 3, 2025</time></p>
-  </section>
+  <main id="maincontent">
+    <div class="blog-outer">
 
-  <!-- Hero with confirmed repo assets -->
-  <section class="wrap" style="padding-top:16px">
-    <div class="card grid grid-2" style="align-items:center">
-      <div>
-        <h1>Titanium Cutting Boards Guide: Benefits, Care & Comparison</h1>
-        <p class="steel" style="max-width:65ch">Who this is for: cooks who want a low-maintenance, non-porous board for clean prep, plus campers and van-lifers who value durability. Why it helps: titanium resists corrosion and odors, wipes clean fast, and tolerates travel abuse.</p>
-        <a class="btn" href="#quick-answer">Quick answer</a>
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/blog/">Blog</a>
+        <span aria-hidden="true">›</span>
+        <span>Titanium Cutting Boards</span>
+      </nav>
+
+      <div class="blog-layout">
+
+        <!-- Article -->
+        <article class="article-body" aria-label="Titanium cutting boards guide">
+
+          <!-- Header -->
+          <div class="article-header">
+            <h1>Titanium Cutting Boards Guide: Benefits, Care &amp; Comparison</h1>
+            <p class="article-deck">Who this is for: cooks who want a low-maintenance, non-porous board for clean prep, plus campers and van-lifers who value durability. Why it matters: titanium resists corrosion and odors, wipes clean fast, and tolerates travel abuse.</p>
+            <div class="article-meta">
+              <span>By It's Titanium</span>
+              <span>·</span>
+              <time datetime="2025-10-03">Published Oct 3, 2025</time>
+              <span>·</span>
+              <time datetime="2026-05-28">Updated May 2026</time>
+            </div>
+          </div>
+
+          <!-- Disclosure -->
+          <div class="disclosure" role="note">We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Our picks are based on hands-on evaluations against consistent criteria like build, materials, usability, and care requirements.</div>
+
+          <!-- TL;DR -->
+          <section id="tldr" aria-labelledby="tldr-heading">
+            <h2 id="tldr-heading">TL;DR</h2>
+            <ul>
+              <li><strong>Best for:</strong> tidy prep and travel — non-porous, odor-resistant, easy to sanitize.</li>
+              <li><strong>Trade-off:</strong> firmer surface than wood; keep forceful chopping on an end-grain block to protect knife edges.</li>
+              <li><strong>Care:</strong> hand-wash with mild soap, avoid abrasives, towel-dry.</li>
+              <li><strong>Comparing materials?</strong> See the charts and table below.</li>
+            </ul>
+          </section>
+
+          <!-- Quick answer -->
+          <section id="quick-answer" aria-labelledby="quick-answer-heading">
+            <h2 id="quick-answer-heading">Quick Answer</h2>
+            <p>Titanium cutting boards are durable, corrosion-resistant, and non-porous, so cleanup is simple and odors rarely linger. For knife longevity, use lighter slicing and reserve heavy chopping for wood (ideally end-grain).</p>
+          </section>
+
+          <!-- Benefits -->
+          <section id="benefits" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading">Benefits at a Glance</h2>
+            <div class="card-grid grid-3">
+              <div class="card">
+                <h3>Non-porous &amp; easy to sanitize</h3>
+                <p>Doesn't soak up juices or smells. A quick soap-and-water wash returns it to neutral.</p>
+              </div>
+              <div class="card">
+                <h3>Corrosion &amp; stain resistance</h3>
+                <p>Acidic foods and brines are less of a worry. Discoloration is uncommon with basic care.</p>
+              </div>
+              <div class="card">
+                <h3>Travel-ready durability</h3>
+                <p>Good for camping: rigid, stable, and tolerant of bumps in a gear bin.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Material trade-offs charts -->
+          <section id="charts" aria-labelledby="charts-heading">
+            <h2 id="charts-heading">Material Trade-offs at a Glance</h2>
+            <p>Higher bar = better. Knife-friendliness is about edge preservation; Hygiene reflects porosity and ease of sanitizing.</p>
+
+            <figure>
+              <svg class="chart" viewBox="0 0 800 320" role="img" aria-labelledby="c1t c1d">
+                <title id="c1t">Knife-friendliness (higher is gentler on knife edges)</title>
+                <desc id="c1d">End-grain wood scores highest, bamboo and plastic mid, titanium lower.</desc>
+                <line x1="80" y1="280" x2="760" y2="280" stroke="#cfd6e6"/>
+                <line x1="80" y1="40" x2="80" y2="280" stroke="#cfd6e6"/>
+                <g fill="#d9480f">
+                  <rect x="120" y="100" width="100" height="180" rx="6"/>
+                  <rect x="260" y="160" width="100" height="120" rx="6"/>
+                  <rect x="400" y="180" width="100" height="100" rx="6"/>
+                  <rect x="540" y="220" width="100" height="60" rx="6"/>
+                </g>
+                <g fill="#0B1220" font-family="system-ui,Segoe UI,Inter,Arial" font-size="14">
+                  <text x="170" y="300" text-anchor="middle">End-grain wood</text>
+                  <text x="310" y="300" text-anchor="middle">Plastic</text>
+                  <text x="450" y="300" text-anchor="middle">Bamboo</text>
+                  <text x="590" y="300" text-anchor="middle">Titanium</text>
+                </g>
+              </svg>
+              <figcaption>Knife-friendliness: use wood for forceful chopping; slice lightly on titanium.</figcaption>
+            </figure>
+
+            <figure>
+              <svg class="chart" viewBox="0 0 800 320" role="img" aria-labelledby="c2t c2d">
+                <title id="c2t">Hygiene / Porosity (higher is easier to sanitize)</title>
+                <desc id="c2d">Titanium and plastic score high for hygiene, bamboo mid, wood lower due to porosity.</desc>
+                <line x1="80" y1="280" x2="760" y2="280" stroke="#cfd6e6"/>
+                <line x1="80" y1="40" x2="80" y2="280" stroke="#cfd6e6"/>
+                <g fill="#16a34a">
+                  <rect x="120" y="220" width="100" height="60" rx="6"/>
+                  <rect x="260" y="120" width="100" height="160" rx="6"/>
+                  <rect x="400" y="180" width="100" height="100" rx="6"/>
+                  <rect x="540" y="100" width="100" height="180" rx="6"/>
+                </g>
+                <g fill="#0B1220" font-family="system-ui,Segoe UI,Inter,Arial" font-size="14">
+                  <text x="170" y="300" text-anchor="middle">End-grain wood</text>
+                  <text x="310" y="300" text-anchor="middle">Plastic</text>
+                  <text x="450" y="300" text-anchor="middle">Bamboo</text>
+                  <text x="590" y="300" text-anchor="middle">Titanium</text>
+                </g>
+              </svg>
+              <figcaption>Hygiene: titanium's non-porous surface makes sanitizing straightforward.</figcaption>
+            </figure>
+          </section>
+
+          <!-- Care & Cleaning -->
+          <section id="care-and-cleaning" aria-labelledby="care-heading">
+            <h2 id="care-heading">Care &amp; Cleaning</h2>
+            <div class="card-grid grid-2">
+              <div class="card">
+                <h3>Routine</h3>
+                <ul>
+                  <li>Rinse away debris with warm water.</li>
+                  <li>Wash with mild dish soap and a soft sponge.</li>
+                  <li>Towel-dry completely before storage.</li>
+                </ul>
+              </div>
+              <div class="card">
+                <h3>Do / Don't</h3>
+                <ul>
+                  <li><strong>Do</strong> use a slicing motion and light pressure to preserve knives.</li>
+                  <li><strong>Do</strong> sanitize with a 1:1 vinegar-water wipe when needed.</li>
+                  <li><strong>Don't</strong> use abrasive pads or powders.</li>
+                  <li><strong>Don't</strong> rest hot cookware on the board.</li>
+                </ul>
+              </div>
+            </div>
+            <p style="margin-top: 20px">More care tips: <a href="/care-and-cleaning/">Care &amp; Cleaning</a></p>
+          </section>
+
+          <!-- Material comparison table -->
+          <section id="comparison" aria-labelledby="comparison-heading">
+            <h2 id="comparison-heading">Material Comparison</h2>
+            <div class="table-wrap">
+              <table class="table" role="table">
+                <caption id="compare-caption">Titanium vs wood, plastic, bamboo</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Material</th>
+                    <th scope="col">Knife Friendliness</th>
+                    <th scope="col">Hygiene</th>
+                    <th scope="col">Maintenance</th>
+                    <th scope="col">Use Case Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Titanium</th>
+                    <td>Firm surface; use light slicing</td>
+                    <td>Non-porous; easy to sanitize</td>
+                    <td>Hand-wash; avoid abrasives</td>
+                    <td>Great for tidy prep and travel</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Wood (end-grain)</th>
+                    <td>Very gentle on edges</td>
+                    <td>Porous; dry thoroughly</td>
+                    <td>Periodic oiling required</td>
+                    <td>Ideal for heavy chopping</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Plastic</th>
+                    <td>Moderate; grooves can form</td>
+                    <td>Dishwasher-friendly (model-dependent)</td>
+                    <td>Replace when scarred</td>
+                    <td>Budget and color-coded stations</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bamboo</th>
+                    <td>Firmer than many woods</td>
+                    <td>Low absorption with care</td>
+                    <td>Light oiling helps</td>
+                    <td>Value option; light chopping</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Use cases -->
+          <section id="use-cases" aria-labelledby="use-cases-heading">
+            <h2 id="use-cases-heading">Ideal Use Cases</h2>
+            <div class="card-grid grid-3">
+              <div class="card">
+                <h3>Apartment kitchens</h3>
+                <p>Tidy prep with minimal lingering odors between meals.</p>
+              </div>
+              <div class="card">
+                <h3>Camping &amp; vanlife</h3>
+                <p>Rugged board that won't swell if stowed slightly damp.</p>
+              </div>
+              <div class="card">
+                <h3>Seafood prep</h3>
+                <p>Quick odor reset after fish or garlic sessions.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQs -->
+          <section id="faq" aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
+
+            <details>
+              <summary>Are titanium cutting boards knife-friendly?</summary>
+              <div>They're firmer than wood. Use light, slicing cuts and avoid forceful cleaving to keep edges sharp. Many cooks keep both a titanium board (for tidy prep) and an end-grain wood block (for heavy work).</div>
+            </details>
+
+            <details>
+              <summary>How do I clean a titanium board?</summary>
+              <div>Let it cool, hand-wash with mild soap and a soft sponge, avoid abrasive pads, and dry fully. For a deeper refresh, wipe with a 1:1 vinegar-water mix and rinse.</div>
+            </details>
+
+            <details>
+              <summary>Can it go in the dishwasher?</summary>
+              <div>Hand-washing is gentler and quieter. If the manufacturer states dishwasher-safe, place it away from heating elements and dry promptly.</div>
+            </details>
+
+            <details>
+              <summary>Does titanium absorb odors?</summary>
+              <div>Titanium is non-porous, so odors are unlikely to linger. Wash promptly after cutting strong aromatics for best results.</div>
+            </details>
+
+            <details>
+              <summary>What size should I buy?</summary>
+              <div>Common everyday sizes are ~12×18 in. If counter space is tight, a mid-size around 10×14 in balances prep area and storage.</div>
+            </details>
+          </section>
+
+          <!-- Related reading -->
+          <section id="related" aria-labelledby="related-heading">
+            <h2 id="related-heading">Related Reading</h2>
+            <div class="card-grid grid-3">
+              <a class="related-card" href="/titanium-cookware-guide/">
+                <h3>Titanium Cookware Guide</h3>
+                <p>Materials, coatings, and when "titanium" means reinforced nonstick.</p>
+              </a>
+              <a class="related-card" href="/titanium-vs-ceramic/">
+                <h3>Titanium vs Ceramic</h3>
+                <p>Surface differences, heat behavior, and care.</p>
+              </a>
+              <a class="related-card" href="/care-and-cleaning/">
+                <h3>Care &amp; Cleaning</h3>
+                <p>Simple routines that extend the life of your gear.</p>
+              </a>
+            </div>
+          </section>
+
+          <!-- Bottom CTA -->
+          <div class="cta-card" role="complementary" aria-label="Call to action">
+            <h2>Ready to find the right pan?</h2>
+            <p>We tested the top titanium options so you don't have to. See our vetted picks with full specs.</p>
+            <a class="btn btn-primary" href="/best-titanium-pans-2025/">See the Best Titanium Pans 2025</a>
+          </div>
+
+        </article>
+
+        <!-- TOC Sidebar (desktop only) -->
+        <aside class="toc-sidebar" aria-label="Table of contents">
+          <div class="toc-sidebar-inner">
+            <h3>On this page</h3>
+            <nav aria-label="Page sections">
+              <a href="#tldr">TL;DR</a>
+              <a href="#quick-answer">Quick Answer</a>
+              <a href="#benefits">Benefits</a>
+              <a href="#charts">Material Trade-offs</a>
+              <a href="#care-and-cleaning">Care & Cleaning</a>
+              <a href="#comparison">Comparison</a>
+              <a href="#use-cases">Use Cases</a>
+              <a href="#faq">FAQs</a>
+              <a href="#related">Related Reading</a>
+            </nav>
+          </div>
+        </aside>
+
       </div>
-      <figure>
-        <img
-          src="/public/itstitaniun-compare-banner-1800.webp"
-          width="1800" height="900"
-          alt="Stainless-toned titanium cookware and cutting surface styled as a clean, modern flat lay"
-          loading="eager" decoding="async">
-        <figcaption class="steel">Smooth, non-porous titanium surface → quick cleanup.</figcaption>
-      </figure>
     </div>
-  </section>
+  </main>
 
-  <!-- TL;DR -->
-  <section class="wrap" id="tldr">
-    <div class="card">
-      <h2>TL;DR</h2>
-      <ul>
-        <li><strong>Best for:</strong> tidy prep and travel—non-porous, odor-resistant, easy to sanitize.</li>
-        <li><strong>Trade-off:</strong> firmer surface than wood; keep forceful chopping on an end-grain block to protect knife edges.</li>
-        <li><strong>Care:</strong> hand-wash with mild soap, avoid abrasives, towel-dry.</li>
-        <li><strong>Comparing materials?</strong> See the charts and table below.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- TOC (auto) -->
-  <aside class="wrap">
-    <nav class="card toc" aria-label="On this page">
-      <h2 class="sr-only">Table of contents</h2>
-      <div id="toc-list"><em class="steel">Generating outline…</em></div>
-    </nav>
-  </aside>
-
-  <!-- Quick answer -->
-  <section class="wrap" id="quick-answer">
-    <div class="card">
-      <h2>Quick Answer</h2>
-      <p>Titanium cutting boards are durable, corrosion-resistant, and non-porous, so cleanup is simple and odors rarely linger. For knife longevity, use lighter slicing and reserve heavy chopping for wood (ideally end-grain).</p>
-    </div>
-  </section>
-
-  <!-- Benefits -->
-  <section class="wrap" id="benefits">
-    <div class="grid grid-3">
-      <article class="card">
-        <h3>Non-porous & easy to sanitize</h3>
-        <p class="steel">Doesn’t soak up juices or smells. A quick soap-and-water wash returns it to neutral.</p>
-      </article>
-      <article class="card">
-        <h3>Corrosion & stain resistance</h3>
-        <p class="steel">Acidic foods and brines are less of a worry. Discoloration is uncommon with basic care.</p>
-      </article>
-      <article class="card">
-        <h3>Travel-ready durability</h3>
-        <p class="steel">Good for camping: rigid, stable, and tolerant of bumps in a gear bin.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- SVG charts -->
-  <section class="wrap" id="charts">
-    <div class="card">
-      <h2>Material trade-offs at a glance</h2>
-      <p class="steel">Higher bar = better. Knife-friendliness is about edge preservation; Hygiene reflects porosity and ease of sanitizing.</p>
-
-      <figure>
-        <svg class="chart" viewBox="0 0 800 320" role="img" aria-labelledby="c1t c1d">
-          <title id="c1t">Knife-friendliness (higher is gentler on knife edges)</title>
-          <desc id="c1d">End-grain wood scores highest, bamboo and plastic mid, titanium lower.</desc>
-          <line x1="80" y1="280" x2="760" y2="280" stroke="#cfd6e6"/>
-          <line x1="80" y1="40" x2="80" y2="280" stroke="#cfd6e6"/>
-          <g fill="#6B8CFF">
-            <rect x="120" y="100" width="100" height="180" rx="6"/>
-            <rect x="260" y="160" width="100" height="120" rx="6"/>
-            <rect x="400" y="180" width="100" height="100" rx="6"/>
-            <rect x="540" y="220" width="100" height="60" rx="6"/>
-          </g>
-          <g fill="#0B1220" font-family="system-ui,Segoe UI,Inter,Arial" font-size="14">
-            <text x="170" y="300" text-anchor="middle">End-grain wood</text>
-            <text x="310" y="300" text-anchor="middle">Plastic</text>
-            <text x="450" y="300" text-anchor="middle">Bamboo</text>
-            <text x="590" y="300" text-anchor="middle">Titanium</text>
-          </g>
-        </svg>
-        <figcaption class="steel">Knife-friendliness: use wood for forceful chopping; slice lightly on titanium.</figcaption>
-      </figure>
-
-      <figure>
-        <svg class="chart" viewBox="0 0 800 320" role="img" aria-labelledby="c2t c2d">
-          <title id="c2t">Hygiene / Porosity (higher is easier to sanitize)</title>
-          <desc id="c2d">Titanium and plastic score high for hygiene, bamboo mid, wood lower due to porosity.</desc>
-          <line x1="80" y1="280" x2="760" y2="280" stroke="#cfd6e6"/>
-          <line x1="80" y1="40" x2="80" y2="280" stroke="#cfd6e6"/>
-          <g fill="#16A34A">
-            <rect x="120" y="220" width="100" height="60" rx="6"/>
-            <rect x="260" y="120" width="100" height="160" rx="6"/>
-            <rect x="400" y="180" width="100" height="100" rx="6"/>
-            <rect x="540" y="100" width="100" height="180" rx="6"/>
-          </g>
-          <g fill="#0B1220" font-family="system-ui,Segoe UI,Inter,Arial" font-size="14">
-            <text x="170" y="300" text-anchor="middle">End-grain wood</text>
-            <text x="310" y="300" text-anchor="middle">Plastic</text>
-            <text x="450" y="300" text-anchor="middle">Bamboo</text>
-            <text x="590" y="300" text-anchor="middle">Titanium</text>
-          </g>
-        </svg>
-        <figcaption class="steel">Hygiene: titanium’s non-porous surface makes sanitizing straightforward.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- Care & Cleaning -->
-  <section class="wrap" id="care-and-cleaning">
-    <div class="card">
-      <h2>Care & Cleaning</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Routine</h3>
+  <!-- Footer -->
+  <footer>
+    <section class="wrap" style="padding: 40px 24px 32px">
+      <div class="card-grid grid-3" style="margin-bottom: 32px">
+        <div>
+          <h3>About It's Titanium</h3>
+          <p style="color:var(--steel);font-size:.9rem;line-height:1.55;margin:0">Buyer-first reviews and explainers focused on titanium cookware. We prefer measurable claims and clear care guidance.</p>
+        </div>
+        <nav aria-label="Footer site links">
+          <h3>Site</h3>
           <ul>
-            <li>Rinse away debris with warm water.</li>
-            <li>Wash with mild dish soap and a soft sponge.</li>
-            <li>Towel-dry completely before storage.</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/best-titanium-pans-2025/">Best of 2025</a></li>
+            <li><a href="/titanium-cookware-guide/">Guide</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h3>Policies</h3>
+          <ul>
+            <li><a href="/disclosure.html">Disclosure</a></li>
+            <li><a href="/sitemap.xml">Sitemap</a></li>
+            <li><a href="/robots.txt">Robots</a></li>
           </ul>
         </div>
-        <div class="card">
-          <h3>Do / Don’t</h3>
-          <ul>
-            <li><strong>Do</strong> use a slicing motion and light pressure to preserve knives.</li>
-            <li><strong>Do</strong> sanitize with a 1:1 vinegar-water wipe when needed.</li>
-            <li><strong>Don’t</strong> use abrasive pads or powders.</li>
-            <li><strong>Don’t</strong> rest hot cookware on the board.</li>
-          </ul>
-        </div>
       </div>
-      <p class="steel" style="margin-top:12px">More care tips: <a href="/care-and-cleaning/">Care &amp; Cleaning</a></p>
-    </div>
-  </section>
-
-  <!-- Comparison table -->
-  <section class="wrap" id="comparison">
-    <div class="card">
-      <h2>Material comparison</h2>
-      <table aria-describedby="compare-caption">
-        <caption id="compare-caption">Titanium vs wood, plastic, bamboo</caption>
-        <thead>
-          <tr>
-            <th scope="col">Material</th>
-            <th scope="col">Knife friendliness</th>
-            <th scope="col">Hygiene</th>
-            <th scope="col">Maintenance</th>
-            <th scope="col">Use case notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Titanium</th>
-            <td>Firm surface; use light slicing</td>
-            <td>Non-porous; easy to sanitize</td>
-            <td>Hand-wash; avoid abrasives</td>
-            <td>Great for tidy prep and travel</td>
-          </tr>
-          <tr>
-            <th scope="row">Wood (end-grain)</th>
-            <td>Very gentle on edges</td>
-            <td>Porous; dry thoroughly</td>
-            <td>Periodic oiling required</td>
-            <td>Ideal for heavy chopping</td>
-          </tr>
-          <tr>
-            <th scope="row">Plastic</th>
-            <td>Moderate; grooves can form</td>
-            <td>Dishwasher-friendly (model-dependent)</td>
-            <td>Replace when scarred</td>
-            <td>Budget and color-coded stations</td>
-          </tr>
-          <tr>
-            <th scope="row">Bamboo</th>
-            <td>Firmer than many woods</td>
-            <td>Low absorption with care</td>
-            <td>Light oiling helps</td>
-            <td>Value option; light chopping</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Use cases -->
-  <section class="wrap" id="use-cases">
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>Apartment kitchens</h3>
-        <p class="steel">Tidy prep with minimal lingering odors between meals.</p>
-      </div>
-      <div class="card">
-        <h3>Camping &amp; vanlife</h3>
-        <p class="steel">Rugged board that won’t swell if stowed slightly damp.</p>
-      </div>
-      <div class="card">
-        <h3>Seafood prep</h3>
-        <p class="steel">Quick odor reset after fish or garlic sessions.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQs -->
-  <section class="wrap" id="faq">
-    <div class="card">
-      <h2>FAQs</h2>
-      <details>
-        <summary>Are titanium cutting boards knife-friendly?</summary>
-        <div>They’re firmer than wood. Use light, slicing cuts and avoid forceful cleaving to keep edges sharp. Many cooks keep both a titanium board (for tidy prep) and an end-grain wood block (for heavy work).</div>
-      </details>
-      <details>
-        <summary>How do I clean a titanium board?</summary>
-        <div>Let it cool, hand-wash with mild soap and a soft sponge, avoid abrasive pads, and dry fully. For a deeper refresh, wipe with a 1:1 vinegar-water mix and rinse.</div>
-      </details>
-      <details>
-        <summary>Can it go in the dishwasher?</summary>
-        <div>Hand-washing is gentler and quieter. If the manufacturer states dishwasher-safe, place it away from heating elements and dry promptly.</div>
-      </details>
-      <details>
-        <summary>Does titanium absorb odors?</summary>
-        <div>Titanium is non-porous, so odors are unlikely to linger. Wash promptly after cutting strong aromatics for best results.</div>
-      </details>
-      <details>
-        <summary>What size should I buy?</summary>
-        <div>Common everyday sizes are ~12×18 in. If counter space is tight, a mid-size around 10×14 in balances prep area and storage.</div>
-      </details>
-    </div>
-  </section>
-
-  <!-- Related internal links (per repo list) -->
-  <section class="wrap" id="related">
-    <div class="card">
-      <h2>Related reading</h2>
-      <div class="grid grid-3 related-grid">
-        <a class="card" href="/titanium-cookware-guide/">
-          <h3>Titanium Cookware Guide</h3>
-          <p class="steel">Materials, coatings, and when “titanium” means reinforced nonstick.</p>
-        </a>
-        <a class="card" href="/titanium-vs-ceramic/">
-          <h3>Titanium vs Ceramic</h3>
-          <p class="steel">Surface differences, heat behavior, and care.</p>
-        </a>
-        <a class="card" href="/care-and-cleaning/">
-          <h3>Care &amp; Cleaning</h3>
-          <p class="steel">Simple routines that extend the life of your gear.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bottom CTA -->
-  <section class="wrap" style="padding-block:clamp(20px,3vw,36px)">
-    <div class="card" style="text-align:center;padding:clamp(24px,4vw,40px)">
-      <h2 style="margin-bottom:8px">Ready to pick the right pan?</h2>
-      <p class="steel" style="margin-bottom:20px">We tested the top titanium options so you don't have to. See our vetted picks.</p>
-      <a class="btn btn-primary" href="/best-titanium-pans-2025/" style="background:#D9480F">See the Best Titanium Pans 2025 →</a>
-    </div>
-  </section>
-
-  <footer class="wrap" style="padding:24px 0 60px">
-    <p class="steel">© <span id="y">2025</span> itstitanium • <a href="/disclosure.html">Disclosure</a> • <a href="/sitemap.xml">Sitemap</a></p>
+      <p style="color:var(--steel);font-size:.875rem;margin:0">© <span id="y">2025</span> It's Titanium · <a href="/disclosure.html" style="color:var(--steel)">Disclosure</a></p>
+    </section>
   </footer>
 
-  <!-- Scripts -->
-  <script src="/site.js" defer></script>
   <script>
-    // new-checklist compliance: progress bar + auto TOC fallback (for preview)
-    (function(){ // progress
-      const bar = document.getElementById('progress');
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Hamburger menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburgerBtn.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburgerBtn.setAttribute('aria-expanded', isOpen);
+      hamburgerBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+    document.addEventListener('click', function(e) {
+      if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        hamburgerBtn.setAttribute('aria-label', 'Open navigation menu');
+      }
+    });
+
+    // TOC active section highlight via IntersectionObserver
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-sidebar nav a');
+      if (!tocLinks.length) return;
+
+      const sectionIds = Array.from(tocLinks).map(a => a.getAttribute('href').slice(1));
+      const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+      let activeId = null;
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            activeId = entry.target.id;
+          }
+        });
+        tocLinks.forEach(function(link) {
+          const href = link.getAttribute('href').slice(1);
+          link.classList.toggle('active', href === activeId);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+
+      sections.forEach(function(s) { observer.observe(s); });
+    })();
+
+    // Reading progress
+    (function() {
+      const bar = document.querySelector('.reading-progress');
       const onScroll = () => {
         const h = document.documentElement;
         const max = h.scrollHeight - h.clientHeight;
         const p = max ? (h.scrollTop / max) : 0;
-        bar.style.transform = `scaleX(${p})`;
+        bar.style.width = (p * 100) + '%';
       };
       addEventListener('scroll', onScroll, {passive:true});
       addEventListener('resize', onScroll);
       onScroll();
     })();
-
-    (function(){ // auto TOC from h2/h3
-      const container = document.getElementById('toc-list');
-      if(!container) return;
-      const headings = [...document.querySelectorAll('h2, h3')].map(h => {
-        if(!h.id) h.id = h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-');
-        return h;
-      });
-      const ul = document.createElement('ul');
-      headings.forEach(h => {
-        const li = document.createElement('li');
-        if(h.tagName === 'H3') li.style.marginLeft = '1rem';
-        const a = document.createElement('a');
-        a.href = `#${h.id}`; a.textContent = h.textContent;
-        li.appendChild(a); ul.appendChild(li);
-      });
-      container.innerHTML=''; container.appendChild(ul);
-    })();
-
-    // Footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

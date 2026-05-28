@@ -29,33 +29,206 @@
 <meta name="twitter:image:alt" content="Titanium skillets and saucepans arranged on a light kitchen counter">
 <!-- freshness signals -->
 <meta name="dateModified" content="2025-09-25">
-<!-- small critical CSS kept -->
+<!-- design system -->
 <style>
-.site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #E5E7EB;z-index:50}
-.header-inner{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:12px 24px}
-.logo{font-weight:700;color:#0B1220;text-decoration:none}
-.main-nav a{margin:0 8px}
-.header-search input{padding:8px 10px;border:1px solid #E5E7EB;border-radius:12px}
-.hero img{border-radius:16px;box-shadow:0 14px 32px rgba(0,0,0,.12)}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;padding:.7rem 1rem;border-radius:16px}
-.btn-primary{background:#D9480F;color:#fff;box-shadow:0 6px 12px rgba(0,0,0,.08)}
-.breadcrumbs{color:#637083;font-size:.95rem;margin:8px 0}
-.chip{display:inline-block;background:#F6F7F9;border:1px solid #E5E7EB;border-radius:999px;padding:4px 10px;margin-right:6px}
-.related-grid{display:grid;gap:24px}
-@media(min-width:640px){.related-grid{grid-template-columns:1fr 1fr 1fr}}
-.toc{position:sticky;top:96px}
-.reading-progress{position:fixed;top:0;left:0;height:4px;background:#D9480F;width:0;z-index:9999}
-.table{width:100%;border-collapse:separate;border-spacing:0}
-.table caption{color:#637083;text-align:left;margin-bottom:8px}
-.table th,.table td{padding:12px;border-bottom:1px solid #E5E7EB}
-.table tr:nth-child(even){background:#F6F7F9}
-.table thead th{position:sticky;top:56px;background:#fff}
-.note{border-left:4px solid #16A34A;background:#F6F7F9;padding:12px;border-radius:8px}
-.vs-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid #E5E7EB;border-radius:999px;padding:6px 10px}
-.vs-badge svg{width:16px;height:16px}
-.icon-row{display:flex;gap:12px;align-items:center}
-.icon-label{display:inline-flex;gap:6px;align-items:center}
+  /* ── Design tokens ── */
+  :root {
+    --ink: #0b1220;
+    --plate: #fff;
+    --foam: #f6f7f9;
+    --steel: #637083;
+    --sear: #d9480f;
+    --leaf: #16a34a;
+    --border: #e5e7eb;
+    --header-bg: #0b1220;
+    --radius-card: 12px;
+    --shadow-card: 0 2px 8px rgba(0,0,0,.07);
+    --shadow-card-hover: 0 6px 20px rgba(0,0,0,.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--foam);
+    font: 17px/1.65 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  }
+
+  .wrap { max-width: 1100px; margin: auto; padding: 0 24px; }
+
+  /* ── Header ── */
+  body > header {
+    position: sticky;
+    top: 0;
+    background: var(--header-bg);
+    border-bottom: 3px solid var(--sear);
+    z-index: 50;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    display: none;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,.8);
+    text-decoration: none;
+    font-size: .875rem;
+    font-weight: 500;
+    transition: color .15s;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover { color: #fff; }
+
+  .hamburger {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: opacity .15s;
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--header-bg);
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding: 8px 24px 16px;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    color: rgba(255,255,255,.85);
+    text-decoration: none;
+    padding: 12px 0;
+    font-size: .95rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  @media (min-width: 768px) {
+    .nav-links { display: flex; }
+    .hamburger { display: none; }
+  }
+
+  /* ── Reading progress ── */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--sear);
+    width: 0;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    transition: transform .15s, box-shadow .15s, background .15s, color .15s;
+    cursor: pointer;
+    line-height: 1.2;
+  }
+
+  .btn-primary {
+    background: var(--sear);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(217,72,15,.35);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(217,72,15,.45);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--steel);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover {
+    background: var(--foam);
+    transform: translateY(-2px);
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--plate);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 24px;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .note { border-left: 4px solid var(--leaf); background: var(--foam); padding: 12px; border-radius: 8px; }
+
+  .table { width: 100%; border-collapse: separate; border-spacing: 0; }
+  .table caption { color: var(--steel); text-align: left; margin-bottom: 8px; }
+  .table th, .table td { padding: 12px; border-bottom: 1px solid var(--border); }
+  .table tr:nth-child(even) { background: var(--foam); }
+  .table thead th { position: sticky; top: 56px; background: #fff; }
+
+  footer { background: var(--plate); border-top: 1px solid var(--border); }
+  footer h3 { font-size: 1rem; font-weight: 700; margin: 0 0 12px; }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer li { margin-bottom: 8px; }
+  footer a { color: var(--steel); text-decoration: none; font-size: .9rem; }
+  footer a:hover { color: var(--ink); }
+  .card-grid { display: grid; gap: 24px; }
+  .grid-3 { grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
 </style>
 <script type="application/ld+json">
 {
@@ -76,16 +249,19 @@
 </script>
 <link rel="preconnect" href="https://www.linkedin.com"><link rel="preconnect" href="https://www.pinterest.com"><link rel="preconnect" href="https://api.whatsapp.com"></head>
 <body>
-<header class="site-header" id="top">
-  <div class="wrap header-inner">
-    <a class="logo" href="/">It’s Titanium</a>
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="menu-toggle-label" aria-label="Toggle navigation menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-    <nav class="main-nav" aria-label="Primary navigation">
+
+<div class="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<header>
+  <div class="nav wrap" role="navigation" aria-label="Main">
+    <a class="brand" href="/">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" width="28" height="28">
+        <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5"/>
+        <path d="M6 14c4-3 8-3 12 0" stroke="#D9480F" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      It’s Titanium
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
       <a href="/best-titanium-pans-2025/">Best pans</a>
       <a href="/titanium-cookware-guide/" aria-current="page">Buying guide</a>
       <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
@@ -93,14 +269,21 @@
       <a href="/brand-comparisons/">Brand comparisons</a>
       <a href="/blog/">Research</a>
     </nav>
-    <form class="header-search" role="search" action="/search.html">
-      <label for="search-field" class="sr-only">Search titanium cookware resources</label>
-      <input id="search-field" name="q" type="search" placeholder="Search guides" aria-label="Search titanium cookware resources">
-    </form>
+    <button id="hamburger-btn" class="hamburger" aria-expanded="false" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <a href="/best-titanium-pans-2025/">Best pans</a>
+      <a href="/titanium-cookware-guide/" aria-current="page">Buying guide</a>
+      <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
+      <a href="/care-and-cleaning/">Care &amp; cleaning</a>
+      <a href="/brand-comparisons/">Brand comparisons</a>
+      <a href="/blog/">Research</a>
+    </nav>
   </div>
 </header>
-
-<div class="reading-progress" aria-hidden="true"></div>
 
 <main id="content">
   <!-- FTC disclosure (required above the fold) -->
@@ -391,41 +574,61 @@
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap footer-inner" style="display:flex;gap:24px;justify-content:space-between;align-items:flex-start;padding:24px 0">
-    <div>
-      <strong>It’s Titanium</strong>
-      <p>Independent cookware testing and buyer guidance.</p>
+<footer>
+  <section class="wrap" style="padding:40px 24px 32px">
+    <div class="card-grid grid-3" style="margin-bottom:32px">
+      <div>
+        <h3>About It’s Titanium</h3>
+        <p style="color:var(--steel);font-size:.9rem;line-height:1.55;margin:0">Buyer-first reviews and explainers focused on titanium cookware. We prefer measurable claims and clear care guidance.</p>
+      </div>
+      <nav aria-label="Footer site links">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/best-titanium-pans-2025/">Best of 2025</a></li>
+          <li><a href="/titanium-cookware-guide/">Guide</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>Policies</h3>
+        <ul>
+          <li><a href="/disclosure.html">Disclosure</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+          <li><a href="/robots.txt">Robots</a></li>
+        </ul>
+      </div>
     </div>
-    <nav aria-label="Footer">
-      <a href="#top">Back to top</a>
-      <a href="/disclosure.html">FTC disclosure</a>
-      <a href="/sitemap.xml">Sitemap</a>
-    </nav>
-  </div>
-  <p class="wrap footer-meta">© 2025 It’s Titanium. All rights reserved.</p>
+    <p style="color:var(--steel);font-size:.875rem;margin:0">© <span id="y">2025</span> It’s Titanium</p>
+  </section>
 </footer>
 
-<!-- author + freshness -->
-<div class="wrap meta-time" style="margin-bottom:32px">
-  <p><strong>Author:</strong> It’s Titanium Editors • <time datetime="2025-09-25">Updated September 25, 2025</time></p>
-</div>
-
 <script>
-// TOC + reading progress + anchor ids (inlined minimal for preview)
-(function(){
-  const bar=document.querySelector('.reading-progress'); if(bar){
-    const onScroll=()=>{const h=document.documentElement; const sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100; bar.style.width=sc+'%'};
-    document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+document.getElementById('y').textContent = new Date().getFullYear();
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburgerBtn.addEventListener('click', function() {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  hamburgerBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+});
+document.addEventListener('click', function(e) {
+  if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+    mobileMenu.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerBtn.setAttribute('aria-label', 'Open navigation menu');
   }
-  const tocEl=document.querySelector('.toc ul'); if(tocEl){
-    const hs=[...document.querySelectorAll('h2, h3')];
-    hs.forEach(h=>{ if(!h.id){ h.id=h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
-      const li=document.createElement('li'); if(h.tagName==='H3') li.style.paddingLeft='12px';
-      const a=document.createElement('a'); a.href='#'+h.id; a.textContent=h.textContent; li.appendChild(a); tocEl.appendChild(li);
-    });
-  }
-})();
+});
+const bar = document.querySelector('.reading-progress');
+if(bar) {
+  const onScroll = () => {
+    const h = document.documentElement;
+    const sc = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = sc + '%';
+  };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+}
 </script>
 <script type="application/ld+json">
 {
