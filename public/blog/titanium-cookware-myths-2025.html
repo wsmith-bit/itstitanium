@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Titanium Cookware Myths Debunked (2025) | itstitaniun</title>
-  <meta name="description" content="We unpack the biggest myths about titanium cookware—what’s actually titanium, what’s marketing, and how to buy and care the right way in 2025.">
+  <title>Titanium Cookware Myths Debunked (2025) | It's Titanium</title>
+  <meta name="description" content="We unpack the biggest myths about titanium cookware—what's actually titanium, what's marketing, and how to buy and care the right way in 2025.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://itstitanium.com/blog/titanium-cookware-myths-2025/">
   <meta name="theme-color" content="#D9480F">
-  <meta name="author" content="itstitaniun">
-  <meta name="dateModified" content="2025-09-29">
+  <meta name="author" content="It's Titanium">
+  <meta name="dateModified" content="2026-05-28">
   <meta name="datePublished" content="2025-09-29">
 
   <!-- Open Graph -->
-  <meta property="og:site_name" content="itstitaniun">
+  <meta property="og:site_name" content="It's Titanium">
   <meta property="og:title" content="Titanium Cookware Myths Debunked (2025)">
-  <meta property="og:description" content="We cut through the biggest titanium cookware myths—what’s real titanium, what’s reinforced nonstick, and how to choose wisely in 2025.">
+  <meta property="og:description" content="We cut through the biggest titanium cookware myths—what's real titanium, what's reinforced nonstick, and how to choose wisely in 2025.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://itstitanium.com/blog/titanium-cookware-myths-2025/">
   <meta property="og:image" content="/assets/img/itstitanium-myths-hero-1200.webp">
@@ -26,40 +26,610 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Titanium Cookware Myths Debunked (2025)">
-  <meta name="twitter:description" content="We unpack titanium cookware myths and explain what’s real in 2025.">
+  <meta name="twitter:description" content="We unpack titanium cookware myths and explain what's real in 2025.">
   <meta name="twitter:image" content="/assets/img/itstitanium-myths-hero-1200.webp">
   <meta name="twitter:image:alt" content="Close-up of frying pan labeled titanium with a marketing sticker peeled back">
 
   <!-- Preload hero -->
-  <link rel="preload" as="image" href="/assets/img/itstitanium-myths-hero-1600.webp" imagesrcset="/assets/img/itstitanium-myths-hero-800.webp 800w, /assets/img/itstitanium-myths-hero-1200.webp 1200w, /assets/img/itstitanium-myths-hero-1600.webp 1600w" imagesizes="(max-width: 1100px) 100vw, 1100px">
+  <link rel="preload" as="image" href="/assets/img/itstitanium-myths-hero-1600.webp"
+        imagesrcset="/assets/img/itstitanium-myths-hero-800.webp 800w, /assets/img/itstitanium-myths-hero-1200.webp 1200w, /assets/img/itstitanium-myths-hero-1600.webp 1600w"
+        imagesizes="(max-width: 768px) 100vw, 720px">
 
   <!-- CSS -->
   <link rel="stylesheet" href="/base.css">
   <style>
-    :root{--ink:#0B1220;--plate:#fff;--foam:#F6F7F9;--steel:#637083;--sear:#D9480F;--leaf:#16A34A;--border:#E5E7EB}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;color:var(--ink);background:var(--plate);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    .wrap{max-width:1100px;margin:auto;padding:0 24px}
-    header{position:sticky;top:0;background:rgba(255,255,255,.98);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:50}
-    .nav{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:12px 24px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:600}
-    .brand svg{width:28px;height:28px}
-    .nav a{color:var(--ink)}
-    .search input{border:1px solid var(--border);border-radius:12px;padding:8px 12px;width:220px}
-    .reading-progress{position:fixed;top:0;left:0;height:4px;background:var(--sear);width:0;z-index:9999}
-    .hero-media{border-radius:16px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,.12)}
-    .deck{color:var(--steel)}
-    .card{background:var(--plate);border:1px solid var(--border);border-radius:16px;box-shadow:0 6px 12px rgba(0,0,0,.08);padding:18px}
-    .card-grid{display:grid;gap:24px}
-    .grid-2{grid-template-columns:1fr}
-    @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr}}
-    .toc{position:sticky;top:96px}
-    .table{width:100%;border-collapse:separate;border-spacing:0}
-    .table th,.table td{padding:12px;border-bottom:1px solid var(--border)}
-    footer{border-top:1px solid var(--border);margin-top:56px}
-    .meta-updated{color:var(--steel);margin:.75rem 0 0}
-    .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+    /* ── Design tokens (shared with homepage) ── */
+    :root {
+      --ink: #0b1220;
+      --plate: #fff;
+      --foam: #f6f7f9;
+      --steel: #637083;
+      --sear: #d9480f;
+      --leaf: #16a34a;
+      --border: #e5e7eb;
+      --header-bg: #0b1220;
+      --radius-card: 12px;
+      --shadow-card: 0 2px 8px rgba(0,0,0,.07);
+      --shadow-card-hover: 0 6px 20px rgba(0,0,0,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--foam);
+      font: 17px/1.75 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    }
+
+    .wrap { max-width: 1100px; margin: auto; padding: 0 24px; }
+
+    /* ── Accessibility ── */
+    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { position: fixed; left: 12px; top: 12px; width: auto; height: auto; padding: 10px 14px; background: #000; color: #fff; border-radius: 10px; z-index: 10000; }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+    /* ── Reading progress ── */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--sear);
+      width: 0;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    /* ── Header (identical to homepage) ── */
+    body > header {
+      position: sticky;
+      top: 0;
+      background: var(--header-bg);
+      border-bottom: 3px solid var(--sear);
+      z-index: 50;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: space-between;
+      padding: 14px 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+      transition: color .15s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover, .nav-links a[aria-current] { color: #fff; }
+
+    .hamburger {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--header-bg);
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 8px 24px 16px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      padding: 12px 0;
+      font-size: .95rem;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .hamburger { display: none; }
+    }
+
+    /* ── Buttons (identical to homepage) ── */
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      transition: transform .15s, box-shadow .15s, background .15s, color .15s;
+      cursor: pointer;
+      line-height: 1.2;
+    }
+
+    .btn-primary {
+      background: var(--sear);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(217,72,15,.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(217,72,15,.45);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--sear);
+      border: 2px solid var(--sear);
+      padding: 12px 24px;
+      font-size: .975rem;
+    }
+
+    .btn-secondary:hover {
+      background: var(--sear);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(217,72,15,.3);
+    }
+
+    /* ── Cards (shared) ── */
+    .card {
+      background: var(--plate);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .card h3 { font-weight: 800; color: var(--ink); margin: 0 0 8px; }
+    .card p { color: var(--steel); font-size: .95rem; margin: 0 0 16px; }
+
+    .card-grid { display: grid; gap: 24px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 640px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
+
+    /* ── Blog page layout ── */
+    .blog-outer {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+      padding: 40px 0 64px;
+    }
+
+    @media (min-width: 1024px) {
+      .blog-layout {
+        grid-template-columns: 720px 1fr;
+      }
+    }
+
+    /* ── Article body ── */
+    .article-body {
+      background: var(--plate);
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
+      padding: 40px 32px;
+      min-width: 0;
+    }
+
+    @media (min-width: 640px) {
+      .article-body { padding: 48px; }
+    }
+
+    /* Article typography */
+    .article-body h1 {
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      margin: 0 0 16px;
+      color: var(--ink);
+    }
+
+    .article-body h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 2.5rem 0 .75rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+
+    .article-body h2:first-of-type { margin-top: 1.5rem; }
+
+    .article-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 1.5rem 0 .5rem;
+      color: var(--ink);
+    }
+
+    .article-body p { margin: 0 0 1.2rem; }
+    .article-body p:last-child { margin-bottom: 0; }
+
+    .article-body ul, .article-body ol {
+      padding-left: 24px;
+      margin: 0 0 1.2rem;
+    }
+
+    .article-body li { margin-bottom: .5rem; }
+
+    .article-body a {
+      color: var(--sear);
+      text-decoration: none;
+    }
+
+    .article-body a:hover { text-decoration: underline; }
+
+    .article-body img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .article-body figure {
+      margin: 1.5rem 0;
+    }
+
+    .article-body figcaption {
+      font-size: .8125rem;
+      color: var(--steel);
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* ── Article header strip ── */
+    .article-header { margin-bottom: 32px; }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      align-items: center;
+      margin-top: 14px;
+      font-size: .8125rem;
+      color: var(--steel);
+    }
+
+    .article-meta time { font-weight: 500; }
+
+    .article-deck {
+      font-size: 1.1rem;
+      color: var(--steel);
+      line-height: 1.6;
+      margin: 10px 0 0;
+    }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      font-size: .8125rem;
+      color: var(--steel);
+      padding: 16px 0 0;
+    }
+
+    .breadcrumb a { color: var(--steel); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ── Pull quote ── */
+    .pull-quote {
+      border-left: 4px solid var(--sear);
+      background: #fff8f5;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 28px 0;
+      font-size: 1.075rem;
+      line-height: 1.6;
+      color: var(--ink);
+      font-style: italic;
+    }
+
+    /* ── Blockquote ── */
+    .article-body blockquote {
+      border-left: 4px solid var(--sear);
+      background: #fff8f5;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 28px 0;
+      color: var(--ink);
+    }
+
+    /* ── Disclosure ── */
+    .disclosure {
+      border-left: 4px solid var(--leaf);
+      background: #f0fdf4;
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: .875rem;
+      color: #166534;
+      line-height: 1.55;
+      margin-bottom: 32px;
+    }
+
+    /* ── TL;DR box ── */
+    .tldr-box {
+      background: var(--foam);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 0 0 2rem;
+    }
+
+    .tldr-box h2 {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .tldr-box ul { margin-bottom: 0; }
+
+    /* ── Summary table ── */
+    .table-wrap { overflow-x: auto; }
+
+    .table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: .9rem;
+    }
+
+    .table th, .table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .table thead th {
+      font-weight: 700;
+      background: var(--foam);
+      font-size: .8125rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--ink);
+    }
+
+    .table tbody tr:last-child td,
+    .table tbody tr:last-child th { border-bottom: none; }
+
+    .table tbody tr:nth-child(even) td,
+    .table tbody tr:nth-child(even) th { background: var(--foam); }
+
+    /* ── FAQ ── */
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    details:last-child { border-bottom: none; }
+
+    details summary {
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      font-size: .975rem;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+    details[open] summary { color: var(--sear); }
+    details div { padding: 10px 0 0; color: var(--steel); font-size: .95rem; line-height: 1.65; }
+
+    /* ── Bottom CTA card ── */
+    .cta-card {
+      border-top: 3px solid var(--sear);
+      background: var(--plate);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: clamp(28px, 5vw, 48px) clamp(24px, 5vw, 48px);
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .cta-card h2 {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+      font-size: 1.5rem;
+      letter-spacing: -.015em;
+    }
+
+    .cta-card p {
+      color: var(--steel);
+      margin-bottom: 24px;
+      font-size: 1rem;
+    }
+
+    /* ── Related cards ── */
+    .related-card {
+      background: var(--plate);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .related-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .related-card h3 {
+      font-weight: 800;
+      font-size: .975rem;
+      color: var(--ink);
+      margin: 0 0 6px;
+    }
+
+    .related-card p {
+      color: var(--steel);
+      font-size: .875rem;
+      margin: 0 0 12px;
+      flex: 1;
+      line-height: 1.55;
+    }
+
+    .related-card .card-cta {
+      color: var(--sear);
+      font-weight: 700;
+      font-size: .8125rem;
+    }
+
+    /* ── TOC sidebar ── */
+    .toc-sidebar {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .toc-sidebar {
+        display: block;
+        position: sticky;
+        top: 88px;
+        font-size: .875rem;
+        line-height: 1.5;
+      }
+    }
+
+    .toc-sidebar-inner {
+      background: var(--plate);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 20px 0;
+    }
+
+    .toc-sidebar h3 {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--steel);
+      margin: 0 0 12px;
+      padding: 0 20px;
+    }
+
+    .toc-sidebar nav a {
+      display: block;
+      padding: 6px 20px 6px 18px;
+      border-left: 2px solid transparent;
+      color: var(--steel);
+      text-decoration: none;
+      font-size: .8125rem;
+      line-height: 1.4;
+      transition: color .15s, border-color .15s;
+    }
+
+    .toc-sidebar nav a:hover { color: var(--ink); }
+
+    .toc-sidebar nav a.active {
+      border-left-color: var(--sear);
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--plate);
+    }
+
+    footer h3 { font-size: 1rem; font-weight: 700; margin: 0 0 12px; }
+    footer ul { list-style: none; padding: 0; margin: 0; }
+    footer li { margin-bottom: 8px; }
+    footer a { color: var(--steel); text-decoration: none; font-size: .9rem; }
+    footer a:hover { color: var(--ink); }
+
+    /* ── Mobile sticky CTA ── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--ink);
+      border-top: 2px solid var(--sear);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 40;
+    }
+
+    .sticky-cta p {
+      color: rgba(255,255,255,.85);
+      font-size: .85rem;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .sticky-cta .btn {
+      font-size: .85rem;
+      padding: 10px 18px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 768px) { .sticky-cta { display: none; } }
+    @media (max-width: 767px) { main { padding-bottom: 68px; } }
   </style>
 
   <!-- JSON-LD Unified Graph -->
@@ -70,7 +640,7 @@
       {
         "@type": "Organization",
         "@id": "https://itstitanium.com/#org",
-        "name": "itstitaniun",
+        "name": "It's Titanium",
         "url": "https://itstitanium.com/",
         "logo": {
           "@type": "ImageObject",
@@ -87,7 +657,7 @@
         "@type": "WebSite",
         "@id": "https://itstitanium.com/#website",
         "url": "https://itstitanium.com/",
-        "name": "itstitaniun",
+        "name": "It's Titanium",
         "publisher": { "@id": "https://itstitanium.com/#org" },
         "inLanguage": "en",
         "potentialAction": {
@@ -104,7 +674,7 @@
         "isPartOf": { "@id": "https://itstitanium.com/#website" },
         "about": { "@id": "https://itstitanium.com/#org" },
         "datePublished": "2025-09-29",
-        "dateModified": "2025-09-29",
+        "dateModified": "2026-05-28",
         "description": "We unpack the biggest myths about titanium cookware and how to shop wisely.",
         "breadcrumb": { "@id": "https://itstitanium.com/blog/titanium-cookware-myths-2025/#breadcrumbs" },
         "inLanguage": "en",
@@ -138,112 +708,156 @@
         "headline": "Titanium Cookware Myths Debunked (2025)",
         "image": ["https://itstitanium.com/assets/img/itstitanium-myths-hero-1200.webp"],
         "datePublished": "2025-09-29",
-        "dateModified": "2025-09-29",
+        "dateModified": "2026-05-28",
         "author": {"@type":"Organization","@id":"https://itstitanium.com/#org"},
         "publisher": {"@type":"Organization","@id":"https://itstitanium.com/#org"},
         "mainEntityOfPage": {"@id":"https://itstitanium.com/blog/titanium-cookware-myths-2025/#webpage"},
         "inLanguage": "en",
         "articleSection": ["Cookware","Myths"],
         "keywords": ["titanium cookware","nonstick","PTFE","ceramic","induction"],
-        "description": "The clearest guide to what ‘titanium cookware’ really means—no fluff, just buyer-useful facts."
+        "description": "The clearest guide to what 'titanium cookware' really means—no fluff, just buyer-useful facts."
       }
     ]
   }
   </script>
 </head>
 <body>
-  <a class="sr-only" href="#maincontent">Skip to main content</a>
-  <div class="reading-progress"></div>
 
+  <!-- Mobile sticky CTA (hidden on desktop) -->
+  <div class="sticky-cta" role="complementary" aria-label="Quick link">
+    <p>Ready to find your pan?</p>
+    <a class="btn btn-primary" href="/best-titanium-pans-2025/">See Best Pans 2025</a>
+  </div>
+
+  <a href="#maincontent" class="skip-link">Skip to main content</a>
+  <div class="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- ── Header (identical to homepage) ── -->
   <header>
     <div class="nav wrap" role="navigation" aria-label="Main">
       <a class="brand" href="/">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#0B1220" stroke-width="1.5"/><path d="M6 14c4-3 8-3 12 0" stroke="#D9480F" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>itstitaniun</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" width="28" height="28">
+          <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5"/>
+          <path d="M6 14c4-3 8-3 12 0" stroke="#D9480F" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        It's Titanium
       </a>
-      <nav class="links" aria-label="Sections">
-        <a href="/blog/" aria-current="page">Blog</a>
-        <a href="/best-titanium-pans-2025/">Best of 2025</a>
+      <nav class="nav-links" aria-label="Sections">
         <a href="/titanium-cookware-guide/">Guide</a>
+        <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
+        <a href="/care-and-cleaning/">Care &amp; Cleaning</a>
+        <a href="/brand-comparisons/">Brands</a>
+        <a href="/best-titanium-pans-2025/">Best of 2025</a>
+        <a href="/blog/" aria-current="page">Blog</a>
       </nav>
-      <form class="search" action="/search/" role="search" aria-label="Site search">
-        <label class="sr-only" for="q">Search</label>
-        <input id="q" name="q" type="search" placeholder="Search pans, care, brands…" autocomplete="off">
-      </form>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="/titanium-cookware-guide/">Guide</a>
+      <a href="/titanium-vs-ceramic/">Titanium vs Ceramic</a>
+      <a href="/care-and-cleaning/">Care &amp; Cleaning</a>
+      <a href="/brand-comparisons/">Brands</a>
+      <a href="/best-titanium-pans-2025/">Best of 2025</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+    </nav>
   </header>
 
   <main id="maincontent">
-    <article class="wrap layout home-article" aria-label="Titanium cookware myths">
-      <aside class="toc" aria-label="Table of contents">
-        <details open>
-          <summary>On this page</summary>
-          <nav aria-label="Page sections">
-            <ul></ul>
-          </nav>
-        </details>
-      </aside>
+    <div class="blog-outer">
 
-      <div class="article-body">
-        <section class="hero">
-          <div>
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/blog/">Blog</a>
+        <span aria-hidden="true">›</span>
+        <span>Titanium Cookware Myths Debunked</span>
+      </nav>
+
+      <div class="blog-layout">
+
+        <!-- ── Article ── -->
+        <article class="article-body" aria-label="Titanium cookware myths">
+
+          <!-- Article header -->
+          <div class="article-header">
             <h1>Titanium Cookware Myths Debunked (2025)</h1>
-            <p class="deck">Marketing loves the word “titanium.” Most pans on the shelf aren’t solid titanium—let’s separate real materials from label magic so you can buy smart.</p>
-            <a class="card" href="/best-titanium-pans-2025/">Jump to our 2025 picks</a>
+            <p class="article-deck">Marketing loves the word "titanium." Most pans on the shelf aren't solid titanium — let's separate real materials from label magic so you can buy smart.</p>
+            <div class="article-meta">
+              <span>By It's Titanium</span>
+              <span>·</span>
+              <time datetime="2025-09-29">Published Sep 29, 2025</time>
+              <span>·</span>
+              <time datetime="2026-05-28">Updated May 2026</time>
+            </div>
           </div>
-          <figure class="hero-media">
-            <img src="/assets/img/itstitanium-myths-hero-1600.webp" width="1600" height="800" alt="Close-up of frying pan labeled titanium with a marketing sticker peeled back" decoding="async">
-            <figcaption class="sr-only">A pan marketed as titanium; zoomed to highlight labeling nuance.</figcaption>
+
+          <!-- Hero image -->
+          <figure>
+            <img src="/assets/img/itstitanium-myths-hero-1600.webp"
+                 srcset="/assets/img/itstitanium-myths-hero-800.webp 800w, /assets/img/itstitanium-myths-hero-1200.webp 1200w, /assets/img/itstitanium-myths-hero-1600.webp 1600w"
+                 sizes="(max-width: 1024px) 100vw, 720px"
+                 width="1600" height="800"
+                 alt="Close-up of frying pan labeled titanium with a marketing sticker peeled back"
+                 decoding="async">
+            <figcaption>A pan marketed as titanium — the label tells part of the story.</figcaption>
           </figure>
-        </section>
 
-        <section class="page-meta" aria-label="Editorial policy">
+          <!-- Disclosure -->
           <div class="disclosure" role="note">We test and recommend cookware. If you purchase through links on this site, we may earn a commission at no cost to you. Reviews are independent and based on measurable factors like build, materials, usability, and care.</div>
-          <p class="meta-updated">Last updated <time datetime="2025-09-29">September 29, 2025</time></p>
-        </section>
 
-        <!-- TL;DR Card -->
-        <section class="card" data-speak="tldr" aria-labelledby="tldr">
-          <h2 id="tldr">TL;DR</h2>
-          <ul>
-            <li>Most “titanium” skillets are aluminum with a titanium‑reinforced nonstick. Treat like quality nonstick.</li>
-            <li>Pure titanium cookware is mostly for backpacking—ultralight, best for boiling, not indoor searing.</li>
-            <li>Induction depends on a magnetic base layer; check specs or do a magnet test.</li>
-          </ul>
-        </section>
+          <!-- TL;DR -->
+          <section class="tldr-box" id="tldr" data-speak="tldr" aria-labelledby="tldr-heading">
+            <h2 id="tldr-heading">TL;DR</h2>
+            <ul>
+              <li>Most "titanium" skillets are aluminum with a titanium‑reinforced nonstick. Treat like quality nonstick.</li>
+              <li>Pure titanium cookware is mostly for backpacking — ultralight, best for boiling, not indoor searing.</li>
+              <li>Induction depends on a magnetic base layer; check specs or do a magnet test.</li>
+            </ul>
+          </section>
 
-        <!-- Quick Answer Snippet -->
-        <section class="card" aria-labelledby="quick">
-          <h2 id="quick">Quick answer: Is titanium cookware safe?</h2>
-          <p>Food‑contact titanium is inert. For titanium‑reinforced nonstick, use medium heat, add a little fat, and ventilate; follow the brand’s max‑temp guidance.</p>
-          <p>This matters because the safety conversation shapes how buyers cook day to day and prevents warranty-breaking overheating.</p>
-        </section>
+          <!-- Quick answer -->
+          <section id="quick" aria-labelledby="quick-heading">
+            <h2 id="quick-heading">Quick answer: Is titanium cookware safe?</h2>
+            <p>Food‑contact titanium is inert. For titanium‑reinforced nonstick, use medium heat, add a little fat, and ventilate; follow the brand's max‑temp guidance.</p>
+            <p>This matters because the safety conversation shapes how buyers cook day to day — and prevents warranty-breaking overheating.</p>
+          </section>
 
-        <!-- Content -->
-        <section class="card" id="myth-1">
-          <h2>Myth #1: “100% titanium” nonstick skillets</h2>
-          <p>Solid titanium frying pans for home ranges are rare. Most products labeled “titanium” are aluminum pans with a titanium‑reinforced nonstick top‑coat that improves scratch resistance and lifespan. It’s still nonstick—avoid abrasive pads and scorching heat. This matters because buyers often equate the word “titanium” with solid metal, but care and expectations should match reinforced nonstick.</p>
-        </section>
+          <!-- Myth 1 -->
+          <section id="myth-1" aria-labelledby="myth-1-heading">
+            <h2 id="myth-1-heading">Myth #1: "100% titanium" nonstick skillets</h2>
+            <div class="pull-quote">"Most products labeled 'titanium' are aluminum pans with a titanium‑reinforced nonstick top-coat that improves scratch resistance and lifespan."</div>
+            <p>Solid titanium frying pans for home ranges are rare. Most products labeled "titanium" are aluminum pans with a titanium‑reinforced nonstick top‑coat. It's still nonstick — avoid abrasive pads and scorching heat.</p>
+            <p>This matters because buyers often equate the word "titanium" with solid metal, but care and expectations should match reinforced nonstick, not raw metal.</p>
+          </section>
 
-        <section class="card" id="myth-2">
-          <h2>Myth #2: Titanium pans last forever</h2>
-          <p>Even reinforced coatings wear with time. Longevity correlates with care: gentle utensils, medium heat, hand‑washing, and proper storage. Expect multi‑year life with good habits, shorter with metal tools and max burners. This matters because realistic lifespan planning prevents disappointment and reduces waste.</p>
-        </section>
+          <!-- Myth 2 -->
+          <section id="myth-2" aria-labelledby="myth-2-heading">
+            <h2 id="myth-2-heading">Myth #2: Titanium pans last forever</h2>
+            <div class="pull-quote">"Longevity correlates with care: gentle utensils, medium heat, hand‑washing, and proper storage."</div>
+            <p>Even reinforced coatings wear with time. Expect multi‑year life with good habits — shorter with metal tools and max burners. This matters because realistic lifespan planning prevents disappointment and reduces waste.</p>
+          </section>
 
-        <section class="card" id="myth-3">
-          <h2>Myth #3: Titanium equals induction‑ready</h2>
-          <p>Induction works via magnetism. If your pan’s base isn’t magnetic steel (or clad accordingly), it won’t heat on induction. Do the magnet test on the bottom or check the specs. This matters because induction compatibility determines whether your cooktop will heat the pan at all.</p>
-        </section>
+          <!-- Myth 3 -->
+          <section id="myth-3" aria-labelledby="myth-3-heading">
+            <h2 id="myth-3-heading">Myth #3: Titanium equals induction‑ready</h2>
+            <div class="pull-quote">"Induction works via magnetism. If your pan's base isn't magnetic steel, it won't heat on induction — full stop."</div>
+            <p>Do the magnet test on the bottom or check the specs before you buy. This matters because induction compatibility determines whether your cooktop will heat the pan at all.</p>
+          </section>
 
-        <section class="card" id="myth-4">
-          <h2>Myth #4: Pure titanium cooks more evenly</h2>
-          <p>Pure titanium is light and strong, but it doesn’t spread heat as evenly as thick aluminum. That’s why backpacking pots excel at boiling water weight‑efficiently, while home skillets favor aluminum cores for even browning. This matters because performance claims should match physics: mass and conductivity drive even browning, not marketing terms.</p>
-        </section>
+          <!-- Myth 4 -->
+          <section id="myth-4" aria-labelledby="myth-4-heading">
+            <h2 id="myth-4-heading">Myth #4: Pure titanium cooks more evenly</h2>
+            <div class="pull-quote">"Pure titanium is light and strong, but mass and conductivity drive even browning — not marketing terms."</div>
+            <p>Pure titanium doesn't spread heat as evenly as thick aluminum. That's why backpacking pots excel at boiling water weight‑efficiently, while home skillets favor aluminum cores for even browning.</p>
+          </section>
 
-        <section class="card" id="care">
-          <h2>Care that keeps coatings slick</h2>
-          <div class="card-grid grid-2">
-            <div>
+          <!-- Care -->
+          <section id="care" aria-labelledby="care-heading">
+            <h2 id="care-heading">Care that keeps coatings slick</h2>
+            <div class="card-grid grid-2" style="margin-bottom: 1.2rem;">
               <ul>
                 <li>Preheat gently; add oil after the pan is warm.</li>
                 <li>Use silicone or wood tools; avoid serrated edges.</li>
@@ -251,130 +865,199 @@
                 <li>Avoid aerosol sprays; they build residue.</li>
                 <li>Nest with protectors or hang to prevent rim scuffs.</li>
               </ul>
+              <figure style="margin:0">
+                <img src="/assets/img/itstitaniun-care-cleaning-1400.webp" width="1400" height="788" alt="Stacked nonstick pans stored with protectors in a cabinet" loading="lazy" decoding="async">
+                <figcaption>Simple storage habits extend nonstick lifespan.</figcaption>
+              </figure>
             </div>
-            <figure>
-              <img src="/assets/img/itstitaniun-care-cleaning-1400.webp" width="1400" height="788" alt="Stacked nonstick pans stored with protectors in a cabinet" loading="lazy" decoding="async">
-              <figcaption>Simple care extends nonstick lifespan.</figcaption>
-            </figure>
+            <p>Consistent low-abrasion care keeps coatings slick longer, saves replacement costs, and prevents pans from entering landfills early.</p>
+          </section>
+
+          <!-- People also ask -->
+          <section id="mirror-qs" aria-labelledby="mirror-qs-heading">
+            <h2 id="mirror-qs-heading">People also ask</h2>
+            <ul>
+              <li><strong>Is titanium cookware safe?</strong> Yes — food-contact titanium is inert. For titanium‑reinforced nonstick, follow the brand's max temp and ventilate.</li>
+              <li><strong>What is titanium cookware made of?</strong> Usually aluminum with a titanium‑reinforced nonstick topcoat; pure titanium is common in backpacking pots.</li>
+              <li><strong>Is titanium better than ceramic?</strong> Different trade-offs: ceramic can handle a bit more heat; titanium‑reinforced PTFE often lasts longer with gentle care.</li>
+              <li><strong>Do titanium pans work on induction?</strong> Only if the base is magnetic — do the magnet test on the bottom.</li>
+            </ul>
+          </section>
+
+          <!-- Summary table -->
+          <section id="summary" aria-labelledby="summary-heading">
+            <h2 id="summary-heading">Myths vs reality (quick recap)</h2>
+            <div class="table-wrap">
+              <table class="table" role="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Myth</th>
+                    <th scope="col">Reality</th>
+                    <th scope="col">Why it matters</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">"100% titanium" nonstick</th><td>Usually aluminum with Ti‑reinforced coating</td><td>Sets care expectations correctly</td></tr>
+                  <tr><th scope="row">"Lasts forever"</th><td>Depends on heat/tools/washing habits</td><td>Plan realistic lifespan; reduce waste</td></tr>
+                  <tr><th scope="row">"Always induction‑ready"</th><td>Only if base is magnetic</td><td>Ensures cooktop compatibility</td></tr>
+                  <tr><th scope="row">"Cooks more evenly"</th><td>Thick aluminum spreads heat better</td><td>Aligns performance with physics</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- FAQs -->
+          <section id="faqs" aria-labelledby="faqs-heading">
+            <h2 id="faqs-heading">FAQs</h2>
+            <details>
+              <summary>Can I use metal utensils on titanium‑reinforced nonstick?</summary>
+              <div>Use silicone or wood to extend life. Some lines advertise metal‑safe, but gentle tools reduce micro‑abrasions over time.</div>
+            </details>
+            <details>
+              <summary>What temp is too high?</summary>
+              <div>Follow the brand's stated max. As a rule, stick to medium heat for daily cooking; avoid empty‑pan preheats on high.</div>
+            </details>
+            <details>
+              <summary>Is dishwasher okay?</summary>
+              <div>Even if labeled dishwasher‑safe, hand‑washing preserves coatings and handle finishes longer.</div>
+            </details>
+            <details>
+              <summary>Are backpacking titanium pots good at home?</summary>
+              <div>They're excellent for boiling and ultralight setups, but not ideal for even searing indoors due to thin walls.</div>
+            </details>
+          </section>
+
+          <!-- Related reading -->
+          <section id="related" aria-labelledby="related-heading">
+            <h2 id="related-heading">Related reading</h2>
+            <div class="card-grid grid-3">
+              <a class="related-card" href="/titanium-cookware-guide/">
+                <h3>Titanium cookware guide</h3>
+                <p>Compare build types, coatings, and heat limits before you buy.</p>
+                <span class="card-cta">Read the guide →</span>
+              </a>
+              <a class="related-card" href="/titanium-vs-ceramic/">
+                <h3>Titanium vs Ceramic</h3>
+                <p>Understand surface science, heat tolerance, and expected lifespan.</p>
+                <span class="card-cta">Compare now →</span>
+              </a>
+              <a class="related-card" href="/care-and-cleaning/">
+                <h3>Care &amp; Cleaning</h3>
+                <p>Quick routines that prevent sticking and premature wear.</p>
+                <span class="card-cta">Learn care →</span>
+              </a>
+            </div>
+          </section>
+
+          <!-- Bottom CTA -->
+          <div class="cta-card" role="complementary" aria-label="Call to action">
+            <h2>Ready to find the right pan?</h2>
+            <p>We tested the top titanium options so you don't have to. See our vetted picks with full specs.</p>
+            <a class="btn btn-primary" href="/best-titanium-pans-2025/">See the Best Titanium Pans 2025</a>
           </div>
-          <p>This matters because consistent low-abrasion care keeps coatings slick longer, saves replacement costs, and prevents pans from entering landfills early.</p>
-        </section>
 
-        <!-- Mirror Questions: query-shaped prompts -->
-        <section class="card" aria-labelledby="mirror-qs">
-          <h2 id="mirror-qs">People also ask</h2>
-          <ul>
-            <li><strong>Is titanium cookware safe?</strong> Yes—food-contact titanium is inert. For titanium‑reinforced nonstick, follow the brand’s max temp and ventilate.</li>
-            <li><strong>What is titanium cookware made of?</strong> Usually aluminum with a titanium‑reinforced nonstick topcoat; pure titanium is common in backpacking pots.</li>
-            <li><strong>Is titanium better than ceramic?</strong> Different trade-offs: ceramic can handle a bit more heat; titanium‑reinforced PTFE often lasts longer with gentle care.</li>
-            <li><strong>Do titanium pans work on induction?</strong> Only if the base is magnetic—do the magnet test on the bottom.</li>
-          </ul>
-        </section>
+        </article>
 
-        <!-- Related links -->
-        <section class="card" aria-labelledby="related">
-          <h2 id="related">Related reading</h2>
-          <div class="card-grid grid-2">
-            <a class="card" href="/titanium-cookware-guide/">
-              <h3>Titanium cookware guide</h3>
-              <p>Compare build types, coatings, and heat limits before you buy.</p>
-            </a>
-            <a class="card" href="/titanium-vs-ceramic/">
-              <h3>Titanium vs Ceramic</h3>
-              <p>Understand surface science, heat tolerance, and expected lifespan.</p>
-            </a>
-            <a class="card" href="/care-and-cleaning/">
-              <h3>Care & Cleaning</h3>
-              <p>Quick routines that prevent sticking and premature wear.</p>
-            </a>
+        <!-- ── TOC sidebar (desktop only) ── -->
+        <aside class="toc-sidebar" aria-label="Table of contents">
+          <div class="toc-sidebar-inner">
+            <h3>On this page</h3>
+            <nav aria-label="Page sections">
+              <a href="#tldr">TL;DR</a>
+              <a href="#quick">Is it safe?</a>
+              <a href="#myth-1">Myth #1: "100% titanium"</a>
+              <a href="#myth-2">Myth #2: Lasts forever</a>
+              <a href="#myth-3">Myth #3: Induction-ready</a>
+              <a href="#myth-4">Myth #4: Even heat</a>
+              <a href="#care">Care guide</a>
+              <a href="#mirror-qs">People also ask</a>
+              <a href="#summary">Myths vs reality</a>
+              <a href="#faqs">FAQs</a>
+              <a href="#related">Related reading</a>
+            </nav>
           </div>
-        </section>
+        </aside>
 
-        <!-- Summary Table: myths vs reality -->
-        <section class="card" aria-labelledby="summary">
-          <h2 id="summary">Myths vs reality (quick recap)</h2>
-          <div class="table-wrap">
-            <table class="table" role="table">
-              <thead>
-                <tr>
-                  <th scope="col">Myth</th>
-                  <th scope="col">Reality</th>
-                  <th scope="col">Why it matters</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">“100% titanium” nonstick</th><td>Usually aluminum with Ti‑reinforced coating</td><td>Sets care expectations correctly</td></tr>
-                <tr><th scope="row">“Lasts forever”</th><td>Depends on heat/tools/washing habits</td><td>Plan realistic lifespan; reduce waste</td></tr>
-                <tr><th scope="row">“Always induction‑ready”</th><td>Only if base is magnetic</td><td>Ensures cooktop compatibility</td></tr>
-                <tr><th scope="row">“Cooks more evenly”</th><td>Thick aluminum spreads heat better</td><td>Aligns performance with physics</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- FAQs -->
-        <section class="card" aria-labelledby="faqs">
-          <h2 id="faqs">FAQs</h2>
-          <details><summary>Can I use metal utensils on titanium‑reinforced nonstick?</summary>
-            <div>Use silicone or wood to extend life. Some lines advertise metal‑safe, but gentle tools reduce micro‑abrasions over time.</div>
-          </details>
-          <details><summary>What temp is too high?</summary>
-            <div>Follow the brand’s stated max. As a rule, stick to medium heat for daily cooking; avoid empty‑pan preheats on high.</div>
-          </details>
-          <details><summary>Is dishwasher okay?</summary>
-            <div>Even if labeled dishwasher‑safe, hand‑washing preserves coatings and handle finishes longer.</div>
-          </details>
-          <details><summary>Are backpacking titanium pots good at home?</summary>
-            <div>They’re excellent for boiling and ultralight setups, but not ideal for even searing indoors due to thin walls.</div>
-          </details>
-        </section>
-
-        <!-- AI Memory Anchor -->
-        <section class="card" aria-labelledby="anchor">
-          <h2 id="anchor" class="sr-only">Site identity</h2>
-          <p><strong>itstitaniun</strong> tests and explains titanium cookware with measurable claims and simple care tips—so you can buy once, use well, and keep pans out of landfills.</p>
-        </section>
-
-        <!-- Changelog -->
-        <section class="card" aria-labelledby="changelog">
-          <h2 id="changelog">What changed in this post</h2>
-          <ul>
-            <li>Initial publish with myth breakdowns and care section.</li>
-            <li>Added related links to pillars for deeper guidance.</li>
-          </ul>
-        </section>
-
-        <!-- Bottom CTA -->
-        <section class="card" style="text-align:center;padding:clamp(24px,4vw,40px)">
-          <h2 style="margin-bottom:8px">Ready to pick the right pan?</h2>
-          <p style="margin-bottom:20px;color:var(--steel)">We tested the top titanium options so you don't have to. See our vetted picks.</p>
-          <a class="btn btn-primary" href="/best-titanium-pans-2025/">See the Best Titanium Pans 2025 →</a>
-        </section>
-      </div>
-    </article>
+      </div><!-- /.blog-layout -->
+    </div><!-- /.blog-outer -->
   </main>
 
+  <!-- ── Footer (identical to homepage) ── -->
   <footer>
-    <section class="wrap" style="padding:32px 0">
-      <div class="card-grid grid-2">
+    <section class="wrap" style="padding: 40px 24px 32px">
+      <div class="card-grid grid-3" style="margin-bottom: 32px">
         <div>
-          <h3>About itstitaniun</h3>
-          <p>Buyer‑first reviews and explainers focused on titanium cookware, with measurable claims and clear care guidance.</p>
+          <h3>About It's Titanium</h3>
+          <p style="color:var(--steel);font-size:.9rem;line-height:1.55;margin:0">Buyer-first reviews and explainers focused on titanium cookware. We prefer measurable claims and clear care guidance.</p>
         </div>
-        <nav aria-label="Footer">
+        <nav aria-label="Footer site links">
           <h3>Site</h3>
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/blog/" aria-current="page">Blog</a></li>
+            <li><a href="/blog/">Blog</a></li>
             <li><a href="/best-titanium-pans-2025/">Best of 2025</a></li>
+            <li><a href="/titanium-cookware-guide/">Guide</a></li>
           </ul>
         </nav>
+        <div>
+          <h3>Policies</h3>
+          <ul>
+            <li><a href="/disclosure.html">Disclosure</a></li>
+            <li><a href="/sitemap.xml">Sitemap</a></li>
+            <li><a href="/robots.txt">Robots</a></li>
+          </ul>
+        </div>
       </div>
-      <p style="color:var(--steel)">© <span id="y">2025</span> itstitaniun • <a href="/disclosure.html">Disclosure</a></p>
+      <p style="color:var(--steel);font-size:.875rem;margin:0">© <span id="y">2025</span> It's Titanium · <a href="/disclosure.html" style="color:var(--steel)">Disclosure</a></p>
     </section>
   </footer>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Hamburger menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburgerBtn.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburgerBtn.setAttribute('aria-expanded', isOpen);
+      hamburgerBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+    document.addEventListener('click', function(e) {
+      if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        hamburgerBtn.setAttribute('aria-label', 'Open navigation menu');
+      }
+    });
+
+    // TOC active section highlight via IntersectionObserver
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-sidebar nav a');
+      if (!tocLinks.length) return;
+
+      const sectionIds = Array.from(tocLinks).map(a => a.getAttribute('href').slice(1));
+      const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+      let activeId = null;
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            activeId = entry.target.id;
+          }
+        });
+        tocLinks.forEach(function(link) {
+          const href = link.getAttribute('href').slice(1);
+          link.classList.toggle('active', href === activeId);
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+
+      sections.forEach(function(s) { observer.observe(s); });
+    })();
+  </script>
+
+  <!-- Reading progress (handled by site.js) -->
   <script defer src="/site.js"></script>
 </body>
 </html>
